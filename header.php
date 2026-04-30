@@ -17,7 +17,17 @@
 
 <!-- PRELOADER -->
 <div id="preloader">
-  <div class="loader"></div>
+  <div class="preloader-logo">
+    <?php 
+    if ( has_custom_logo() ) {
+        $custom_logo_id = get_theme_mod( 'custom_logo' );
+        $logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+        echo '<img src="' . esc_url( $logo[0] ) . '" alt="' . esc_attr( get_bloginfo( 'name' ) ) . '" class="pulsing-logo" />';
+    } else {
+        echo '<img src="' . esc_url(get_template_directory_uri()) . '/assets/images/logo.png" alt="' . esc_attr(get_bloginfo('name')) . '" class="pulsing-logo" />';
+    }
+    ?>
+  </div>
 </div>
 
 <?php if ( is_front_page() || is_home() ) : ?>
