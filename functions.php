@@ -56,6 +56,9 @@ function fikrtak_theme_scripts() {
 add_action( 'wp_enqueue_scripts', 'fikrtak_theme_scripts' );
 
 
+/**
+ * Custom Post Types
+ */
 function fikrtak_custom_post_types() {
     register_post_type('service', array(
         'labels'      => array('name' => 'الخدمات', 'singular_name' => 'خدمة'),
@@ -80,3 +83,30 @@ function fikrtak_custom_post_types() {
     ));
 }
 add_action('init', 'fikrtak_custom_post_types');
+
+/**
+ * Theme Customizer Settings
+ */
+function fikrtak_customizer_settings( $wp_customize ) {
+
+    // ── قسم: إعدادات الموقع ──────────────────────────────────
+    $wp_customize->add_section( 'fikrtak_site_options', array(
+        'title'    => 'إعدادات الموقع',
+        'priority' => 30,
+    ) );
+
+    // خيار: تفعيل/إيقاف شاشة التحميل (Preloader)
+    $wp_customize->add_setting( 'fikrtak_enable_preloader', array(
+        'default'           => true,
+        'sanitize_callback' => 'rest_sanitize_boolean',
+        'transport'         => 'refresh',
+    ) );
+
+    $wp_customize->add_control( 'fikrtak_enable_preloader', array(
+        'type'        => 'checkbox',
+        'label'       => 'تفعيل شاشة التحميل (Preloader)',
+        'description' => 'عند التفعيل ستظهر شاشة تحميل بشعار الموقع عند فتح الصفحة.',
+        'section'     => 'fikrtak_site_options',
+    ) );
+}
+add_action( 'customize_register', 'fikrtak_customizer_settings' );

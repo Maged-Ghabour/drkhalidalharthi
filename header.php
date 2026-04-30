@@ -15,6 +15,7 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
+<?php if ( get_theme_mod( 'fikrtak_enable_preloader', true ) ) : ?>
 <!-- PRELOADER -->
 <div id="preloader">
   <div class="preloader-logo">
@@ -29,6 +30,7 @@
     ?>
   </div>
 </div>
+<?php endif; ?>
 
 <?php if ( is_front_page() || is_home() ) : ?>
   <!-- ===== HERO ===== -->
