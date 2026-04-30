@@ -405,14 +405,14 @@ button {
 }
 
 .badge-1 {
-  width: 140px;
-  top: 15%;
-  right: -25px;
+  width: 179px;
+  top: 41%;
+  left: 28px;
   animation-delay: 0s;
 }
 
 .badge-2 {
-  width: 196px;
+  width: 200px;
   top: 46%;
   right: 33px;
   animation-delay: 0.7s;
@@ -420,15 +420,15 @@ button {
 
 
 .badge-3 {
-  width: 120px;
-  bottom: 25%;
-  right: -15px;
+  width: 184px;
+  bottom: 3%;
+  right: 31px;
   animation-delay: 1.4s;
 }
 
 .badge-4 {
-  bottom: 8%;
-  left: -40px;
+  bottom: 3%;
+  left: 35px;
   animation-delay: 2.1s;
   z-index: 12;
 }
