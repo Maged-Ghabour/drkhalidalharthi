@@ -1,4 +1,4 @@
-﻿/* ===== CUSTOM FONT ===== */
+/* ===== CUSTOM FONT ===== */
 @font-face {
   font-family: 'GE SS Unique';
   src: url('../fonts/ArbFONTS-GE_SS_Unique_Light.otf') format('opentype');
@@ -17,7 +17,7 @@
 
 @font-face {
   font-family: 'GE SS Unique';
-  src: url('../fonts/ArbFONTS-GE_SS_Unique_Light.otf') format('opentype');
+  src: url('../fonts/alfont_com_AlFont_com_GE_SS_Unique_Bold_5.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -25,7 +25,7 @@
 
 @font-face {
   font-family: 'GE SS Unique';
-  src: url('../fonts/ArbFONTS-GE_SS_Unique_Light.otf') format('opentype');
+  src: url('../fonts/alfont_com_AlFont_com_GE_SS_Unique_Bold_5.otf') format('opentype');
   font-weight: 800;
   font-style: normal;
   font-display: swap;
@@ -1580,4 +1580,87 @@ button {
     transform: scale(1.1);
     opacity: 1;
   }
+}
+
+/* ===== BLOG PAGE STYLES ===== */
+.pagination-wrapper {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.pagination-wrapper .nav-links {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.pagination-wrapper .page-numbers {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: var(--teal-light);
+  color: var(--teal-dark);
+  font-weight: 700;
+  transition: var(--transition);
+}
+
+.pagination-wrapper .page-numbers.current,
+.pagination-wrapper .page-numbers:hover {
+  background: var(--teal);
+  color: var(--white);
+}
+
+.pagination-wrapper .next,
+.pagination-wrapper .prev {
+  padding: 0 16px;
+}
+
+/* Single Post Content Styling */
+.blog-content h1, .blog-content h2, .blog-content h3 {
+  color: var(--teal-dark);
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.blog-content p {
+  margin-bottom: 20px;
+}
+
+.blog-content img {
+  border-radius: 12px;
+  margin: 30px 0;
+  max-width: 100%;
+  height: auto;
+}
+
+.blog-content ul, .blog-content ol {
+  margin-bottom: 20px;
+  padding-right: 20px;
+}
+
+.blog-content li {
+  margin-bottom: 10px;
+}
+
+.blog-content blockquote {
+  border-right: 4px solid var(--teal);
+  padding: 15px 20px;
+  background: var(--teal-pale);
+  border-radius: 8px;
+  margin: 30px 0;
+  font-style: italic;
+  color: var(--text-header);
+}
+
+.post-navigation a {
+  color: var(--teal);
+  font-weight: 700;
+  transition: var(--transition);
+}
+
+.post-navigation a:hover {
+  color: var(--teal-dark);
 }

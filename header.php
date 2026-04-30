@@ -32,7 +32,7 @@
 </div>
 <?php endif; ?>
 
-<?php if ( is_front_page() || is_home() ) : ?>
+<?php if ( is_front_page() ) : ?>
   <!-- ===== HERO ===== -->
   <section class="hero" id="home">
     <div class="container">
@@ -70,3 +70,8 @@
             </button>
           </nav>
         </header>
+
+<?php if ( ! is_front_page() ) : ?>
+    </div>
+  </div>
+<?php endif; ?>
