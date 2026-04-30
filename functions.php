@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Fikrtak Theme functions and definitions
  */
@@ -43,9 +43,6 @@ add_action( 'after_setup_theme', 'fikrtak_theme_setup' );
  * Enqueue scripts and styles.
  */
 function fikrtak_theme_scripts() {
-	// Google Fonts
-	wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&display=swap', array(), null );
-
 	// Theme Styles
 	wp_enqueue_style( 'fikrtak-theme-style', get_stylesheet_uri(), array(), wp_get_theme()->get('Version') );
 	wp_enqueue_style( 'fikrtak-main-style', get_template_directory_uri() . '/assets/css/style.css', array(), wp_get_theme()->get('Version') );
@@ -61,21 +58,21 @@ add_action( 'wp_enqueue_scripts', 'fikrtak_theme_scripts' );
  */
 function fikrtak_custom_post_types() {
     register_post_type('service', array(
-        'labels'      => array('name' => 'الخدمات', 'singular_name' => 'خدمة'),
+        'labels'      => array('name' => 'Ø§Ù„Ø®Ø¯Ù…Ø§Øª', 'singular_name' => 'Ø®Ø¯Ù…Ø©'),
         'public'      => true,
         'has_archive' => false,
         'supports'    => array('title', 'editor', 'thumbnail'),
         'menu_icon'   => 'dashicons-hammer',
     ));
     register_post_type('review', array(
-        'labels'      => array('name' => 'آراء العملاء', 'singular_name' => 'رأي'),
+        'labels'      => array('name' => 'Ø¢Ø±Ø§Ø¡ Ø§Ù„Ø¹Ù…Ù„Ø§Ø¡', 'singular_name' => 'Ø±Ø£ÙŠ'),
         'public'      => true,
         'has_archive' => false,
         'supports'    => array('title', 'editor', 'custom-fields'),
         'menu_icon'   => 'dashicons-star-filled',
     ));
     register_post_type('faq', array(
-        'labels'      => array('name' => 'الأسئلة الشائعة', 'singular_name' => 'سؤال'),
+        'labels'      => array('name' => 'Ø§Ù„Ø£Ø³Ø¦Ù„Ø© Ø§Ù„Ø´Ø§Ø¦Ø¹Ø©', 'singular_name' => 'Ø³Ø¤Ø§Ù„'),
         'public'      => true,
         'has_archive' => false,
         'supports'    => array('title', 'editor'),
@@ -89,13 +86,13 @@ add_action('init', 'fikrtak_custom_post_types');
  */
 function fikrtak_customizer_settings( $wp_customize ) {
 
-    // ── قسم: إعدادات الموقع ──────────────────────────────────
+    // â”€â”€ Ù‚Ø³Ù…: Ø¥Ø¹Ø¯Ø§Ø¯Ø§Øª Ø§Ù„Ù…ÙˆÙ‚Ø¹ â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     $wp_customize->add_section( 'fikrtak_site_options', array(
-        'title'    => 'إعدادات الموقع',
+        'title'    => 'Ø¥Ø¹Ø¯Ø§Ø¯Ø§Øª Ø§Ù„Ù…ÙˆÙ‚Ø¹',
         'priority' => 30,
     ) );
 
-    // خيار: تفعيل/إيقاف شاشة التحميل (Preloader)
+    // Ø®ÙŠØ§Ø±: ØªÙØ¹ÙŠÙ„/Ø¥ÙŠÙ‚Ø§Ù Ø´Ø§Ø´Ø© Ø§Ù„ØªØ­Ù…ÙŠÙ„ (Preloader)
     $wp_customize->add_setting( 'fikrtak_enable_preloader', array(
         'default'           => true,
         'sanitize_callback' => 'rest_sanitize_boolean',
@@ -104,15 +101,15 @@ function fikrtak_customizer_settings( $wp_customize ) {
 
     $wp_customize->add_control( 'fikrtak_enable_preloader', array(
         'type'        => 'checkbox',
-        'label'       => 'تفعيل شاشة التحميل (Preloader)',
-        'description' => 'عند التفعيل ستظهر شاشة تحميل بشعار الموقع عند فتح الصفحة.',
+        'label'       => 'ØªÙØ¹ÙŠÙ„ Ø´Ø§Ø´Ø© Ø§Ù„ØªØ­Ù…ÙŠÙ„ (Preloader)',
+        'description' => 'Ø¹Ù†Ø¯ Ø§Ù„ØªÙØ¹ÙŠÙ„ Ø³ØªØ¸Ù‡Ø± Ø´Ø§Ø´Ø© ØªØ­Ù…ÙŠÙ„ Ø¨Ø´Ø¹Ø§Ø± Ø§Ù„Ù…ÙˆÙ‚Ø¹ Ø¹Ù†Ø¯ ÙØªØ­ Ø§Ù„ØµÙØ­Ø©.',
         'section'     => 'fikrtak_site_options',
     ) );
 }
 add_action( 'customize_register', 'fikrtak_customizer_settings' );
 
 /**
- * تخصيص صفحة تسجيل دخول الإدمن (wp-login.php)
+ * ØªØ®ØµÙŠØµ ØµÙØ­Ø© ØªØ³Ø¬ÙŠÙ„ Ø¯Ø®ÙˆÙ„ Ø§Ù„Ø¥Ø¯Ù…Ù† (wp-login.php)
  */
 function fikrtak_login_logo() {
     $logo_url = get_template_directory_uri() . '/assets/images/logo.png';
@@ -123,7 +120,7 @@ function fikrtak_login_logo() {
     }
     ?>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&display=swap');
+        
 
         :root {
             --teal:      #61a095;
@@ -131,9 +128,9 @@ function fikrtak_login_logo() {
             --dark:      #0d2626;
         }
 
-        /* ── خلفية الصفحة ── */
+        /* â”€â”€ Ø®Ù„ÙÙŠØ© Ø§Ù„ØµÙØ­Ø© â”€â”€ */
         body.login {
-            font-family: 'Almarai', sans-serif;
+            font-family: 'GE SS Unique', sans-serif;
             background: linear-gradient(135deg, var(--dark) 0%, #1a3d3a 50%, var(--dark) 100%);
             position: relative;
             overflow: hidden;
@@ -163,7 +160,7 @@ function fikrtak_login_logo() {
             pointer-events: none;
         }
 
-        /* ── الشعار ── */
+        /* â”€â”€ Ø§Ù„Ø´Ø¹Ø§Ø± â”€â”€ */
         #login h1 a {
             background-image: url('<?php echo esc_url($logo_url); ?>') !important;
             background-size: contain !important;
@@ -176,13 +173,13 @@ function fikrtak_login_logo() {
             filter: brightness(0) invert(1);
         }
 
-        /* ── الحاوية الرئيسية ── */
+        /* â”€â”€ Ø§Ù„Ø­Ø§ÙˆÙŠØ© Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ© â”€â”€ */
         #login {
             width: 380px !important;
             padding: 0 !important;
         }
 
-        /* ── البطاقة ── */
+        /* â”€â”€ Ø§Ù„Ø¨Ø·Ø§Ù‚Ø© â”€â”€ */
         #loginform,
         #lostpasswordform,
         #registerform {
@@ -194,29 +191,29 @@ function fikrtak_login_logo() {
             margin-top: 0 !important;
         }
 
-        /* ── العنوان داخل البطاقة ── */
+        /* â”€â”€ Ø§Ù„Ø¹Ù†ÙˆØ§Ù† Ø¯Ø§Ø®Ù„ Ø§Ù„Ø¨Ø·Ø§Ù‚Ø© â”€â”€ */
         #loginform::before {
-            content: 'مرحباً بعودتك 👋';
+            content: 'Ù…Ø±Ø­Ø¨Ø§Ù‹ Ø¨Ø¹ÙˆØ¯ØªÙƒ ðŸ‘‹';
             display: block;
             font-size: 20px;
             font-weight: 800;
             color: #1a2e2d;
             margin-bottom: 4px;
-            font-family: 'Almarai', sans-serif;
+            font-family: 'GE SS Unique', sans-serif;
         }
 
         #loginform::after {
-            content: 'أدخل بيانات حسابك للمتابعة';
+            content: 'Ø£Ø¯Ø®Ù„ Ø¨ÙŠØ§Ù†Ø§Øª Ø­Ø³Ø§Ø¨Ùƒ Ù„Ù„Ù…ØªØ§Ø¨Ø¹Ø©';
             display: block;
             font-size: 13px;
             color: #6b7c7b;
             margin-bottom: 24px;
-            font-family: 'Almarai', sans-serif;
+            font-family: 'GE SS Unique', sans-serif;
         }
 
-        /* ── الحقول ── */
+        /* â”€â”€ Ø§Ù„Ø­Ù‚ÙˆÙ„ â”€â”€ */
         .login label {
-            font-family: 'Almarai', sans-serif;
+            font-family: 'GE SS Unique', sans-serif;
             font-size: 13px;
             font-weight: 700;
             color: #1a2e2d;
@@ -225,7 +222,7 @@ function fikrtak_login_logo() {
         .login input[type="text"],
         .login input[type="password"],
         .login input[type="email"] {
-            font-family: 'Almarai', sans-serif;
+            font-family: 'GE SS Unique', sans-serif;
             font-size: 14px;
             border: 1.5px solid #e0e8e7 !important;
             border-radius: 10px !important;
@@ -245,10 +242,10 @@ function fikrtak_login_logo() {
             background: #fff !important;
         }
 
-        /* ── زر الدخول ── */
+        /* â”€â”€ Ø²Ø± Ø§Ù„Ø¯Ø®ÙˆÙ„ â”€â”€ */
         .login #wp-submit,
         .login .button-primary {
-            font-family: 'Almarai', sans-serif !important;
+            font-family: 'GE SS Unique', sans-serif !important;
             font-size: 15px !important;
             font-weight: 700 !important;
             background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%) !important;
@@ -267,14 +264,14 @@ function fikrtak_login_logo() {
             transform: translateY(-1px) !important;
         }
 
-        /* ── "تذكّرني" ── */
+        /* â”€â”€ "ØªØ°ÙƒÙ‘Ø±Ù†ÙŠ" â”€â”€ */
         .login .forgetmenot {
-            font-family: 'Almarai', sans-serif;
+            font-family: 'GE SS Unique', sans-serif;
             font-size: 13px;
             color: #4a5e5d;
         }
 
-        /* ── الروابط السفلية ── */
+        /* â”€â”€ Ø§Ù„Ø±ÙˆØ§Ø¨Ø· Ø§Ù„Ø³ÙÙ„ÙŠØ© â”€â”€ */
         #nav, #backtoblog {
             background: transparent !important;
             box-shadow: none !important;
@@ -284,7 +281,7 @@ function fikrtak_login_logo() {
         }
 
         #nav a, #backtoblog a {
-            font-family: 'Almarai', sans-serif;
+            font-family: 'GE SS Unique', sans-serif;
             font-size: 13px;
             color: rgba(255,255,255,0.6) !important;
             text-decoration: none;
@@ -295,10 +292,10 @@ function fikrtak_login_logo() {
             color: #fff !important;
         }
 
-        /* ── رسائل الخطأ ── */
+        /* â”€â”€ Ø±Ø³Ø§Ø¦Ù„ Ø§Ù„Ø®Ø·Ø£ â”€â”€ */
         #login_error,
         .message {
-            font-family: 'Almarai', sans-serif !important;
+            font-family: 'GE SS Unique', sans-serif !important;
             border-radius: 10px !important;
             border-right: 4px solid #c0392b !important;
             border-left: none !important;
@@ -313,32 +310,32 @@ function fikrtak_login_logo() {
             color: var(--teal-dark) !important;
         }
 
-        /* ── تخصيص checkbox ── */
+        /* â”€â”€ ØªØ®ØµÙŠØµ checkbox â”€â”€ */
         input[type="checkbox"]:checked {
             accent-color: var(--teal);
         }
 
-        /* ── Hide default WP privacy policy link ── */
+        /* â”€â”€ Hide default WP privacy policy link â”€â”€ */
         .privacy-policy-page-link { display: none; }
     </style>
     <?php
 }
 add_action( 'login_enqueue_scripts', 'fikrtak_login_logo' );
 
-// تغيير رابط الشعار إلى رابط الموقع
+// ØªØºÙŠÙŠØ± Ø±Ø§Ø¨Ø· Ø§Ù„Ø´Ø¹Ø§Ø± Ø¥Ù„Ù‰ Ø±Ø§Ø¨Ø· Ø§Ù„Ù…ÙˆÙ‚Ø¹
 add_filter( 'login_headerurl', function() {
     return home_url('/');
 } );
 
-// تغيير عنوان الشعار إلى اسم الموقع
+// ØªØºÙŠÙŠØ± Ø¹Ù†ÙˆØ§Ù† Ø§Ù„Ø´Ø¹Ø§Ø± Ø¥Ù„Ù‰ Ø§Ø³Ù… Ø§Ù„Ù…ÙˆÙ‚Ø¹
 add_filter( 'login_headertext', function() {
     return get_bloginfo('name');
 } );
 
 /**
- * ══════════════════════════════════════════════
- *  تخصيص لوحة تحكم الووردبريس (Admin Dashboard)
- * ══════════════════════════════════════════════
+ * â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+ *  ØªØ®ØµÙŠØµ Ù„ÙˆØ­Ø© ØªØ­ÙƒÙ… Ø§Ù„ÙˆÙˆØ±Ø¯Ø¨Ø±ÙŠØ³ (Admin Dashboard)
+ * â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
  */
 function fikrtak_admin_styles() {
     $is_rtl   = is_rtl();
@@ -347,7 +344,7 @@ function fikrtak_admin_styles() {
         : 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap';
     $font_family = $is_rtl ? "'Cairo', sans-serif" : "'Inter', sans-serif";
 
-    // جلب اللوجو
+    // Ø¬Ù„Ø¨ Ø§Ù„Ù„ÙˆØ¬Ùˆ
     $logo_url = get_template_directory_uri() . '/assets/images/logo.png';
     if ( has_custom_logo() ) {
         $logo_id  = get_theme_mod('custom_logo');
@@ -359,7 +356,7 @@ function fikrtak_admin_styles() {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="<?php echo esc_url($font_url); ?>" rel="stylesheet">
     <style>
-        /* ══ المتغيرات ══ */
+        /* â•â• Ø§Ù„Ù…ØªØºÙŠØ±Ø§Øª â•â• */
         :root {
             --adm-teal:      #61a095;
             --adm-teal-dk:   #3d7d73;
@@ -375,7 +372,7 @@ function fikrtak_admin_styles() {
             --adm-shadow:    0 2px 12px rgba(13,38,38,.08);
         }
 
-        /* ══ الفونت العام ══ */
+        /* â•â• Ø§Ù„ÙÙˆÙ†Øª Ø§Ù„Ø¹Ø§Ù… â•â• */
         body, input, select, textarea, button,
         #adminmenu, #adminmenu a, #wpadminbar,
         #wpadminbar *, .wrap, .wp-heading-inline,
@@ -383,14 +380,14 @@ function fikrtak_admin_styles() {
             font-family: <?php echo $font_family; ?> !important;
         }
 
-        /* ══ خلفية الصفحة ══ */
+        /* â•â• Ø®Ù„ÙÙŠØ© Ø§Ù„ØµÙØ­Ø© â•â• */
         body.wp-admin {
             background: var(--adm-bg) !important;
         }
 
-        /* ══════════════════════════
-             الشريط العلوي (Toolbar)
-        ══════════════════════════ */
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+             Ø§Ù„Ø´Ø±ÙŠØ· Ø§Ù„Ø¹Ù„ÙˆÙŠ (Toolbar)
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         #wpadminbar {
             background: var(--adm-dark) !important;
             border-bottom: 2px solid var(--adm-teal) !important;
@@ -415,21 +412,21 @@ function fikrtak_admin_styles() {
             border-radius: 0 0 var(--adm-radius) var(--adm-radius);
         }
 
-        /* اسم الموقع في الشريط العلوي */
+        /* Ø§Ø³Ù… Ø§Ù„Ù…ÙˆÙ‚Ø¹ ÙÙŠ Ø§Ù„Ø´Ø±ÙŠØ· Ø§Ù„Ø¹Ù„ÙˆÙŠ */
         #wpadminbar #wp-admin-bar-site-name > .ab-item::before {
             display: none;
         }
 
-        /* ══════════════════════════
-             الشريط الجانبي (Sidebar)
-        ══════════════════════════ */
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+             Ø§Ù„Ø´Ø±ÙŠØ· Ø§Ù„Ø¬Ø§Ù†Ø¨ÙŠ (Sidebar)
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         #adminmenuback,
         #adminmenuwrap,
         #adminmenu {
             background: var(--adm-sidebar) !important;
         }
 
-        /* اللوجو في الشريط الجانبي */
+        /* Ø§Ù„Ù„ÙˆØ¬Ùˆ ÙÙŠ Ø§Ù„Ø´Ø±ÙŠØ· Ø§Ù„Ø¬Ø§Ù†Ø¨ÙŠ */
         #adminmenu::before {
             content: '';
             display: block;
@@ -444,7 +441,7 @@ function fikrtak_admin_styles() {
             opacity: 0.9;
         }
 
-        /* روابط القائمة */
+        /* Ø±ÙˆØ§Ø¨Ø· Ø§Ù„Ù‚Ø§Ø¦Ù…Ø© */
         #adminmenu a,
         #adminmenu .wp-menu-name {
             color: rgba(255,255,255,0.72) !important;
@@ -471,7 +468,7 @@ function fikrtak_admin_styles() {
             color: #fff !important;
         }
 
-        /* القائمة الفرعية */
+        /* Ø§Ù„Ù‚Ø§Ø¦Ù…Ø© Ø§Ù„ÙØ±Ø¹ÙŠØ© */
         #adminmenu .wp-submenu {
             background: var(--adm-sidebar2) !important;
         }
@@ -485,26 +482,26 @@ function fikrtak_admin_styles() {
             color: var(--adm-teal) !important;
         }
 
-        /* خط فاصل جانبي لل active */
+        /* Ø®Ø· ÙØ§ØµÙ„ Ø¬Ø§Ù†Ø¨ÙŠ Ù„Ù„ active */
         #adminmenu li.current > a,
         #adminmenu li.wp-has-current-submenu > a {
             border-right: 3px solid #fff !important;
         }
 
-        /* فاصل */
+        /* ÙØ§ØµÙ„ */
         #adminmenu .wp-menu-separator {
             background: rgba(255,255,255,0.06) !important;
         }
 
-        /* ══════════════════════════
-             المحتوى الرئيسي
-        ══════════════════════════ */
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+             Ø§Ù„Ù…Ø­ØªÙˆÙ‰ Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠ
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         #wpcontent,
         #wpfooter {
             background: var(--adm-bg) !important;
         }
 
-        /* ══ بطاقات الداشبورد ══ */
+        /* â•â• Ø¨Ø·Ø§Ù‚Ø§Øª Ø§Ù„Ø¯Ø§Ø´Ø¨ÙˆØ±Ø¯ â•â• */
         .postbox,
         #dashboard-widgets .postbox,
         .meta-box-sortables .postbox {
@@ -529,7 +526,7 @@ function fikrtak_admin_styles() {
             color: var(--adm-text) !important;
         }
 
-        /* ══ عنوان الصفحة ══ */
+        /* â•â• Ø¹Ù†ÙˆØ§Ù† Ø§Ù„ØµÙØ­Ø© â•â• */
         .wrap h1,
         .wp-heading-inline {
             font-size: 22px !important;
@@ -537,7 +534,7 @@ function fikrtak_admin_styles() {
             color: var(--adm-text) !important;
         }
 
-        /* ══ الأزرار ══ */
+        /* â•â• Ø§Ù„Ø£Ø²Ø±Ø§Ø± â•â• */
         .button-primary {
             background: var(--adm-teal) !important;
             border-color: var(--adm-teal-dk) !important;
@@ -563,7 +560,7 @@ function fikrtak_admin_styles() {
             transition: all .2s ease !important;
         }
 
-        /* ══ الجداول ══ */
+        /* â•â• Ø§Ù„Ø¬Ø¯Ø§ÙˆÙ„ â•â• */
         .wp-list-table {
             background: var(--adm-white) !important;
             border-radius: 14px !important;
@@ -589,7 +586,7 @@ function fikrtak_admin_styles() {
             accent-color: var(--adm-teal);
         }
 
-        /* ══ الإشعارات ══ */
+        /* â•â• Ø§Ù„Ø¥Ø´Ø¹Ø§Ø±Ø§Øª â•â• */
         .notice,
         div.updated,
         div.error {
@@ -604,7 +601,7 @@ function fikrtak_admin_styles() {
             border-right-color: #e74c3c !important;
         }
 
-        /* ══ حقول الإدخال ══ */
+        /* â•â• Ø­Ù‚ÙˆÙ„ Ø§Ù„Ø¥Ø¯Ø®Ø§Ù„ â•â• */
         input[type="text"],
         input[type="email"],
         input[type="search"],
@@ -626,7 +623,7 @@ function fikrtak_admin_styles() {
             box-shadow: 0 0 0 2px rgba(97,160,149,0.2) !important;
         }
 
-        /* ══ Footer ══ */
+        /* â•â• Footer â•â• */
         #wpfooter {
             border-top: 1px solid #dce9e8 !important;
             font-family: <?php echo $font_family; ?> !important;
@@ -634,7 +631,7 @@ function fikrtak_admin_styles() {
             font-size: 12px !important;
         }
 
-        /* ══ Admin Bar Logo (اللوجو في الـ Toolbar) ══ */
+        /* â•â• Admin Bar Logo (Ø§Ù„Ù„ÙˆØ¬Ùˆ ÙÙŠ Ø§Ù„Ù€ Toolbar) â•â• */
         #wpadminbar #wp-admin-bar-wp-logo .ab-item .ab-icon::before {
             color: var(--adm-teal) !important;
         }
@@ -642,3 +639,4 @@ function fikrtak_admin_styles() {
     <?php
 }
 add_action( 'admin_head', 'fikrtak_admin_styles' );
+
