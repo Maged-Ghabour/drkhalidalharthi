@@ -107,14 +107,15 @@ document.addEventListener('DOMContentLoaded', () => {
       reviewCard.innerHTML = `
         <div class="review-card-header">
           <div class="review-card-right">
+            <div class="reviewer-avatar">
+              ${r.avatar ? `<img src="${r.avatar}" alt="${r.name}">` : ''}
+            </div>
             <div class="review-card-info">
               <strong class="reviewer-name">${r.name}</strong>
               <span class="reviewer-handle">${r.handle}</span>
             </div>
-            <div class="reviewer-avatar">
-              ${r.avatar ? `<img src="${r.avatar}" alt="${r.name}">` : ''}
-            </div>
           </div>
+
           <div class="review-card-left">
             <span class="review-card-score">${r.score} review</span>
             <div class="review-card-stars">${starsStr}</div>
