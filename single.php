@@ -32,6 +32,17 @@ get_header(); ?>
             <?php the_content(); ?>
           </div>
           
+          <!-- Author Box -->
+          <div class="author-box">
+             <div class="author-avatar">
+                <?php echo get_avatar( get_the_author_meta( 'ID' ), 90 ); ?>
+             </div>
+             <div class="author-info">
+                <h4>د. خالد سليم الحارثي</h4>
+                <p>استشاري جراحة أورام العظام وإعادة بناء المفاصل، يقدم أحدث النصائح الطبية والخبرات العلمية لمساعدتكم على استعادة الحركة والحياة الصحية.</p>
+             </div>
+          </div>
+
           <footer class="post-footer-nav">
               <div class="post-navigation">
                   <div class="nav-prev"><?php previous_post_link('%link', '← المقال السابق'); ?></div>
@@ -39,6 +50,7 @@ get_header(); ?>
               </div>
           </footer>
         </div>
+
       </main>
       <?php
   endwhile;

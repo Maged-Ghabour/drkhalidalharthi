@@ -13,7 +13,12 @@
 </head>
 
 <body <?php body_class(); ?>>
-<?php wp_body_open(); ?>
+  <?php wp_body_open(); ?>
+
+  <!-- Decorative Top Right Vector -->
+  <div class="top-right-decoration">
+     <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/vector1.png" alt="Decoration">
+  </div>
 
 <?php if ( get_theme_mod( 'fikrtak_enable_preloader', true ) ) : ?>
 <!-- PRELOADER -->

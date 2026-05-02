@@ -16,13 +16,18 @@ get_header(); ?>
     </div>
   </div>
   <div class="hero-title-wrap">
-    <h1 class="hero-title"><?php echo wp_kses_post(get_theme_mod('fikrtak_hero_title', 'استشاري جراحة أورام<br>العظام وإعادة بناء<br>المفاصل')); ?></h1>
+    <h1 class="hero-title">
+      <?php echo wp_kses_post(get_theme_mod('fikrtak_hero_title', 'استشاري جراحة أورام<br>العظام وإعادة بناء<br>المفاصل')); ?>
+    </h1>
     <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/Vector.png" alt="vector"
       class="hero-vector" />
   </div>
   <div class="hero-sub-wrap">
-    <p class="hero-sub-title"><?php echo esc_html(get_theme_mod('fikrtak_hero_subtitle', 'متى يجب زيارة الطبيب؟')); ?></p>
-    <p class="hero-sub"><?php echo esc_html(get_theme_mod('fikrtak_hero_desc', 'عند الشعور بألم مستمر أو ظهور أعراض غير طبيعية في العظام.')); ?></p>
+    <p class="hero-sub-title"><?php echo esc_html(get_theme_mod('fikrtak_hero_subtitle', 'متى يجب زيارة الطبيب؟')); ?>
+    </p>
+    <p class="hero-sub">
+      <?php echo esc_html(get_theme_mod('fikrtak_hero_desc', 'عند الشعور بألم مستمر أو ظهور أعراض غير طبيعية في العظام.')); ?>
+    </p>
 
   </div>
 
@@ -56,15 +61,15 @@ get_header(); ?>
         </button>
       </div>
     </div>
-      <div class="symptoms-bottom-row">
-        <div class="symptoms-col">
-          <span class="symptom-chip chip-sm">ألم يزداد مع الوقت أو أثناء الليل</span>
-          <span class="symptom-chip chip-lg bg-teal-light">صعوبة في الحركة أو ضعف مفاجئ</span>
-        </div>
-        <div class="symptoms-col">
-          <span class="symptom-chip chip-lg">ألم مستمر في العظام بدون سبب واضح</span>
-          <span class="symptom-chip chip-sm">تورم أو كتلة في أحد الأطراف</span>
-        </div>
+    <div class="symptoms-bottom-row">
+      <div class="symptoms-col">
+        <span class="symptom-chip chip-sm">ألم يزداد مع الوقت أو أثناء الليل</span>
+        <span class="symptom-chip chip-lg bg-teal-light">صعوبة في الحركة أو ضعف مفاجئ</span>
+      </div>
+      <div class="symptoms-col">
+        <span class="symptom-chip chip-lg">ألم مستمر في العظام بدون سبب واضح</span>
+        <span class="symptom-chip chip-sm">تورم أو كتلة في أحد الأطراف</span>
+      </div>
 
 
 
@@ -142,17 +147,22 @@ get_header(); ?>
 
       <div class="stats-numbers">
         <div class="stat-item">
-          <span class="stat-num"><span class="counter" data-target="<?php echo esc_attr(get_theme_mod('fikrtak_stat_success_val', '99')); ?>">0</span>%</span>
-          <span class="stat-lbl"><?php echo esc_html(get_theme_mod('fikrtak_stat_success_lbl', 'نسبة نجاحنا')); ?></span>
+          <span class="stat-num"><span class="counter"
+              data-target="<?php echo esc_attr(get_theme_mod('fikrtak_stat_success_val', '99')); ?>">0</span>%</span>
+          <span
+            class="stat-lbl"><?php echo esc_html(get_theme_mod('fikrtak_stat_success_lbl', 'نسبة نجاحنا')); ?></span>
         </div>
 
         <div class="stat-item">
-          <span class="stat-num"><span class="counter" data-target="<?php echo esc_attr(get_theme_mod('fikrtak_stat_exp_val', '13')); ?>">0</span>+</span>
+          <span class="stat-num"><span class="counter"
+              data-target="<?php echo esc_attr(get_theme_mod('fikrtak_stat_exp_val', '13')); ?>">0</span>+</span>
           <span class="stat-lbl"><?php echo esc_html(get_theme_mod('fikrtak_stat_exp_lbl', 'سنوات خبرة')); ?></span>
         </div>
 
         <div class="stat-item">
-          <span class="stat-num">+<span class="counter" data-target="<?php echo esc_attr(get_theme_mod('fikrtak_stat_cases_val', '2000')); ?>" data-format-k="true">0</span></span>
+          <span class="stat-num">+<span class="counter"
+              data-target="<?php echo esc_attr(get_theme_mod('fikrtak_stat_cases_val', '2000')); ?>"
+              data-format-k="true">0</span></span>
           <span class="stat-lbl"><?php echo esc_html(get_theme_mod('fikrtak_stat_cases_lbl', 'حالة مرضية')); ?></span>
         </div>
       </div>
@@ -253,10 +263,6 @@ get_header(); ?>
         <h2 class="reviews-title desktop-only">آراء العملاء</h2>
         <div class="review-card" id="reviewCard">
           <div class="review-card-header">
-            <div class="review-card-left">
-              <span class="review-card-score" id="reviewScore">5.0 review</span>
-              <div class="review-card-stars" id="reviewStars">★★★★★</div>
-            </div>
             <div class="review-card-right">
               <div class="review-card-info">
                 <strong class="reviewer-name" id="reviewerName">اسم العميل</strong>
@@ -264,6 +270,12 @@ get_header(); ?>
               </div>
               <div class="reviewer-avatar" id="reviewerAvatar"></div>
             </div>
+
+            <div class="review-card-left">
+              <span class="review-card-score" id="reviewScore">5.0 review</span>
+              <div class="review-card-stars" id="reviewStars">★★★★★</div>
+            </div>
+
           </div>
           <div class="review-content-wrap">
             <blockquote class="review-text" id="reviewText">
@@ -342,7 +354,8 @@ get_header(); ?>
             $is_active = ($count === 1);
             ?>
             <div class="faq-item <?php echo $is_active ? 'active-item' : ''; ?>">
-              <button class="faq-q" id="faq<?php the_ID(); ?>-btn" aria-expanded="<?php echo $is_active ? 'true' : 'false'; ?>" aria-controls="faq<?php the_ID(); ?>">
+              <button class="faq-q" id="faq<?php the_ID(); ?>-btn"
+                aria-expanded="<?php echo $is_active ? 'true' : 'false'; ?>" aria-controls="faq<?php the_ID(); ?>">
                 <span><?php the_title(); ?></span>
                 <span class="faq-icon">
                   <svg class="icon-down" width="20" height="20" viewBox="0 0 24 24" fill="none">
