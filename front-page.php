@@ -22,7 +22,8 @@ get_header(); ?>
   </div>
   <div class="hero-sub-wrap">
     <p class="hero-sub-title"><?php echo esc_html(get_theme_mod('fikrtak_hero_subtitle', 'متى يجب زيارة الطبيب؟')); ?></p>
-    <p class="hero"><?php echo esc_html(get_theme_mod('fikrtak_hero_desc', 'عند الشعور بألم مستمر أو ظهور أعراض غير طبيعية في العظام.')); ?></p>
+    <p class="hero-sub"><?php echo esc_html(get_theme_mod('fikrtak_hero_desc', 'عند الشعور بألم مستمر أو ظهور أعراض غير طبيعية في العظام.')); ?></p>
+
   </div>
 
   <div class="hero-btns">
@@ -55,15 +56,17 @@ get_header(); ?>
         </button>
       </div>
     </div>
-    <div class="symptoms-bottom-row">
-      <div class="symptoms-col">
-        <span class="symptom-chip chip-sm"><?php echo esc_html(get_theme_mod('fikrtak_symptom_1', 'ألم يزداد مع الوقت أو أثناء الليل')); ?></span>
-        <span class="symptom-chip chip-lg bg-teal-light"><?php echo esc_html(get_theme_mod('fikrtak_symptom_2', 'صعوبة في الحركة أو ضعف مفاجئ')); ?></span>
-      </div>
-      <div class="symptoms-col">
-        <span class="symptom-chip chip-lg"><?php echo esc_html(get_theme_mod('fikrtak_symptom_3', 'ألم مستمر في العظام بدون سبب واضح')); ?></span>
-        <span class="symptom-chip chip-sm"><?php echo esc_html(get_theme_mod('fikrtak_symptom_4', 'تورم أو كتلة في أحد الأطراف')); ?></span>
-      </div>
+      <div class="symptoms-bottom-row">
+        <div class="symptoms-col">
+          <span class="symptom-chip chip-sm">ألم يزداد مع الوقت أو أثناء الليل</span>
+          <span class="symptom-chip chip-lg bg-teal-light">صعوبة في الحركة أو ضعف مفاجئ</span>
+        </div>
+        <div class="symptoms-col">
+          <span class="symptom-chip chip-lg">ألم مستمر في العظام بدون سبب واضح</span>
+          <span class="symptom-chip chip-sm">تورم أو كتلة في أحد الأطراف</span>
+        </div>
+
+
 
       <a href="#services" class="symptoms-more-btn">
         المزيد
