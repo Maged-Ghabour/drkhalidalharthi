@@ -4,54 +4,64 @@
  */
 get_header(); ?>
 
-<main class="container" style="padding: 120px 0; min-height: 50vh;">
-  <div style="text-align: center; margin-bottom: 60px;">
-    <div class="section-tag" style="margin: 0 auto 16px;"><span class="dot-teal"></span> المدونة</div>
-    <h1 class="section-title">أحدث المقالات والنصائح الطبية</h1>
-  </div>
+<div class="blog-page">
+  <header class="blog-hero">
+    <div class="container">
+      <div class="section-tag"><span class="dot-teal"></span> المدونة</div>
+      <h1>أحدث المقالات والنصائح الطبية</h1>
+    </div>
+  </header>
 
-  <div class="articles-grid">
-  <?php
-  if ( have_posts() ) :
-      while ( have_posts() ) :
-          the_post();
-          ?>
-          <article class="article-card" style="display: flex; flex-direction: column;">
-            <div class="article-img">
-              <a href="<?php the_permalink(); ?>">
-                <?php if (has_post_thumbnail()) : ?>
-                    <?php the_post_thumbnail('medium'); ?>
-                <?php else : ?>
-                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/blog.png" alt="<?php the_title_attribute(); ?>" />
-                <?php endif; ?>
-              </a>
-            </div>
-            <div style="padding-top: 16px; flex-grow: 1; display: flex; flex-direction: column;">
-              <p class="article-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p>
-              <div class="article-excerpt" style="color: var(--text2); font-size: 14px; margin-top: 8px; flex-grow: 1;">
-                <?php echo wp_trim_words(get_the_excerpt(), 15, '...'); ?>
+  <main class="container">
+    <div class="articles-grid">
+    <?php
+    if ( have_posts() ) :
+        while ( have_posts() ) :
+            the_post();
+            ?>
+            <article class="article-card">
+              <div class="article-img">
+                <a href="<?php the_permalink(); ?>">
+                  <?php if (has_post_thumbnail()) : ?>
+                      <?php the_post_thumbnail('large'); ?>
+                  <?php else : ?>
+                      <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/blog.png" alt="<?php the_title_attribute(); ?>" />
+                  <?php endif; ?>
+                </a>
               </div>
-              <a href="<?php the_permalink(); ?>" style="color: var(--teal); font-weight: 700; margin-top: 16px; display: inline-block;">اقرأ المزيد ←</a>
-            </div>
-          </article>
-          <?php
-      endwhile;
-  else :
-      echo '<p style="text-align:center; width:100%;">لا توجد مقالات حالياً.</p>';
-  endif;
-  ?>
-  </div>
-  
-  <div class="pagination-wrapper">
-    <?php 
-    the_posts_pagination(array(
-        'mid_size'  => 2,
-        'prev_text' => 'السابق',
-        'next_text' => 'التالي',
-        'screen_reader_text' => ' '
-    )); 
+              <div class="article-body">
+                <h2 class="article-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+                <div class="article-excerpt">
+                  <?php echo wp_trim_words(get_the_excerpt(), 20, '...'); ?>
+                </div>
+                <a href="<?php the_permalink(); ?>" class="article-more">
+                  اقرأ المزيد 
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M5 12L12 19M5 12L12 5"/></svg>
+                </a>
+              </div>
+            </article>
+            <?php
+        endwhile;
+    else :
+        echo '<p class="no-posts">لا توجد مقالات حالياً.</p>';
+    endif;
     ?>
-  </div>
-</main>
+    </div>
+    
+    <div class="pagination-wrapper">
+      <div class="pagination">
+        <?php 
+        the_posts_pagination(array(
+            'mid_size'  => 2,
+            'prev_text' => '→',
+            'next_text' => '←',
+            'screen_reader_text' => ' '
+        )); 
+        ?>
+      </div>
+    </div>
+  </main>
+</div>
+
 
 <?php get_footer(); ?>
