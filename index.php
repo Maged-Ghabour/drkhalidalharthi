@@ -15,9 +15,18 @@ get_header(); ?>
   <main class="container">
     <div class="articles-grid">
     <?php
-    if ( have_posts() ) :
-        while ( have_posts() ) :
-            the_post();
+    $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+    $args = array(
+        'post_type'      => 'post',
+        'posts_per_page' => 9,
+        'paged'          => $paged,
+        'post_status'    => 'publish'
+    );
+    $blog_query = new WP_Query( $args );
+
+    if ( $blog_query->have_posts() ) :
+        while ( $blog_query->have_posts() ) :
+            $blog_query->the_post();
             ?>
             <article class="article-card">
               <div class="article-img">
@@ -32,7 +41,7 @@ get_header(); ?>
               <div class="article-body">
                 <h2 class="article-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
                 <div class="article-excerpt">
-                  <?php echo wp_trim_words(get_the_excerpt(), 20, '...'); ?>
+                  <?php echo wp_trim_words(get_the_excerpt(), 22, '...'); ?>
                 </div>
                 <a href="<?php the_permalink(); ?>" class="article-more">
                   اقرأ المزيد 
@@ -42,10 +51,15 @@ get_header(); ?>
             </article>
             <?php
         endwhile;
+        wp_reset_postdata();
     else :
-        echo '<p class="no-posts">لا توجد مقالات حالياً.</p>';
+        echo '<div style="grid-column: 1/-1; text-align: center; padding: 60px 0;">';
+        echo '<img src="'.esc_url(get_template_directory_uri()).'/assets/images/no-posts.svg" style="width: 150px; margin: 0 auto 20px; opacity: 0.3;">';
+        echo '<p class="no-posts" style="font-size: 14px; color: #ccc; font-weight: 700;">لا توجد مقالات حالياً في هذا القسم.</p>';
+        echo '</div>';
     endif;
     ?>
+
     </div>
     
     <div class="pagination-wrapper">

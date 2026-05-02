@@ -380,10 +380,11 @@ button {
 }
 
 .social-lbl {
-  font-size: 12px;
+  font-size: 14px;
   color: #ccc;
   font-weight: 700;
 }
+
 
 .hero-title-wrap {
   position: relative;
@@ -490,6 +491,7 @@ button {
   text-align: right;
   padding-right: 8px;
 }
+
 
 .info-icon-wrapper {
   background: transparent;
@@ -728,12 +730,13 @@ button {
 }
 
 .whatsapp-stat-btn {
-  font-size: 12px;
+  font-size: 14px;
   padding: 10px 16px;
   height: fit-content;
   white-space: nowrap;
   border-radius: 20px;
 }
+
 
 .stat-item {
   text-align: center;
@@ -752,10 +755,11 @@ button {
 
 .stat-lbl {
   display: block;
-  font-size: 12px;
+  font-size: 14px;
   color: #999;
   font-weight: 500;
 }
+
 
 /* ===== SECTION TAGS ===== */
 .section-tag {
