@@ -308,7 +308,6 @@ button {
   justify-content: stretch;
   margin-top: 20px;
   /* تجعل المحتوى يتمدد لملء العرض */
-  margin-top: 0;
   align-self: stretch;
   /* تجعله يملأ الارتفاع أيضاً */
 }
