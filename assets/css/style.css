@@ -199,10 +199,13 @@ button {
   align-items: center;
 }
 
-.logo-img {
+.logo-img,
+.custom-logo-link img {
   height: 65px;
   width: auto;
+  display: block;
 }
+
 
 .nav-links {
   display: flex;
@@ -1233,11 +1236,13 @@ button {
   padding-bottom: 60px;
 }
 
-.footer-logo {
+.footer-logo,
+.footer-brand .custom-logo-link img {
   height: 56px;
   width: auto;
   margin-bottom: 14px;
 }
+
 
 .footer-desc {
   font-size: 15px;
