@@ -28,11 +28,16 @@
         <div class="footer-brand">
           <?php 
           if ( has_custom_logo() ) {
-              the_custom_logo();
+              $custom_logo_id = get_theme_mod( 'custom_logo' );
+              $logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+              if ( $logo ) {
+                  echo '<a href="' . esc_url( home_url( '/' ) ) . '" class="custom-logo-link"><img src="' . esc_url( $logo[0] ) . '" alt="' . esc_attr( get_bloginfo( 'name' ) ) . '" class="footer-logo" /></a>';
+              }
           } else {
               echo '<a href="' . esc_url( home_url( '/' ) ) . '"><img src="' . esc_url(get_template_directory_uri()) . '/assets/images/logoFooter.png" alt="' . esc_attr(get_bloginfo('name')) . '" class="footer-logo" /></a>';
           }
           ?>
+
           <p class="footer-desc">استشاري جراحة أورام العظام وإعادة بناء المفاصل</p>
         </div>
         

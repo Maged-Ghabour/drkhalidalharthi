@@ -23,7 +23,12 @@
     if ( has_custom_logo() ) {
         $custom_logo_id = get_theme_mod( 'custom_logo' );
         $logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
-        echo '<img src="' . esc_url( $logo[0] ) . '" alt="' . esc_attr( get_bloginfo( 'name' ) ) . '" class="pulsing-logo" />';
+        if ( $logo ) {
+          echo '<img src="' . esc_url( $logo[0] ) . '" alt="' . esc_attr( get_bloginfo( 'name' ) ) . '" class="pulsing-logo" />';
+        } else {
+          echo '<img src="' . esc_url(get_template_directory_uri()) . '/assets/images/logo.png" alt="' . esc_attr(get_bloginfo('name')) . '" class="pulsing-logo" />';
+        }
+
     } else {
         echo '<img src="' . esc_url(get_template_directory_uri()) . '/assets/images/logo.png" alt="' . esc_attr(get_bloginfo('name')) . '" class="pulsing-logo" />';
     }
@@ -48,12 +53,18 @@
             <div class="nav-logo">
               <?php 
               if ( has_custom_logo() ) {
-                  the_custom_logo();
+                  $custom_logo_id = get_theme_mod( 'custom_logo' );
+                  $logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+                  if ( $logo ) {
+                    echo '<a href="' . esc_url( home_url( '/' ) ) . '" class="custom-logo-link"><img src="' . esc_url( $logo[0] ) . '" alt="' . esc_attr( get_bloginfo( 'name' ) ) . '" class="logo-img" /></a>';
+                  }
               } else {
                   echo '<a href="' . esc_url( home_url( '/' ) ) . '"><img src="' . esc_url(get_template_directory_uri()) . '/assets/images/logo.png" alt="' . esc_attr(get_bloginfo('name')) . '" class="logo-img" /></a>';
               }
               ?>
             </div>
+
+
             
             <?php
             wp_nav_menu( array(
