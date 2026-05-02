@@ -80,27 +80,13 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ---------- Reviews Slider ---------- */
-  const reviews = [
+  const reviews = (window.dynamicReviews && window.dynamicReviews.length > 0) ? window.dynamicReviews : [
     {
       name: 'اسم العميل',
       handle: '@Username',
       stars: 5,
       score: '4.5',
       text: '"خدمة مميزة واسعارها مرة مناسبة وكمان رعاية تصلح، انصح أحبائكم بالاهتمام حقهم مبررة حلوة، بشكل عام مرة كويس وخدمة ممتازة شكرا لكم 🤝😊❤️"'
-    },
-    {
-      name: 'محمد العتيبي',
-      handle: '@m_otaibi',
-      stars: 5,
-      score: '5.0',
-      text: '"دكتور متميز ومتخصص، الحمد لله تماثلت للشفاء بعد العملية، أنصح كل من يعاني من مشاكل العظام بزيارة الدكتور خالد"'
-    },
-    {
-      name: 'سارة القحطاني',
-      handle: '@sara_q',
-      stars: 5,
-      score: '4.8',
-      text: '"تجربة ممتازة، الدكتور شرح لي الحالة بشكل واضح ووضع خطة علاج مناسبة. الفريق الطبي محترف وودود"'
     }
   ];
 
