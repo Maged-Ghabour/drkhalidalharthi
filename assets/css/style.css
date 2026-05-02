@@ -864,13 +864,8 @@ button {
   align-items: center;
 }
 
-.reviews-images {
-  order: 1;
-}
 
-.reviews-content {
-  order: 2;
-}
+
 
 .reviews-imgs-row {
   display: flex;

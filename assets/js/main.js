@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <strong class="reviewer-name">${r.name}</strong>
             <span class="reviewer-handle">${r.handle}</span>
           </div>
-          <div class="reviewer-avatar"></div>
+          <div class="reviewer-avatar" ${r.avatar ? `style="background-image: url('${r.avatar}'); background-size: cover; background-position: center;"` : ''}></div>
         </div>
         <div class="stars">${starsStr}</div>
         <p class="review-score">${r.score} review</p>

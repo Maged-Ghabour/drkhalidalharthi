@@ -239,42 +239,6 @@ get_header(); ?>
       <h2 class="reviews-title">آراء العملاء</h2>
     </div>
     <div class="reviews-inner">
-      <div class="reviews-images">
-        <div class="section-tag desktop-only"><span class="dot-teal"></span> قصص نجاح</div>
-        <?php
-        $reviews_query = new WP_Query(array(
-            'post_type' => 'review',
-            'posts_per_page' => -1
-        ));
-        $js_reviews = array();
-        if ($reviews_query->have_posts()) :
-            while ($reviews_query->have_posts()) : $reviews_query->the_post();
-                $js_reviews[] = array(
-                    'name'   => get_the_title(),
-                    'handle' => get_post_meta(get_the_ID(), 'reviewer_handle', true) ?: '@' . sanitize_title(get_the_title()),
-                    'stars'  => (int) (get_post_meta(get_the_ID(), 'review_stars', true) ?: 5),
-                    'score'  => get_post_meta(get_the_ID(), 'review_score', true) ?: '5.0',
-                    'text'   => '"' . get_the_content() . '"'
-                );
-            endwhile;
-            wp_reset_postdata();
-        endif;
-        ?>
-        <script>
-          window.dynamicReviews = <?php echo json_encode($js_reviews); ?>;
-        </script>
-        <div class="slide-counter"><span id="currentSlide">01</span>/<?php echo str_pad(count($js_reviews) ?: 3, 2, '0', STR_PAD_LEFT); ?></div>
-        <div class="reviews-imgs-row">
-          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/testimonials.png" alt="العيادة"
-            class="rev-img" />
-          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/testimonials.png" alt="العيادة"
-            class="rev-img rev-img-sm" />
-        </div>
-        <div class="slide-nav">
-          <button class="slide-btn" id="prevReview" aria-label="السابق">←</button>
-          <button class="slide-btn slide-btn-active" id="nextReview" aria-label="التالي">→</button>
-        </div>
-      </div>
       <div class="reviews-content">
         <h2 class="reviews-title desktop-only">آراء العملاء</h2>
         <div class="review-card" id="reviewCard">
@@ -293,6 +257,47 @@ get_header(); ?>
           </blockquote>
         </div>
       </div>
+
+      <div class="reviews-images">
+        <div class="section-tag desktop-only"><span class="dot-teal"></span> قصص نجاح</div>
+        <?php
+        $reviews_query = new WP_Query(array(
+          'post_type' => 'review',
+          'posts_per_page' => -1
+        ));
+        $js_reviews = array();
+        if ($reviews_query->have_posts()):
+          while ($reviews_query->have_posts()):
+            $reviews_query->the_post();
+            $js_reviews[] = array(
+              'name' => get_the_title(),
+              'handle' => get_post_meta(get_the_ID(), 'reviewer_handle', true) ?: '@' . sanitize_title(get_the_title()),
+              'stars' => (int) (get_post_meta(get_the_ID(), 'review_stars', true) ?: 5),
+              'score' => get_post_meta(get_the_ID(), 'review_score', true) ?: '5.0',
+              'text' => '"' . get_the_content() . '"',
+              'avatar' => get_the_post_thumbnail_url(get_the_ID(), 'thumbnail') ?: ''
+            );
+          endwhile;
+          wp_reset_postdata();
+        endif;
+        ?>
+        <script>
+          window.dynamicReviews = <?php echo json_encode($js_reviews); ?>;
+        </script>
+        <div class="slide-counter"><span
+            id="currentSlide">01</span>/<?php echo str_pad(count($js_reviews) ?: 3, 2, '0', STR_PAD_LEFT); ?></div>
+        <div class="reviews-imgs-row">
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/testimonials.png" alt="العيادة"
+            class="rev-img" />
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/testimonials.png" alt="العيادة"
+            class="rev-img rev-img-sm" />
+        </div>
+        <div class="slide-nav">
+          <button class="slide-btn" id="prevReview" aria-label="السابق">←</button>
+          <button class="slide-btn slide-btn-active" id="nextReview" aria-label="التالي">→</button>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
