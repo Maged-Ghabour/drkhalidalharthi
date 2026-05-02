@@ -16,10 +16,7 @@ get_header(); ?>
           </div>
           <div class="hero-title-wrap">
             <h1 class="hero-title">استشاري جراحة أورام<br>العظام وإعادة بناء<br>المفاصل</h1>
-            <svg class="hero-vector" viewBox="0 0 250 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5,15 Q60,-5 125,10 T245,5" stroke="rgba(97, 160, 149, 0.4)" stroke-width="3"
-                stroke-linecap="round" fill="none" />
-            </svg>
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/Vector.png" alt="vector" class="hero-vector" />
           </div>
           <div class="hero-sub-wrap">
             <p class="hero-sub-title">متى يجب زيارة الطبيب؟</p>
