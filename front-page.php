@@ -271,7 +271,7 @@ get_header(); ?>
             $reviews_query->the_post();
             $js_reviews[] = array(
               'name' => get_the_title(),
-              'handle' => get_post_meta(get_the_ID(), 'reviewer_handle', true) ?: '@' . sanitize_title(get_the_title()),
+              'handle' => get_post_meta(get_the_ID(), 'reviewer_handle', true) ? '@' . get_post_meta(get_the_ID(), 'reviewer_handle', true) : '',
               'stars' => (int) (get_post_meta(get_the_ID(), 'review_stars', true) ?: 5),
               'score' => get_post_meta(get_the_ID(), 'review_score', true) ?: '5.0',
               'text' => '"' . get_the_content() . '"',

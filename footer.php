@@ -3,10 +3,11 @@
  * The template for displaying the footer
  */
 ?>
-  <!-- ===== CTA ===== -->
-  <section class="cta" id="contact">
-    <div class="cta-bg" style="background-image: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/footer-bg.png')">
-      <div class="container">
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" id="contact" style="background-image: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/footer-bg.png'); background-size: cover; background-position: center;">
+    <div class="container">
+      <!-- CTA Content Inside Footer -->
+      <div class="cta-inner-footer">
         <h2 class="cta-title">دعونا نتعاون لتحقيق<br />المعرفة الطبية لطرق العلاج</h2>
         <div class="cta-form">
           <a href="https://wa.me/966500000000" class="btn btn-outline-white">
@@ -22,12 +23,7 @@
           </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer" style="background-image: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/footer-bg.png'); background-size: cover; background-position: center;">
-    <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
           <?php 

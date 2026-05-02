@@ -84,6 +84,63 @@ function fikrtak_custom_post_types() {
 add_action( 'init', 'fikrtak_custom_post_types' );
 
 /**
+ * Add Meta Boxes for Reviews
+ */
+function fikrtak_review_meta_boxes() {
+	add_meta_box(
+		'review_details',
+		'تفاصيل الرأي',
+		'fikrtak_review_meta_box_callback',
+		'review',
+		'normal',
+		'high'
+	);
+}
+add_action( 'add_meta_boxes', 'fikrtak_review_meta_boxes' );
+
+function fikrtak_review_meta_box_callback( $post ) {
+	wp_nonce_field( 'fikrtak_review_meta_box', 'fikrtak_review_meta_box_nonce' );
+
+	$handle = get_post_meta( $post->ID, 'reviewer_handle', true );
+	$stars  = get_post_meta( $post->ID, 'review_stars', true );
+	$score  = get_post_meta( $post->ID, 'review_score', true );
+
+	echo '<div style="padding: 10px 0;">';
+	echo '<label for="reviewer_handle" style="display:block; margin-bottom:5px; font-weight:bold;">معرف العميل (بدون @):</label>';
+	echo '<input type="text" id="reviewer_handle" name="reviewer_handle" value="' . esc_attr( $handle ) . '" style="width:100%;" />';
+	echo '</div>';
+
+	echo '<div style="padding: 10px 0;">';
+	echo '<label for="review_stars" style="display:block; margin-bottom:5px; font-weight:bold;">عدد النجوم (1-5):</label>';
+	echo '<input type="number" id="review_stars" name="review_stars" value="' . esc_attr( $stars ?: 5 ) . '" min="1" max="5" style="width:100%;" />';
+	echo '</div>';
+
+	echo '<div style="padding: 10px 0;">';
+	echo '<label for="review_score" style="display:block; margin-bottom:5px; font-weight:bold;">التقييم الرقمي (مثال: 5.0):</label>';
+	echo '<input type="text" id="review_score" name="review_score" value="' . esc_attr( $score ?: '5.0' ) . '" style="width:100%;" />';
+	echo '</div>';
+}
+
+function fikrtak_save_review_meta( $post_id ) {
+	if ( ! isset( $_POST['fikrtak_review_meta_box_nonce'] ) ) return;
+	if ( ! wp_verify_nonce( $_POST['fikrtak_review_meta_box_nonce'], 'fikrtak_review_meta_box' ) ) return;
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+	if ( ! current_user_can( 'edit_post', $post_id ) ) return;
+
+	if ( isset( $_POST['reviewer_handle'] ) ) {
+		update_post_meta( $post_id, 'reviewer_handle', sanitize_text_field( $_POST['reviewer_handle'] ) );
+	}
+	if ( isset( $_POST['review_stars'] ) ) {
+		update_post_meta( $post_id, 'review_stars', sanitize_text_field( $_POST['review_stars'] ) );
+	}
+	if ( isset( $_POST['review_score'] ) ) {
+		update_post_meta( $post_id, 'review_score', sanitize_text_field( $_POST['review_score'] ) );
+	}
+}
+add_action( 'save_post', 'fikrtak_save_review_meta' );
+
+
+/**
  * Theme Customizer Settings
  */
 function fikrtak_customizer_settings( $wp_customize ) {
