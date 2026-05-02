@@ -217,6 +217,7 @@ button {
   position: relative;
   padding-bottom: 2px;
   transition: var(--transition);
+  white-space: nowrap;
 }
 
 .nav-links a::after {
@@ -387,9 +388,9 @@ button {
 
 .hero-vector {
   position: absolute;
-  bottom: 30px;
+  bottom: 65px;
   right: 0;
-  width: 250px;
+  width: 382px;
   z-index: 1;
 }
 
@@ -609,7 +610,7 @@ button {
   align-items: center;
   justify-content: flex-start;
   line-height: 1.6;
-  font-weight: 600;
+
   text-align: right;
 }
 
@@ -742,6 +743,7 @@ button {
 .section-tag {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   font-size: 14px;
   font-weight: 700;
@@ -759,10 +761,11 @@ button {
 
 .section-title {
   font-size: clamp(22px, 3.5vw, 36px);
-  font-weight: 800;
-  color: var(--text);
+  font-weight: 400;
+  color: #878787;
   line-height: 1.4;
   margin-bottom: 40px;
+  text-align: center;
 }
 
 /* ===== SERVICES ===== */
@@ -1199,7 +1202,7 @@ button {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(26, 43, 42, 0.85);
+  background: rgba(26, 43, 42, 0.65);
 }
 
 .footer .container {
@@ -1222,27 +1225,28 @@ button {
 }
 
 .footer-desc {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.55);
-  line-height: 1.7;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.70);
+  line-height: 1.8;
+  margin-top: 4px;
 }
 
 .footer-col h4 {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 800;
   color: var(--white);
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .footer-col ul {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 14px;
 }
 
 .footer-col a {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.55);
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.65);
   transition: var(--transition);
 }
 
