@@ -27,7 +27,10 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <?php 
-          if ( has_custom_logo() ) {
+          $footer_logo = get_theme_mod( 'fikrtak_footer_logo' );
+          if ( $footer_logo ) {
+              echo '<a href="' . esc_url( home_url( '/' ) ) . '"><img src="' . esc_url( $footer_logo ) . '" alt="' . esc_attr( get_bloginfo( 'name' ) ) . '" class="footer-logo" /></a>';
+          } elseif ( has_custom_logo() ) {
               $custom_logo_id = get_theme_mod( 'custom_logo' );
               $logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
               if ( $logo ) {
@@ -37,6 +40,7 @@
               echo '<a href="' . esc_url( home_url( '/' ) ) . '"><img src="' . esc_url(get_template_directory_uri()) . '/assets/images/logoFooter.png" alt="' . esc_attr(get_bloginfo('name')) . '" class="footer-logo" /></a>';
           }
           ?>
+
 
           <p class="footer-desc">استشاري جراحة أورام العظام وإعادة بناء المفاصل</p>
         </div>
@@ -61,12 +65,22 @@
         <div class="footer-col">
           <h4>سوشيل ميديا</h4>
           <ul class="footer-links-with-icon">
-            <li><a href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg> Facebook</a></li>
-            <li><a href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg> Tiktok</a></li>
-            <li><a href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg> Instagram</a></li>
-            <li><a href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg> Youtube</a></li>
+            <?php 
+            $fb = get_theme_mod('fikrtak_social_facebook');
+            $ig = get_theme_mod('fikrtak_social_instagram');
+            $tk = get_theme_mod('fikrtak_social_tiktok');
+            $yt = get_theme_mod('fikrtak_social_youtube');
+            $x  = get_theme_mod('fikrtak_social_x');
+
+            if ($fb) echo '<li><a href="' . esc_url($fb) . '"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg> Facebook</a></li>';
+            if ($tk) echo '<li><a href="' . esc_url($tk) . '"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg> Tiktok</a></li>';
+            if ($ig) echo '<li><a href="' . esc_url($ig) . '"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg> Instagram</a></li>';
+            if ($yt) echo '<li><a href="' . esc_url($yt) . '"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg> Youtube</a></li>';
+            if ($x)  echo '<li><a href="' . esc_url($x) . '"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"/><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/></svg> X (Twitter)</a></li>';
+            ?>
           </ul>
         </div>
+
       </div>
       <div class="footer-bottom">
         <p>&copy; <?php echo date('Y'); ?> د. خالد الحارثي. جميع الحقوق محفوظة.</p>

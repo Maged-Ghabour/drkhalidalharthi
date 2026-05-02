@@ -169,7 +169,50 @@ function fikrtak_customizer_settings( $wp_customize ) {
 		'description' => 'عند التفعيل ستظهر شاشة تحميل بشعار الموقع عند فتح الصفحة.',
 		'section'     => 'fikrtak_site_options',
 	) );
+
+	// Footer Logo
+	$wp_customize->add_setting( 'fikrtak_footer_logo', array(
+		'default'           => '',
+		'sanitize_callback' => 'esc_url_raw',
+		'transport'         => 'refresh',
+	) );
+
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'fikrtak_footer_logo', array(
+		'label'       => 'شعار الفوتر',
+		'description' => 'ارفع شعاراً خاصاً للفوتر (مثلاً النسخة البيضاء). إذا تركته فارغاً سيتم استخدام الشعار الأساسي.',
+		'section'     => 'fikrtak_site_options',
+	) ) );
+
+	// Social Media Section
+	$wp_customize->add_section( 'fikrtak_social_options', array(
+		'title'    => 'روابط التواصل الاجتماعي',
+		'priority' => 31,
+	) );
+
+	$socials = array(
+		'facebook'  => 'Facebook',
+		'instagram' => 'Instagram',
+		'tiktok'    => 'Tiktok',
+		'youtube'   => 'Youtube',
+		'x'         => 'X (Twitter)',
+	);
+
+	foreach ( $socials as $id => $label ) {
+		$wp_customize->add_setting( 'fikrtak_social_' . $id, array(
+			'default'           => '',
+			'sanitize_callback' => 'esc_url_raw',
+			'transport'         => 'refresh',
+		) );
+
+		$wp_customize->add_control( 'fikrtak_social_' . $id, array(
+			'label'   => $label,
+			'section' => 'fikrtak_social_options',
+			'type'    => 'url',
+		) );
+	}
 }
+
+
 add_action( 'customize_register', 'fikrtak_customizer_settings' );
 
 /**
