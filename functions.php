@@ -61,7 +61,7 @@ function fikrtak_custom_post_types() {
 		),
 		'public'      => true,
 		'has_archive' => false,
-		'supports'    => array( 'title', 'editor', 'custom-fields' ),
+		'supports'    => array( 'title', 'editor', 'thumbnail', 'custom-fields' ),
 		'menu_icon'   => 'dashicons-star-filled',
 		'show_in_rest' => true,
 	) );
