@@ -210,7 +210,101 @@ function fikrtak_customizer_settings( $wp_customize ) {
 			'type'    => 'url',
 		) );
 	}
+
+	// Contact Info Section
+	$wp_customize->add_section( 'fikrtak_contact_options', array(
+		'title'    => 'بيانات التواصل',
+		'priority' => 32,
+	) );
+
+	$contacts = array(
+		'whatsapp' => 'رقم الواتساب (بدون + أو أصفار، مثال: 966500000000)',
+		'phone'    => 'رقم الهاتف',
+		'mobile'   => 'رقم الجوال',
+		'email'    => 'البريد الإلكتروني',
+	);
+
+	foreach ( $contacts as $id => $label ) {
+		$wp_customize->add_setting( 'fikrtak_contact_' . $id, array(
+			'default'           => '',
+			'sanitize_callback' => 'sanitize_text_field',
+			'transport'         => 'refresh',
+		) );
+
+		$wp_customize->add_control( 'fikrtak_contact_' . $id, array(
+			'label'   => $label,
+			'section' => 'fikrtak_contact_options',
+			'type'    => 'text',
+		) );
+	}
+
+	// Hero Section Settings
+	$wp_customize->add_section( 'fikrtak_hero_options', array(
+		'title'    => 'قسم البداية (Hero)',
+		'priority' => 33,
+	) );
+
+	// Hero Title
+	$wp_customize->add_setting( 'fikrtak_hero_title', array(
+		'default'           => 'استشاري جراحة أورام<br>العظام وإعادة بناء<br>المفاصل',
+		'sanitize_callback' => 'wp_kses_post',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( 'fikrtak_hero_title', array(
+		'label'   => 'العنوان الرئيسي (يدعم <br> للسطر الجديد)',
+		'section' => 'fikrtak_hero_options',
+		'type'    => 'textarea',
+	) );
+
+	// Hero Sub-title (Question)
+	$wp_customize->add_setting( 'fikrtak_hero_subtitle', array(
+		'default'           => 'متى يجب زيارة الطبيب؟',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( 'fikrtak_hero_subtitle', array(
+		'label'   => 'السؤال الفرعي',
+		'section' => 'fikrtak_hero_options',
+		'type'    => 'text',
+	) );
+
+	// Hero Description
+	$wp_customize->add_setting( 'fikrtak_hero_desc', array(
+		'default'           => 'عند الشعور بألم مستمر أو ظهور أعراض غير طبيعية في العظام.',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'refresh',
+	) );
+		'section'     => 'fikrtak_hero_options',
+		'type'        => 'textarea',
+	) );
+
+	// Stats Section Settings
+	$wp_customize->add_section( 'fikrtak_stats_options', array(
+		'title'    => 'إحصائيات النجاح',
+		'priority' => 34,
+	) );
+
+	// Stat 1: Success Rate
+	$wp_customize->add_setting( 'fikrtak_stat_success_val', array( 'default' => '99', 'sanitize_callback' => 'sanitize_text_field', 'transport' => 'refresh' ) );
+	$wp_customize->add_control( 'fikrtak_stat_success_val', array( 'label' => 'نسبة النجاح (رقم فقط)', 'section' => 'fikrtak_stats_options' ) );
+	$wp_customize->add_setting( 'fikrtak_stat_success_lbl', array( 'default' => 'نسبة نجاحنا', 'sanitize_callback' => 'sanitize_text_field', 'transport' => 'refresh' ) );
+	$wp_customize->add_control( 'fikrtak_stat_success_lbl', array( 'label' => 'عنوان نسبة النجاح', 'section' => 'fikrtak_stats_options' ) );
+
+	// Stat 2: Experience
+	$wp_customize->add_setting( 'fikrtak_stat_exp_val', array( 'default' => '13', 'sanitize_callback' => 'sanitize_text_field', 'transport' => 'refresh' ) );
+	$wp_customize->add_control( 'fikrtak_stat_exp_val', array( 'label' => 'سنوات الخبرة (رقم فقط)', 'section' => 'fikrtak_stats_options' ) );
+	$wp_customize->add_setting( 'fikrtak_stat_exp_lbl', array( 'default' => 'سنوات خبرة', 'sanitize_callback' => 'sanitize_text_field', 'transport' => 'refresh' ) );
+	$wp_customize->add_control( 'fikrtak_stat_exp_lbl', array( 'label' => 'عنوان سنوات الخبرة', 'section' => 'fikrtak_stats_options' ) );
+
+	// Stat 3: Cases
+	$wp_customize->add_setting( 'fikrtak_stat_cases_val', array( 'default' => '2000', 'sanitize_callback' => 'sanitize_text_field', 'transport' => 'refresh' ) );
+	$wp_customize->add_control( 'fikrtak_stat_cases_val', array( 'label' => 'عدد الحالات (رقم فقط)', 'section' => 'fikrtak_stats_options' ) );
+	$wp_customize->add_setting( 'fikrtak_stat_cases_lbl', array( 'default' => 'حالة مرضية', 'sanitize_callback' => 'sanitize_text_field', 'transport' => 'refresh' ) );
+	$wp_customize->add_control( 'fikrtak_stat_cases_lbl', array( 'label' => 'عنوان عدد الحالات', 'section' => 'fikrtak_stats_options' ) );
+
 }
+
+
 
 
 add_action( 'customize_register', 'fikrtak_customizer_settings' );
