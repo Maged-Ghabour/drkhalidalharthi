@@ -519,10 +519,11 @@ button {
 }
 
 .info-sub {
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--teal);
 }
+
 
 .hero-sub-wrap {
   margin-bottom: 32px;
@@ -616,8 +617,10 @@ button {
 
 .symptom-chip {
   background: var(--off-white);
-  color: var(--text-header);
-  font-size: 11px;
+  color: #000000;
+
+  font-size: 14px;
+
   padding: 12px 16px;
   border-radius: 12px;
   display: flex;
@@ -701,8 +704,9 @@ button {
 }
 
 .creds-list li {
-  font-size: 11px;
+  font-size: 14px;
   color: #999;
+
   padding: 2px 0;
   border-bottom: none;
   display: flex;
@@ -937,7 +941,7 @@ button {
 
 .reviews-title {
   font-size: clamp(28px, 4vw, 44px);
-  font-weight: 800;
+  font-weight: 500;
   color: var(--teal);
   margin-bottom: 28px;
 }
@@ -948,62 +952,121 @@ button {
 
 .review-card {
   background: var(--white);
-  border-radius: var(--radius);
-  padding: 28px;
-  box-shadow: var(--shadow);
+  border-radius: 30px;
+  padding: 40px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.05);
+  position: relative;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
 }
 
-.review-meta {
+.review-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+/* Left side of header */
+.review-card-left {
+  text-align: left;
+}
+
+.review-card-score {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text2);
+  margin-bottom: 4px;
+  display: block;
+}
+
+.review-card-stars {
+  color: #f5a623;
+  font-size: 22px;
+  letter-spacing: 2px;
+}
+
+/* Right side of header */
+.review-card-right {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
+  gap: 16px;
+  text-align: right;
+}
+
+.review-card-info {
+  display: flex;
+  flex-direction: column;
 }
 
 .reviewer-name {
-  display: block;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 800;
+  color: var(--text-header);
 }
 
 .reviewer-handle {
-  font-size: 13px;
-  color: var(--text2);
+  font-size: 14px;
+  color: var(--teal);
 }
 
 .reviewer-avatar {
-  width: 64px;
-  height: 64px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   background: var(--teal-light);
-  flex-shrink: 0;
-  border: 2px solid var(--white);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
 }
 
-.stars {
-  color: #f5a623;
-  font-size: 20px;
-  letter-spacing: 2px;
-  margin-bottom: 4px;
+.reviewer-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.review-score {
-  font-size: 13px;
-  color: var(--text2);
-  margin-bottom: 12px;
-  font-weight: 700;
+/* Review content with quotes */
+.review-content-wrap {
+  position: relative;
+  padding: 20px 0;
+  flex-grow: 1;
+}
+
+.review-card::before,
+.review-card::after {
+  content: '“';
+  position: absolute;
+  font-family: serif;
+  font-size: 120px;
+  line-height: 1;
+  color: var(--teal-pale);
+  opacity: 0.6;
+  z-index: 0;
+}
+
+.review-card::before {
+  top: 60px;
+  right: 40px;
+}
+
+.review-card::after {
+  bottom: 0px;
+  left: 40px;
+  transform: rotate(180deg);
 }
 
 .review-text {
-  font-size: 15px;
-  color: var(--text2);
+  position: relative;
+  z-index: 1;
+  font-size: 18px;
   line-height: 1.8;
-  border-right: 3px solid var(--teal);
-  padding-right: 14px;
+  color: var(--text-header);
+  text-align: center;
+  margin: 0;
 }
 
 /* ===== FAQ ===== */
+
 .faq {
   padding: 80px 0;
   background: var(--white);
@@ -1031,7 +1094,7 @@ button {
 
 .faq-title-centered {
   font-size: clamp(28px, 4vw, 38px);
-  font-weight: 800;
+  font-weight: 500;
   color: var(--text);
 }
 

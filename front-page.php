@@ -252,20 +252,26 @@ get_header(); ?>
       <div class="reviews-content">
         <h2 class="reviews-title desktop-only">آراء العملاء</h2>
         <div class="review-card" id="reviewCard">
-          <!-- سيتم ملء هذا الجزء عبر JavaScript -->
-          <div class="review-meta">
-            <div class="reviewer-info">
-              <strong class="reviewer-name">اسم العميل</strong>
-              <span class="reviewer-handle">@Username</span>
+          <div class="review-card-header">
+            <div class="review-card-left">
+              <span class="review-card-score" id="reviewScore">5.0 review</span>
+              <div class="review-card-stars" id="reviewStars">★★★★★</div>
             </div>
-            <div class="reviewer-avatar"></div>
+            <div class="review-card-right">
+              <div class="review-card-info">
+                <strong class="reviewer-name" id="reviewerName">اسم العميل</strong>
+                <span class="reviewer-handle" id="reviewerHandle">@Username</span>
+              </div>
+              <div class="reviewer-avatar" id="reviewerAvatar"></div>
+            </div>
           </div>
-          <div class="stars">★★★★★</div>
-          <p class="review-score">5.0 review</p>
-          <blockquote class="review-text">
-            جاري تحميل الآراء...
-          </blockquote>
+          <div class="review-content-wrap">
+            <blockquote class="review-text" id="reviewText">
+              جاري تحميل الآراء...
+            </blockquote>
+          </div>
         </div>
+
       </div>
 
       <div class="reviews-images">

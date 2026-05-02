@@ -105,17 +105,26 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       const starsStr = '★'.repeat(r.stars) + '☆'.repeat(5 - r.stars);
       reviewCard.innerHTML = `
-        <div class="review-meta">
-          <div class="reviewer-info">
-            <strong class="reviewer-name">${r.name}</strong>
-            <span class="reviewer-handle">${r.handle}</span>
+        <div class="review-card-header">
+          <div class="review-card-left">
+            <span class="review-card-score">${r.score} review</span>
+            <div class="review-card-stars">${starsStr}</div>
           </div>
-          <div class="reviewer-avatar" ${r.avatar ? `style="background-image: url('${r.avatar}'); background-size: cover; background-position: center;"` : ''}></div>
+          <div class="review-card-right">
+            <div class="review-card-info">
+              <strong class="reviewer-name">${r.name}</strong>
+              <span class="reviewer-handle">${r.handle}</span>
+            </div>
+            <div class="reviewer-avatar">
+              ${r.avatar ? `<img src="${r.avatar}" alt="${r.name}">` : ''}
+            </div>
+          </div>
         </div>
-        <div class="stars">${starsStr}</div>
-        <p class="review-score">${r.score} review</p>
-        <blockquote class="review-text">${r.text}</blockquote>
+        <div class="review-content-wrap">
+          <blockquote class="review-text">${r.text}</blockquote>
+        </div>
       `;
+
       reviewCard.style.opacity = '1';
       reviewCard.style.transform = 'translateY(0)';
     }, 220);
