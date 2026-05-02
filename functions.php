@@ -274,9 +274,12 @@ function fikrtak_customizer_settings( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 		'transport'         => 'refresh',
 	) );
+	$wp_customize->add_control( 'fikrtak_hero_desc', array(
+		'label'       => 'النص الوصفي',
 		'section'     => 'fikrtak_hero_options',
 		'type'        => 'textarea',
 	) );
+
 
 	// Stats Section Settings
 	$wp_customize->add_section( 'fikrtak_stats_options', array(
@@ -302,10 +305,48 @@ function fikrtak_customizer_settings( $wp_customize ) {
 	$wp_customize->add_setting( 'fikrtak_stat_cases_lbl', array( 'default' => 'حالة مرضية', 'sanitize_callback' => 'sanitize_text_field', 'transport' => 'refresh' ) );
 	$wp_customize->add_control( 'fikrtak_stat_cases_lbl', array( 'label' => 'عنوان عدد الحالات', 'section' => 'fikrtak_stats_options' ) );
 
+	// Symptoms Section Settings
+	$wp_customize->add_section( 'fikrtak_symptoms_options', array(
+		'title'    => 'أعراض تستدعي الزيارة',
+		'priority' => 35,
+	) );
+
+	for ( $i = 1; $i <= 4; $i++ ) {
+		$default_text = '';
+		if($i == 1) $default_text = 'ألم يزداد مع الوقت أو أثناء الليل';
+		if($i == 2) $default_text = 'صعوبة في الحركة أو ضعف مفاجئ';
+		if($i == 3) $default_text = 'ألم مستمر في العظام بدون سبب واضح';
+		if($i == 4) $default_text = 'تورم أو كتلة في أحد الأطراف';
+
+		$wp_customize->add_setting( 'fikrtak_symptom_' . $i, array(
+			'default'           => $default_text,
+			'sanitize_callback' => 'sanitize_text_field',
+			'transport'         => 'refresh',
+		) );
+		$wp_customize->add_control( 'fikrtak_symptom_' . $i, array(
+			'label'   => 'العرض رقم ' . $i,
+			'section' => 'fikrtak_symptoms_options',
+			'type'    => 'text',
+		) );
+	}
+
+	// Footer Options
+	$wp_customize->add_section( 'fikrtak_footer_options', array(
+		'title'    => 'إعدادات الفوتر',
+		'priority' => 36,
+	) );
+
+	$wp_customize->add_setting( 'fikrtak_footer_desc', array(
+		'default'           => 'استشاري جراحة أورام العظام وإعادة بناء المفاصل',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( 'fikrtak_footer_desc', array(
+		'label'   => 'وصف الفوتر (تحت اللوجو)',
+		'section' => 'fikrtak_footer_options',
+		'type'    => 'textarea',
+	) );
 }
-
-
-
 
 add_action( 'customize_register', 'fikrtak_customizer_settings' );
 

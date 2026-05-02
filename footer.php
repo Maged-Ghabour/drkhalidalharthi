@@ -43,8 +43,9 @@
           ?>
 
 
-          <p class="footer-desc">استشاري جراحة أورام العظام وإعادة بناء المفاصل</p>
+          <p class="footer-desc"><?php echo esc_html(get_theme_mod('fikrtak_footer_desc', 'استشاري جراحة أورام العظام وإعادة بناء المفاصل')); ?></p>
         </div>
+
         
         <div class="footer-col">
           <h4>التواصل</h4>
