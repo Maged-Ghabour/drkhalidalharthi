@@ -264,11 +264,12 @@ get_header(); ?>
         <div class="review-card" id="reviewCard">
           <div class="review-card-header">
             <div class="review-card-right">
+              <div class="reviewer-avatar" id="reviewerAvatar"></div>
               <div class="review-card-info">
                 <strong class="reviewer-name" id="reviewerName">اسم العميل</strong>
                 <span class="reviewer-handle" id="reviewerHandle">@Username</span>
               </div>
-              <div class="reviewer-avatar" id="reviewerAvatar"></div>
+
             </div>
 
             <div class="review-card-left">
