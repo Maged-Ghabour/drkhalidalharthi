@@ -940,9 +940,16 @@ button {
 
 .success-swiper .swiper-slide {
   height: 100% !important;
+  width: 100% !important; /* Default for mobile */
   flex-shrink: 0 !important;
   display: block !important;
   position: relative;
+}
+
+@media (min-width: 768px) {
+  .success-swiper .swiper-slide {
+    width: calc(50% - 12px) !important; /* 2 slides per view with 24px gap */
+  }
 }
 
 .success-img-wrapper {
