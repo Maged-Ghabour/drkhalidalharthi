@@ -343,8 +343,14 @@ get_header(); ?>
                     $slides_output = true;
                     ?>
                     <div class="swiper-slide">
-                      <div class="success-img-wrapper">
+                      <div class="success-img-wrapper" style="position: relative;">
                         <?php echo $img_output; ?>
+                        <!-- DEBUG OVERLAY -->
+                        <div style="position:absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.8); color: white; padding: 10px; z-index: 9999; font-size: 14px; direction: ltr; text-align: left; word-break: break-all; border-radius: 5px;">
+                            <strong>Post ID:</strong> <?php echo get_the_ID(); ?><br>
+                            <strong>Thumb URL:</strong> <?php echo esc_url(get_the_post_thumbnail_url(null, 'full')); ?><br>
+                            <strong>Attached Media:</strong> <?php echo !empty($attachments) ? 'Yes' : 'No'; ?>
+                        </div>
                       </div>
                     </div>
                 <?php endif; 
