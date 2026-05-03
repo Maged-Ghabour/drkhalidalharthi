@@ -321,41 +321,42 @@ get_header(); ?>
             $success_query = new WP_Query(array(
               'post_type' => 'success_story',
               'posts_per_page' => -1,
-              'post_status' => array('publish', 'draft', 'pending', 'future') // Query all statuses just in case
+              'post_status' => array('publish', 'draft', 'pending', 'future')
             ));
             
+            $slides_output = false;
+            
             if ($success_query->have_posts()):
-              while ($success_query->have_posts()): $success_query->the_post(); ?>
-                <div class="swiper-slide">
-                  <div class="success-img-wrapper">
-                    <?php 
-                    $img_output = '';
-                    if (has_post_thumbnail()) {
-                        $img_output = get_the_post_thumbnail(null, 'full', array('class' => 'rev-img'));
-                    } else {
-                        // Check for any attached images to this post
-                        $attachments = get_attached_media('image', get_the_ID());
-                        if (!empty($attachments)) {
-                            $image = array_shift($attachments);
-                            $img_output = wp_get_attachment_image($image->ID, 'full', false, array('class' => 'rev-img'));
-                        }
+              while ($success_query->have_posts()): $success_query->the_post(); 
+                $img_output = '';
+                if (has_post_thumbnail()) {
+                    $img_output = get_the_post_thumbnail(null, 'full', array('class' => 'rev-img'));
+                } else {
+                    $attachments = get_attached_media('image', get_the_ID());
+                    if (!empty($attachments)) {
+                        $image = array_shift($attachments);
+                        $img_output = wp_get_attachment_image($image->ID, 'full', false, array('class' => 'rev-img'));
                     }
-                    
-                    if (!empty($img_output)) : 
-                        echo $img_output;
-                    else : ?>
-                      <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/testimonials.png" alt="قصة نجاح" class="rev-img" />
-                    <?php endif; ?>
-                  </div>
-                </div>
-              <?php endwhile;
+                }
+                
+                if (!empty($img_output)) : 
+                    $slides_output = true;
+                    ?>
+                    <div class="swiper-slide">
+                      <div class="success-img-wrapper">
+                        <?php echo $img_output; ?>
+                      </div>
+                    </div>
+                <?php endif; 
+              endwhile;
               wp_reset_postdata();
-            else: ?>
+            endif; 
+            
+            if (!$slides_output) : ?>
               <div class="swiper-slide">
-                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/testimonials.png" alt="العيادة" class="rev-img" />
-              </div>
-              <div class="swiper-slide">
-                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/testimonials.png" alt="العيادة" class="rev-img" />
+                <div class="success-img-wrapper" style="background: #f0f4f3; display: flex; align-items: center; justify-content: center; height: 100%;">
+                  <span style="color: #a0b5b2; font-size: 18px;">لا توجد صور مضافة حالياً</span>
+                </div>
               </div>
             <?php endif; ?>
           </div>
