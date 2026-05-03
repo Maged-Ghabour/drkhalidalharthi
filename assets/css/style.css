@@ -956,13 +956,7 @@ button {
   height: 100%;
 }
 
-.success-img-wrapper::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.2), transparent);
-  pointer-events: none;
-}
+
 
 .rev-img-sm {
   max-width: 120px;
