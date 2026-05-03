@@ -330,12 +330,12 @@ get_header(); ?>
               while ($success_query->have_posts()): $success_query->the_post(); 
                 $img_output = '';
                 if (has_post_thumbnail()) {
-                    $img_output = get_the_post_thumbnail(null, 'full', array('class' => 'rev-img'));
+                    $img_output = get_the_post_thumbnail(null, 'full', array('class' => 'rev-img', 'loading' => 'eager'));
                 } else {
                     $attachments = get_attached_media('image', get_the_ID());
                     if (!empty($attachments)) {
                         $image = array_shift($attachments);
-                        $img_output = wp_get_attachment_image($image->ID, 'full', false, array('class' => 'rev-img'));
+                        $img_output = wp_get_attachment_image($image->ID, 'full', false, array('class' => 'rev-img', 'loading' => 'eager'));
                     }
                 }
                 

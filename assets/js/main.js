@@ -103,7 +103,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (successSwiperEl && typeof Swiper !== 'undefined') {
     swiperInstance = new Swiper('.success-swiper', {
       loop: true,
-      autoplay: false, // Disabled for inspection
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+      },
       speed: 800,
       effect: 'slide',
       grabCursor: true,
@@ -165,21 +168,21 @@ document.addEventListener('DOMContentLoaded', () => {
       renderReview(currentReview);
     });
 
-    // Auto-slide disabled for inspection
-    // let autoSlide = setInterval(() => {
-    //   currentReview = (currentReview + 1) % totalReviews;
-    //   renderReview(currentReview);
-    // }, 5000);
+    // Auto-slide every 5s
+    let autoSlide = setInterval(() => {
+      currentReview = (currentReview + 1) % totalReviews;
+      renderReview(currentReview);
+    }, 5000);
 
-    // [prevBtn, nextBtn].forEach(btn => {
-    //   btn && btn.addEventListener('click', () => {
-    //     clearInterval(autoSlide);
-    //     autoSlide = setInterval(() => {
-    //       currentReview = (currentReview + 1) % totalReviews;
-    //       renderReview(currentReview);
-    //     }, 5000);
-    //   });
-    // });
+    [prevBtn, nextBtn].forEach(btn => {
+      btn && btn.addEventListener('click', () => {
+        clearInterval(autoSlide);
+        autoSlide = setInterval(() => {
+          currentReview = (currentReview + 1) % totalReviews;
+          renderReview(currentReview);
+        }, 5000);
+      });
+    });
   }
 
   /* ---------- Email Subscribe ---------- */
