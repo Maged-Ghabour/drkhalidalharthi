@@ -233,18 +233,26 @@ document.addEventListener('DOMContentLoaded', () => {
   counters.forEach(c => counterObserver.observe(c));
   
   /* ---------- Success Swiper ---------- */
-  if (document.querySelector('.success-swiper')) {
+  const successSwiperEl = document.querySelector('.success-swiper');
+  if (successSwiperEl && typeof Swiper !== 'undefined') {
     new Swiper('.success-swiper', {
       loop: true,
       autoplay: {
-        delay: 3500,
+        delay: 4000,
         disableOnInteraction: false,
       },
-      effect: 'fade',
-      fadeEffect: {
-        crossFade: true
+      speed: 1000,
+      effect: 'creative',
+      creativeEffect: {
+        prev: {
+          shadow: true,
+          translate: [0, 0, -400],
+        },
+        next: {
+          translate: ['100%', 0, 0],
+        },
       },
-      speed: 1200,
+      grabCursor: true,
     });
   }
 
