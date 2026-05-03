@@ -231,6 +231,22 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.5 });
   
   counters.forEach(c => counterObserver.observe(c));
+  
+  /* ---------- Success Swiper ---------- */
+  if (document.querySelector('.success-swiper')) {
+    new Swiper('.success-swiper', {
+      loop: true,
+      autoplay: {
+        delay: 3500,
+        disableOnInteraction: false,
+      },
+      effect: 'fade',
+      fadeEffect: {
+        crossFade: true
+      },
+      speed: 1200,
+    });
+  }
 
 });
 

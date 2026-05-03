@@ -315,22 +315,33 @@ get_header(); ?>
         </script>
         <div class="slide-counter"><span
             id="currentSlide">01</span>/<?php echo str_pad(count($js_reviews) ?: 3, 2, '0', STR_PAD_LEFT); ?></div>
-        <div class="reviews-imgs-row">
-          <?php 
-          $success_img_1 = get_theme_mod('fikrtak_success_img_1');
-          $success_img_2 = get_theme_mod('fikrtak_success_img_2');
-          
-          if ($success_img_1) : ?>
-            <img src="<?php echo esc_url($success_img_1); ?>" alt="قصة نجاح" class="rev-img" />
-          <?php else : ?>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/testimonials.png" alt="العيادة" class="rev-img" />
-          <?php endif; ?>
-
-          <?php if ($success_img_2) : ?>
-            <img src="<?php echo esc_url($success_img_2); ?>" alt="قصة نجاح" class="rev-img rev-img-sm" />
-          <?php else : ?>
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/testimonials.png" alt="العيادة" class="rev-img rev-img-sm" />
-          <?php endif; ?>
+        <div class="swiper success-swiper">
+          <div class="swiper-wrapper">
+            <?php
+            $success_query = new WP_Query(array(
+              'post_type' => 'success_story',
+              'posts_per_page' => -1
+            ));
+            if ($success_query->have_posts()):
+              while ($success_query->have_posts()): $success_query->the_post(); ?>
+                <div class="swiper-slide">
+                  <?php if (has_post_thumbnail()) : ?>
+                    <?php the_post_thumbnail('large', array('class' => 'rev-img')); ?>
+                  <?php else : ?>
+                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/testimonials.png" alt="العيادة" class="rev-img" />
+                  <?php endif; ?>
+                </div>
+              <?php endwhile;
+              wp_reset_postdata();
+            else: ?>
+              <div class="swiper-slide">
+                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/testimonials.png" alt="العيادة" class="rev-img" />
+              </div>
+              <div class="swiper-slide">
+                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/testimonials.png" alt="العيادة" class="rev-img" />
+              </div>
+            <?php endif; ?>
+          </div>
         </div>
         <div class="slide-nav">
           <button class="slide-btn" id="prevReview" aria-label="السابق">←</button>

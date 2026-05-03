@@ -34,8 +34,11 @@ add_action( 'after_setup_theme', 'fikrtak_theme_setup' );
  */
 function fikrtak_theme_scripts() {
 	wp_enqueue_style( 'fikrtak-theme-style', get_stylesheet_uri(), array(), wp_get_theme()->get('Version') );
+	wp_enqueue_style( 'swiper-style', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', array(), '11.0.0' );
 	wp_enqueue_style( 'fikrtak-main-style', get_template_directory_uri() . '/assets/css/style.css', array(), wp_get_theme()->get('Version') );
-	wp_enqueue_script( 'fikrtak-main-script', get_template_directory_uri() . '/assets/js/main.js', array(), wp_get_theme()->get('Version'), true );
+	
+	wp_enqueue_script( 'swiper-script', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), '11.0.0', true );
+	wp_enqueue_script( 'fikrtak-main-script', get_template_directory_uri() . '/assets/js/main.js', array( 'swiper-script' ), wp_get_theme()->get('Version'), true );
 }
 add_action( 'wp_enqueue_scripts', 'fikrtak_theme_scripts' );
 
@@ -85,6 +88,21 @@ function fikrtak_custom_post_types() {
 		'has_archive' => false,
 		'supports'    => array( 'title', 'editor' ),
 		'menu_icon'   => 'dashicons-editor-help',
+		'show_in_rest' => true,
+	) );
+
+	register_post_type( 'success_story', array(
+		'labels'      => array(
+			'name'          => 'صور النجاح',
+			'singular_name' => 'صورة نجاح',
+			'add_new_item'  => 'إضافة صورة نجاح جديدة',
+			'edit_item'     => 'تعديل الصورة',
+			'all_items'     => 'جميع صور النجاح',
+		),
+		'public'      => true,
+		'has_archive' => false,
+		'supports'    => array( 'title', 'thumbnail' ),
+		'menu_icon'   => 'dashicons-images-alt2',
 		'show_in_rest' => true,
 	) );
 }
@@ -183,27 +201,6 @@ function fikrtak_customizer_settings( $wp_customize ) {
 		'description' => 'أدخل أقصى عرض للحاوية بالبكسل (مثال: 1200 أو 1400).',
 		'section'     => 'fikrtak_site_options',
 	) );
-
-	// Success Story Images
-	$wp_customize->add_setting( 'fikrtak_success_img_1', array(
-		'default'           => '',
-		'sanitize_callback' => 'esc_url_raw',
-		'transport'         => 'refresh',
-	) );
-	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'fikrtak_success_img_1', array(
-		'label'       => 'صورة قصة النجاح 1 (الكبيرة)',
-		'section'     => 'fikrtak_site_options',
-	) ) );
-
-	$wp_customize->add_setting( 'fikrtak_success_img_2', array(
-		'default'           => '',
-		'sanitize_callback' => 'esc_url_raw',
-		'transport'         => 'refresh',
-	) );
-	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'fikrtak_success_img_2', array(
-		'label'       => 'صورة قصة النجاح 2 (الصغيرة)',
-		'section'     => 'fikrtak_site_options',
-	) ) );
 
 	// Footer Logo
 	$wp_customize->add_setting( 'fikrtak_footer_logo', array(
