@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const successSwiperEl = document.querySelector('.success-swiper');
   if (successSwiperEl && typeof Swiper !== 'undefined') {
     swiperInstance = new Swiper('.success-swiper', {
-      loop: true,
+      loop: false, // Disabled to prevent clone issues with lazy loading plugins
       autoplay: {
         delay: 4000,
         disableOnInteraction: false,
