@@ -325,11 +325,13 @@ get_header(); ?>
             if ($success_query->have_posts()):
               while ($success_query->have_posts()): $success_query->the_post(); ?>
                 <div class="swiper-slide">
-                  <?php if (has_post_thumbnail()) : ?>
-                    <?php the_post_thumbnail('large', array('class' => 'rev-img')); ?>
-                  <?php else : ?>
-                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/testimonials.png" alt="العيادة" class="rev-img" />
-                  <?php endif; ?>
+                  <div class="success-img-wrapper">
+                    <?php if (has_post_thumbnail()) : ?>
+                      <?php the_post_thumbnail('full', array('class' => 'rev-img')); ?>
+                    <?php else : ?>
+                      <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/testimonials.png" alt="قصة نجاح" class="rev-img" />
+                    <?php endif; ?>
+                  </div>
                 </div>
               <?php endwhile;
               wp_reset_postdata();

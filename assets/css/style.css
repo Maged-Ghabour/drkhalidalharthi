@@ -926,11 +926,18 @@ button {
   margin: 0;
   border-radius: var(--radius);
   overflow: hidden;
-  height: 380px; /* Reduced to better match design */
+  height: 380px;
+  background: #eee; /* Light gray instead of dark green for empty states */
+}
+
+.success-img-wrapper {
+  width: 100%;
+  height: 100%;
 }
 
 .success-swiper .swiper-slide {
   height: 100%;
+  display: flex;
 }
 
 .rev-img {
