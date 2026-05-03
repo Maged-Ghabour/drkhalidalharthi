@@ -927,8 +927,8 @@ button {
   border-radius: var(--radius);
   overflow: hidden;
   height: 420px;
-  background: var(--off-white);
-  border: 1px solid var(--border);
+  background: transparent;
+  border: none;
   position: relative;
 }
 
@@ -957,8 +957,8 @@ button {
   border-radius: var(--radius);
   width: 100%;
   height: 100%;
-  object-fit: contain; /* Changed to contain so the full image is visible */
-  background: var(--white); /* Added background so empty space is clean */
+  object-fit: cover;
+  background: transparent;
   display: block;
   transition: transform 0.5s ease;
 }

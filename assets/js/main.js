@@ -110,6 +110,14 @@ document.addEventListener('DOMContentLoaded', () => {
       speed: 800,
       effect: 'slide',
       grabCursor: true,
+      slidesPerView: 1,
+      spaceBetween: 16,
+      breakpoints: {
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 24
+        }
+      }
     });
   }
 
