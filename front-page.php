@@ -320,16 +320,31 @@ get_header(); ?>
             <?php
             $success_query = new WP_Query(array(
               'post_type' => 'success_story',
-              'posts_per_page' => -1
+              'posts_per_page' => -1,
+              'post_status' => array('publish', 'draft', 'pending', 'future') // Query all statuses just in case
             ));
+            
             if ($success_query->have_posts()):
               while ($success_query->have_posts()): $success_query->the_post(); ?>
                 <div class="swiper-slide">
                   <div class="success-img-wrapper">
-                    <?php if (has_post_thumbnail()) : ?>
-                      <?php the_post_thumbnail('full', array('class' => 'rev-img')); ?>
-                    <?php else : ?>
-                      <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/testimonials.png" alt="آراء العملاء" class="rev-img" />
+                    <?php 
+                    $img_output = '';
+                    if (has_post_thumbnail()) {
+                        $img_output = get_the_post_thumbnail(null, 'full', array('class' => 'rev-img'));
+                    } else {
+                        // Check for any attached images to this post
+                        $attachments = get_attached_media('image', get_the_ID());
+                        if (!empty($attachments)) {
+                            $image = array_shift($attachments);
+                            $img_output = wp_get_attachment_image($image->ID, 'full', false, array('class' => 'rev-img'));
+                        }
+                    }
+                    
+                    if (!empty($img_output)) : 
+                        echo $img_output;
+                    else : ?>
+                      <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/testimonials.png" alt="قصة نجاح" class="rev-img" />
                     <?php endif; ?>
                   </div>
                 </div>
