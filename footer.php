@@ -70,7 +70,7 @@
         </div>
 
         <div class="footer-col">
-          <h4>الخدمات</h4>
+          <h4>روابط مهمة</h4>
           <?php
           wp_nav_menu( array(
               'theme_location' => 'footer',
