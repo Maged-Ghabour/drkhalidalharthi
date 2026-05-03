@@ -241,17 +241,8 @@ document.addEventListener('DOMContentLoaded', () => {
         delay: 4000,
         disableOnInteraction: false,
       },
-      speed: 1000,
-      effect: 'creative',
-      creativeEffect: {
-        prev: {
-          shadow: true,
-          translate: [0, 0, -400],
-        },
-        next: {
-          translate: ['100%', 0, 0],
-        },
-      },
+      speed: 800,
+      effect: 'slide',
       grabCursor: true,
     });
   }

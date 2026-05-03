@@ -93,11 +93,15 @@ function fikrtak_custom_post_types() {
 
 	register_post_type( 'success_story', array(
 		'labels'      => array(
-			'name'          => 'صور النجاح',
-			'singular_name' => 'صورة نجاح',
-			'add_new_item'  => 'إضافة صورة نجاح جديدة',
-			'edit_item'     => 'تعديل الصورة',
-			'all_items'     => 'جميع صور النجاح',
+			'name'                     => 'قصص النجاح',
+			'singular_name'            => 'قصة نجاح',
+			'add_new_item'             => 'إضافة قصة نجاح جديدة',
+			'edit_item'                => 'تعديل قصة النجاح',
+			'all_items'                => 'جميع قصص النجاح',
+			'featured_image'           => 'صورة قصة النجاح',
+			'set_featured_image'       => 'تعيين صورة لقصة النجاح',
+			'remove_featured_image'    => 'إزالة الصورة',
+			'use_featured_image'       => 'استخدام كصورة لقصة النجاح',
 		),
 		'public'      => true,
 		'has_archive' => false,

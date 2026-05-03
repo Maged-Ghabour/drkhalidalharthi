@@ -923,11 +923,10 @@ button {
 
 .success-swiper {
   width: 100%;
-  margin: 20px 0;
+  margin: 0;
   border-radius: var(--radius);
   overflow: hidden;
-  box-shadow: var(--shadow-md);
-  height: 450px;
+  height: 380px; /* Reduced to better match design */
 }
 
 .success-swiper .swiper-slide {
@@ -1645,10 +1644,10 @@ button {
   }
 
   .success-swiper {
-    height: 350px;
+    height: 300px;
     width: 100%;
-    max-width: 320px;
-    margin: 0 auto;
+    max-width: 280px;
+    margin: 15px auto;
   }
 
   .faq-inner {
