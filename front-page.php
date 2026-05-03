@@ -316,10 +316,21 @@ get_header(); ?>
         <div class="slide-counter"><span
             id="currentSlide">01</span>/<?php echo str_pad(count($js_reviews) ?: 3, 2, '0', STR_PAD_LEFT); ?></div>
         <div class="reviews-imgs-row">
-          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/testimonials.png" alt="العيادة"
-            class="rev-img" />
-          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/testimonials.png" alt="العيادة"
-            class="rev-img rev-img-sm" />
+          <?php 
+          $success_img_1 = get_theme_mod('fikrtak_success_img_1');
+          $success_img_2 = get_theme_mod('fikrtak_success_img_2');
+          
+          if ($success_img_1) : ?>
+            <img src="<?php echo esc_url($success_img_1); ?>" alt="قصة نجاح" class="rev-img" />
+          <?php else : ?>
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/testimonials.png" alt="العيادة" class="rev-img" />
+          <?php endif; ?>
+
+          <?php if ($success_img_2) : ?>
+            <img src="<?php echo esc_url($success_img_2); ?>" alt="قصة نجاح" class="rev-img rev-img-sm" />
+          <?php else : ?>
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/testimonials.png" alt="العيادة" class="rev-img rev-img-sm" />
+          <?php endif; ?>
         </div>
         <div class="slide-nav">
           <button class="slide-btn" id="prevReview" aria-label="السابق">←</button>

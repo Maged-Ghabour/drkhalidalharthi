@@ -184,6 +184,27 @@ function fikrtak_customizer_settings( $wp_customize ) {
 		'section'     => 'fikrtak_site_options',
 	) );
 
+	// Success Story Images
+	$wp_customize->add_setting( 'fikrtak_success_img_1', array(
+		'default'           => '',
+		'sanitize_callback' => 'esc_url_raw',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'fikrtak_success_img_1', array(
+		'label'       => 'صورة قصة النجاح 1 (الكبيرة)',
+		'section'     => 'fikrtak_site_options',
+	) ) );
+
+	$wp_customize->add_setting( 'fikrtak_success_img_2', array(
+		'default'           => '',
+		'sanitize_callback' => 'esc_url_raw',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'fikrtak_success_img_2', array(
+		'label'       => 'صورة قصة النجاح 2 (الصغيرة)',
+		'section'     => 'fikrtak_site_options',
+	) ) );
+
 	// Footer Logo
 	$wp_customize->add_setting( 'fikrtak_footer_logo', array(
 		'default'           => '',
@@ -251,6 +272,18 @@ function fikrtak_customizer_settings( $wp_customize ) {
 			'type'    => 'text',
 		) );
 	}
+
+	// Mobile Phone
+	$wp_customize->add_setting( 'fikrtak_contact_mobile_phone', array(
+		'default'           => '',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( 'fikrtak_contact_mobile_phone', array(
+		'label'   => 'رقم الجوال (للعرض)',
+		'section' => 'fikrtak_contact_options',
+		'type'    => 'text',
+	) );
 
 	// Hero Section Settings
 	$wp_customize->add_section( 'fikrtak_hero_options', array(
