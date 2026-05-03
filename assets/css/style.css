@@ -940,7 +940,6 @@ button {
 
 .success-swiper .swiper-slide {
   height: 100% !important;
-  width: 100% !important;
   flex-shrink: 0 !important;
   display: block !important;
   position: relative;
