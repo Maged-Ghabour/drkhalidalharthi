@@ -170,6 +170,20 @@ function fikrtak_customizer_settings( $wp_customize ) {
 		'section'     => 'fikrtak_site_options',
 	) );
 
+	// Container Max-Width
+	$wp_customize->add_setting( 'fikrtak_container_width', array(
+		'default'           => '1200',
+		'sanitize_callback' => 'absint',
+		'transport'         => 'refresh',
+	) );
+
+	$wp_customize->add_control( 'fikrtak_container_width', array(
+		'type'        => 'number',
+		'label'       => 'عرض الحاوية (Container Max-Width)',
+		'description' => 'أدخل أقصى عرض للحاوية بالبكسل (مثال: 1200 أو 1400).',
+		'section'     => 'fikrtak_site_options',
+	) );
+
 	// Footer Logo
 	$wp_customize->add_setting( 'fikrtak_footer_logo', array(
 		'default'           => '',
@@ -696,3 +710,17 @@ function fikrtak_admin_styles() {
 	<?php
 }
 add_action( 'admin_head', 'fikrtak_admin_styles' );
+
+/**
+ * Output Custom CSS from Customizer
+ */
+function fikrtak_customizer_css() {
+	$container_width = get_theme_mod( 'fikrtak_container_width', '1200' );
+	
+	if ( $container_width && $container_width != '1200' ) {
+		echo '<style type="text/css">';
+		echo '.container { max-width: ' . absint( $container_width ) . 'px !important; }';
+		echo '</style>';
+	}
+}
+add_action( 'wp_head', 'fikrtak_customizer_css' );
