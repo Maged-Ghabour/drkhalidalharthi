@@ -71,11 +71,14 @@
 
         <div class="footer-col">
           <h4>الخدمات</h4>
-          <ul>
-            <li><a href="#services">إستشارة</a></li>
-            <li><a href="#articles">المدونه</a></li>
-            <li><a href="#articles">الاخبار</a></li>
-          </ul>
+          <?php
+          wp_nav_menu( array(
+              'theme_location' => 'footer',
+              'container'      => false,
+              'fallback_cb'    => false,
+              'items_wrap'     => '<ul>%3$s</ul>',
+          ) );
+          ?>
         </div>
         <div class="footer-col">
           <h4>سوشيل ميديا</h4>
