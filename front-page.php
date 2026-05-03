@@ -318,13 +318,16 @@ get_header(); ?>
         <div class="swiper success-swiper" id="reviewsSwiper">
           <div class="swiper-wrapper">
             <?php
-            if ($reviews_query->have_posts()):
-              $reviews_query->rewind_posts();
-              while ($reviews_query->have_posts()): $reviews_query->the_post(); ?>
+            $success_query = new WP_Query(array(
+              'post_type' => 'success_story',
+              'posts_per_page' => -1
+            ));
+            if ($success_query->have_posts()):
+              while ($success_query->have_posts()): $success_query->the_post(); ?>
                 <div class="swiper-slide">
                   <div class="success-img-wrapper">
                     <?php if (has_post_thumbnail()) : ?>
-                      <?php the_post_thumbnail('large', array('class' => 'rev-img')); ?>
+                      <?php the_post_thumbnail('full', array('class' => 'rev-img')); ?>
                     <?php else : ?>
                       <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/testimonials.png" alt="آراء العملاء" class="rev-img" />
                     <?php endif; ?>

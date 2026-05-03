@@ -97,36 +97,24 @@ document.addEventListener('DOMContentLoaded', () => {
   const prevBtn      = document.getElementById('prevReview');
   const nextBtn      = document.getElementById('nextReview');
 
-  /* ---------- Success Swiper (Now synced with Reviews) ---------- */
+  /* ---------- Success Swiper ---------- */
   let swiperInstance = null;
   const successSwiperEl = document.querySelector('.success-swiper');
   if (successSwiperEl && typeof Swiper !== 'undefined') {
     swiperInstance = new Swiper('.success-swiper', {
       loop: true,
       autoplay: {
-        delay: 5000,
+        delay: 4000,
         disableOnInteraction: false,
       },
       speed: 800,
       effect: 'slide',
       grabCursor: true,
-      on: {
-        slideChange: function () {
-          // Sync text card with swiper
-          if (typeof currentReview !== 'undefined' && swiperInstance) {
-            const realIdx = swiperInstance.realIndex;
-            if (realIdx !== currentReview) {
-              currentReview = realIdx;
-              renderReview(currentReview, false); // false means don't trigger slideTo again
-            }
-          }
-        }
-      }
     });
   }
 
   /* ---------- Reviews Text Sync ---------- */
-  function renderReview(idx, syncSwiper = true) {
+  function renderReview(idx) {
     const r = reviews[idx];
     if (!reviewCard) return;
     
@@ -165,25 +153,35 @@ document.addEventListener('DOMContentLoaded', () => {
     if (slideCounter) {
       slideCounter.textContent = String(idx + 1).padStart(2, '0');
     }
-
-    if (syncSwiper && swiperInstance) {
-      swiperInstance.slideToLoop(idx);
-    }
   }
 
   if (reviewCard) {
     reviewCard.style.transition = 'opacity 0.22s ease, transform 0.22s ease';
-    renderReview(0, false);
+    renderReview(0);
 
     nextBtn && nextBtn.addEventListener('click', () => {
       currentReview = (currentReview + 1) % totalReviews;
-      renderReview(currentReview, true);
-      if (swiperInstance && swiperInstance.autoplay) swiperInstance.autoplay.start();
+      renderReview(currentReview);
     });
     prevBtn && prevBtn.addEventListener('click', () => {
       currentReview = (currentReview - 1 + totalReviews) % totalReviews;
-      renderReview(currentReview, true);
-      if (swiperInstance && swiperInstance.autoplay) swiperInstance.autoplay.start();
+      renderReview(currentReview);
+    });
+
+    // Auto-slide every 5s
+    let autoSlide = setInterval(() => {
+      currentReview = (currentReview + 1) % totalReviews;
+      renderReview(currentReview);
+    }, 5000);
+
+    [prevBtn, nextBtn].forEach(btn => {
+      btn && btn.addEventListener('click', () => {
+        clearInterval(autoSlide);
+        autoSlide = setInterval(() => {
+          currentReview = (currentReview + 1) % totalReviews;
+          renderReview(currentReview);
+        }, 5000);
+      });
     });
   }
 
