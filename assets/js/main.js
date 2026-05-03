@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ---------- Reviews Slider ---------- */
+  /* ---------- Reviews Slider Data ---------- */
   const reviews = (window.dynamicReviews && window.dynamicReviews.length > 0) ? window.dynamicReviews : [
     {
       name: 'اسم العميل',
@@ -97,11 +97,43 @@ document.addEventListener('DOMContentLoaded', () => {
   const prevBtn      = document.getElementById('prevReview');
   const nextBtn      = document.getElementById('nextReview');
 
-  function renderReview(idx) {
+  /* ---------- Success Swiper (Now synced with Reviews) ---------- */
+  let swiperInstance = null;
+  const successSwiperEl = document.querySelector('.success-swiper');
+  if (successSwiperEl && typeof Swiper !== 'undefined') {
+    swiperInstance = new Swiper('.success-swiper', {
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      speed: 800,
+      effect: 'slide',
+      grabCursor: true,
+      on: {
+        slideChange: function () {
+          // Sync text card with swiper
+          if (typeof currentReview !== 'undefined' && swiperInstance) {
+            const realIdx = swiperInstance.realIndex;
+            if (realIdx !== currentReview) {
+              currentReview = realIdx;
+              renderReview(currentReview, false); // false means don't trigger slideTo again
+            }
+          }
+        }
+      }
+    });
+  }
+
+  /* ---------- Reviews Text Sync ---------- */
+  function renderReview(idx, syncSwiper = true) {
     const r = reviews[idx];
     if (!reviewCard) return;
+    
+    // Don't animate if it's the same (prevents double animation on sync)
     reviewCard.style.opacity = '0';
     reviewCard.style.transform = 'translateY(10px)';
+    
     setTimeout(() => {
       const starsStr = '★'.repeat(r.stars) + '☆'.repeat(5 - r.stars);
       reviewCard.innerHTML = `
@@ -126,42 +158,32 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       `;
 
-
       reviewCard.style.opacity = '1';
       reviewCard.style.transform = 'translateY(0)';
     }, 220);
+
     if (slideCounter) {
       slideCounter.textContent = String(idx + 1).padStart(2, '0');
+    }
+
+    if (syncSwiper && swiperInstance) {
+      swiperInstance.slideToLoop(idx);
     }
   }
 
   if (reviewCard) {
     reviewCard.style.transition = 'opacity 0.22s ease, transform 0.22s ease';
-    renderReview(0);
+    renderReview(0, false);
 
     nextBtn && nextBtn.addEventListener('click', () => {
       currentReview = (currentReview + 1) % totalReviews;
-      renderReview(currentReview);
+      renderReview(currentReview, true);
+      if (swiperInstance && swiperInstance.autoplay) swiperInstance.autoplay.start();
     });
     prevBtn && prevBtn.addEventListener('click', () => {
       currentReview = (currentReview - 1 + totalReviews) % totalReviews;
-      renderReview(currentReview);
-    });
-
-    // Auto-slide every 5s
-    let autoSlide = setInterval(() => {
-      currentReview = (currentReview + 1) % totalReviews;
-      renderReview(currentReview);
-    }, 5000);
-
-    [prevBtn, nextBtn].forEach(btn => {
-      btn && btn.addEventListener('click', () => {
-        clearInterval(autoSlide);
-        autoSlide = setInterval(() => {
-          currentReview = (currentReview + 1) % totalReviews;
-          renderReview(currentReview);
-        }, 5000);
-      });
+      renderReview(currentReview, true);
+      if (swiperInstance && swiperInstance.autoplay) swiperInstance.autoplay.start();
     });
   }
 
@@ -232,20 +254,6 @@ document.addEventListener('DOMContentLoaded', () => {
   
   counters.forEach(c => counterObserver.observe(c));
   
-  /* ---------- Success Swiper ---------- */
-  const successSwiperEl = document.querySelector('.success-swiper');
-  if (successSwiperEl && typeof Swiper !== 'undefined') {
-    new Swiper('.success-swiper', {
-      loop: true,
-      autoplay: {
-        delay: 4000,
-        disableOnInteraction: false,
-      },
-      speed: 800,
-      effect: 'slide',
-      grabCursor: true,
-    });
-  }
 
 });
 

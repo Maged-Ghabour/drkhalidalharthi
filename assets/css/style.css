@@ -926,8 +926,9 @@ button {
   margin: 0;
   border-radius: var(--radius);
   overflow: hidden;
-  height: 380px;
-  background: #eee; /* Light gray instead of dark green for empty states */
+  height: 420px; /* Slightly taller for better impact */
+  background: var(--off-white);
+  border: 1px solid var(--border);
 }
 
 .success-img-wrapper {
@@ -946,6 +947,21 @@ button {
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 0.5s ease;
+}
+
+.success-img-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.success-img-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.2), transparent);
+  pointer-events: none;
 }
 
 .rev-img-sm {
