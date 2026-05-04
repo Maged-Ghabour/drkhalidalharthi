@@ -1,5 +1,40 @@
-/* ===== GEIST FONT (Numbers) ===== */
-@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700;800;900&display=swap');
+/* Geist font loaded via PHP wp_head for non-blocking performance */
+
+/* ===== PERFORMANCE OPTIMIZATIONS ===== */
+/* تأجيل رسم الأقسام خارج الشاشة - يحسن LCP وFID */
+.stats,
+.services,
+.articles,
+.reviews,
+.faq,
+footer {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 500px;
+}
+
+/* تحسين الـ animations لتعمل على GPU فقط */
+.hero-floating-badge,
+.hero-img,
+.pulsing-logo {
+  will-change: transform;
+}
+
+/* إيقاف will-change بعد انتهاء الـ animation لتحرير الذاكرة */
+.hero-img {
+  animation: none; /* تُفعَّل بالـ JS عند الحاجة */
+}
+
+/* تحسين رسم الصور */
+img {
+  image-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* منع layout shift للصور (CLS = 0) */
+img[width][height] {
+  aspect-ratio: attr(width) / attr(height);
+}
+
 
 /* ===== CUSTOM FONT ===== */
 @font-face {

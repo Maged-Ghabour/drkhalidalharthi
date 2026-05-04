@@ -33,14 +33,124 @@ add_action( 'after_setup_theme', 'fikrtak_theme_setup' );
  * Enqueue scripts and styles.
  */
 function fikrtak_theme_scripts() {
-	wp_enqueue_style( 'fikrtak-theme-style', get_stylesheet_uri(), array(), wp_get_theme()->get('Version') );
+	$ver = wp_get_theme()->get('Version');
+
+	// ===== STYLES =====
+	wp_enqueue_style( 'fikrtak-theme-style', get_stylesheet_uri(), array(), $ver );
+	// Swiper CSS - loaded normally (needed before paint)
 	wp_enqueue_style( 'swiper-style', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', array(), '11.0.0' );
-	wp_enqueue_style( 'fikrtak-main-style', get_template_directory_uri() . '/assets/css/style.css', array(), wp_get_theme()->get('Version') );
-	
+	wp_enqueue_style( 'fikrtak-main-style', get_template_directory_uri() . '/assets/css/style.css', array(), $ver );
+
+	// ===== SCRIPTS (all in footer + deferred) =====
 	wp_enqueue_script( 'swiper-script', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), '11.0.0', true );
-	wp_enqueue_script( 'fikrtak-main-script', get_template_directory_uri() . '/assets/js/main.js', array( 'swiper-script' ), wp_get_theme()->get('Version'), true );
+	wp_enqueue_script( 'fikrtak-main-script', get_template_directory_uri() . '/assets/js/main.js', array( 'swiper-script' ), $ver, true );
 }
 add_action( 'wp_enqueue_scripts', 'fikrtak_theme_scripts' );
+
+/**
+ * Add defer attribute to non-critical scripts
+ */
+function fikrtak_defer_scripts( $tag, $handle, $src ) {
+	$defer_scripts = array( 'swiper-script', 'fikrtak-main-script' );
+	if ( in_array( $handle, $defer_scripts ) ) {
+		return '<script defer src="' . esc_url( $src ) . '"></script>' . "\n";
+	}
+	return $tag;
+}
+add_filter( 'script_loader_tag', 'fikrtak_defer_scripts', 10, 3 );
+
+/**
+ * Add resource hints: preconnect + dns-prefetch for external domains
+ * + preload for critical local fonts
+ */
+function fikrtak_resource_hints() {
+	$theme_uri = get_template_directory_uri();
+	?>
+	<!-- DNS Prefetch & Preconnect for external resources -->
+	<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+	<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+	<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+
+	<!-- Preload critical local fonts (main Arabic font) -->
+	<link rel="preload" href="<?php echo esc_url( $theme_uri ); ?>/assets/fonts/ArbFONTS-GE_SS_Unique_Light.otf" as="font" type="font/otf" crossorigin>
+	<link rel="preload" href="<?php echo esc_url( $theme_uri ); ?>/assets/fonts/alfont_com_AlFont_com_GE_SS_Unique_Bold_5.otf" as="font" type="font/otf" crossorigin>
+
+	<!-- Load Geist font (numbers) via link instead of CSS @import -->
+	<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@700;800;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+	<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@700;800;900&display=swap"></noscript>
+	<?php
+}
+add_action( 'wp_head', 'fikrtak_resource_hints', 1 );
+
+/**
+ * Preload the hero image (LCP element) for instant rendering
+ */
+function fikrtak_preload_hero_image() {
+	if ( ! is_front_page() ) return;
+	$theme_uri = get_template_directory_uri();
+	?>
+	<link rel="preload" as="image" href="<?php echo esc_url( $theme_uri ); ?>/assets/images/hero pic.png" fetchpriority="high">
+	<?php
+}
+add_action( 'wp_head', 'fikrtak_preload_hero_image', 2 );
+
+/**
+ * Add fetchpriority="high" to the hero image tag (LCP boost)
+ */
+function fikrtak_hero_image_priority( $content ) {
+	if ( is_front_page() ) {
+		$content = str_replace(
+			'class="hero-img"',
+			'class="hero-img" fetchpriority="high" loading="eager"',
+			$content
+		);
+	}
+	return $content;
+}
+add_filter( 'the_content', 'fikrtak_hero_image_priority' );
+
+/**
+ * Force lazy loading on ALL images except the hero (LCP)
+ */
+function fikrtak_add_lazy_loading( $content ) {
+	// Add loading="lazy" to images that don't already have a loading attribute
+	$content = preg_replace(
+		'/<img(?![^>]*loading=)([^>]*)(class="(?!.*hero-img)[^"]*")([^>]*)>/i',
+		'<img$1$2$3 loading="lazy">',
+		$content
+	);
+	return $content;
+}
+add_filter( 'the_content',           'fikrtak_add_lazy_loading' );
+add_filter( 'post_thumbnail_html',   'fikrtak_add_lazy_loading' );
+add_filter( 'get_avatar',            'fikrtak_add_lazy_loading' );
+
+/**
+ * Minify HTML output to reduce page size
+ */
+function fikrtak_minify_html( $buffer ) {
+	// Only minify text/HTML responses
+	if ( is_admin() ) return $buffer;
+
+	$search = array(
+		'/\>[^\S ]+/s',  // strip whitespace after tags
+		'/[^\S ]+\</s',  // strip whitespace before tags
+		'/(\s)+/s',      // shorten multiple whitespace sequences
+		'/<!--(?!\[if|<!|!>)[\w\W]*?-->/', // remove HTML comments (keep IE conditionals)
+	);
+	$replace = array( '>', '<', '\1', '' );
+	$buffer  = preg_replace( $search, $replace, $buffer );
+	return $buffer;
+}
+
+function fikrtak_start_html_minify() {
+	if ( ! is_admin() && ! is_feed() ) {
+		ob_start( 'fikrtak_minify_html' );
+	}
+}
+add_action( 'get_header', 'fikrtak_start_html_minify' );
 
 /**
  * Custom Post Types

@@ -9,15 +9,19 @@
 <head>
   <meta charset="<?php bloginfo( 'charset' ); ?>" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#61a095" />
+  <?php if ( ! is_front_page() && ! is_singular() ) : ?>
+  <meta name="robots" content="index, follow" />
+  <?php endif; ?>
   <?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
   <?php wp_body_open(); ?>
 
-  <!-- Decorative Top Right Vector -->
+  <!-- Decorative Top Right Vector (non-critical, lazy) -->
   <div class="top-right-decoration">
-     <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/vector1.png" alt="Decoration">
+     <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/vector1.png" alt="" loading="lazy" decoding="async" aria-hidden="true">
   </div>
 
 <?php if ( get_theme_mod( 'fikrtak_enable_preloader', true ) ) : ?>

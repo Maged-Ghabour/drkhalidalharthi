@@ -1,41 +1,120 @@
 # ============================================================
-# ملف .htaccess للحماية الأمنية - ارفع هذا للـ public_html
-# ⚠️ دمج هذا مع ملف .htaccess الموجود، لا تستبدله كاملاً
+# ملف .htaccess للحماية الأمنية + الأداء - public_html
+# ⚠️ دمج هذا مع ملف .htaccess الموجود
 # ============================================================
 
-# --- 1. منع تشغيل PHP داخل مجلد uploads ---
+# ============================================================
+# ===== 🚀 PERFORMANCE SECTION =====
+# ============================================================
+
+# --- GZIP Compression (يقلل حجم الملفات حتى 70%) ---
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/javascript
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE application/json
+    AddOutputFilterByType DEFLATE application/ld+json
+    AddOutputFilterByType DEFLATE image/svg+xml
+    AddOutputFilterByType DEFLATE font/otf
+    AddOutputFilterByType DEFLATE font/ttf
+    AddOutputFilterByType DEFLATE font/woff
+    AddOutputFilterByType DEFLATE font/woff2
+</IfModule>
+
+# --- Browser Caching (يخزن الملفات محلياً عند المستخدم) ---
+<IfModule mod_expires.c>
+    ExpiresActive On
+
+    # HTML - لا تخزين (دائماً محدّث)
+    ExpiresByType text/html                         "access plus 0 seconds"
+
+    # CSS & JavaScript - سنة كاملة
+    ExpiresByType text/css                          "access plus 1 year"
+    ExpiresByType application/javascript            "access plus 1 year"
+    ExpiresByType text/javascript                   "access plus 1 year"
+
+    # صور - سنة كاملة
+    ExpiresByType image/jpg                         "access plus 1 year"
+    ExpiresByType image/jpeg                        "access plus 1 year"
+    ExpiresByType image/gif                         "access plus 1 year"
+    ExpiresByType image/png                         "access plus 1 year"
+    ExpiresByType image/webp                        "access plus 1 year"
+    ExpiresByType image/avif                        "access plus 1 year"
+    ExpiresByType image/svg+xml                     "access plus 1 year"
+    ExpiresByType image/x-icon                      "access plus 1 year"
+    ExpiresByType image/ico                         "access plus 1 year"
+
+    # خطوط - سنة كاملة
+    ExpiresByType font/ttf                          "access plus 1 year"
+    ExpiresByType font/otf                          "access plus 1 year"
+    ExpiresByType font/woff                         "access plus 1 year"
+    ExpiresByType font/woff2                        "access plus 1 year"
+    ExpiresByType application/font-woff             "access plus 1 year"
+    ExpiresByType application/font-woff2            "access plus 1 year"
+
+    # Favicon
+    ExpiresByType image/vnd.microsoft.icon          "access plus 1 month"
+</IfModule>
+
+# --- Cache-Control Headers ---
+<IfModule mod_headers.c>
+    # CSS & JS
+    <FilesMatch "\.(css|js)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+
+    # Images & Fonts
+    <FilesMatch "\.(jpg|jpeg|png|gif|webp|avif|svg|ico|woff|woff2|ttf|otf|eot)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+
+    # HTML - no-cache
+    <FilesMatch "\.(html|htm|php)$">
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
+    </FilesMatch>
+
+    # Keep-Alive لتقليل عدد الاتصالات
+    Header set Connection keep-alive
+</IfModule>
+
+# --- ETag لتحسين التحقق من الكاش ---
+FileETag MTime Size
+
+# ============================================================
+# ===== 🔒 SECURITY SECTION =====
+# ============================================================
+
+# --- منع تشغيل PHP داخل مجلد uploads ---
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteRule ^wp-content/uploads/.*\.php$ - [F,L]
 </IfModule>
 
-# --- 2. منع الوصول المباشر لملفات حساسة ---
-<FilesMatch "^(wp-config\.php|php\.ini|\.htpasswd|readme\.html|license\.txt|wp-cron\.php|xmlrpc\.php)$">
+# --- منع الوصول المباشر لملفات حساسة ---
+<FilesMatch "^(wp-config\.php|php\.ini|\.htpasswd|readme\.html|license\.txt)$">
     Order Allow,Deny
     Deny from all
 </FilesMatch>
 
-# --- 3. منع تصفح مجلدات الموقع (Directory Listing) ---
+# --- منع تصفح مجلدات الموقع (Directory Listing) ---
 Options -Indexes
 
-# --- 4. منع تنفيذ PHP في مجلد uploads ---
-<Directory "/home/u389194565/domains/drkhalidalharthi.com/public_html/wp-content/uploads">
-    <FilesMatch "\.php$">
-        Order Deny,Allow
-        Deny from All
-    </FilesMatch>
-</Directory>
-
-# --- 5. حظر الـ xmlrpc.php (يُستغل في هجمات DDoS وBrute Force) ---
+# --- حظر الـ xmlrpc.php ---
 <Files xmlrpc.php>
     Order Deny,Allow
     Deny from all
 </Files>
 
-# --- 6. إخفاء معلومات الخادم ---
-ServerSignature Off
-
-# --- 7. منع تحميل الموقع داخل iframe ---
+# --- Security Headers ---
 <IfModule mod_headers.c>
     Header always set X-Frame-Options "SAMEORIGIN"
     Header always set X-Content-Type-Options "nosniff"
@@ -43,20 +122,23 @@ ServerSignature Off
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
 </IfModule>
 
-# --- 8. منع قراءة ملف wp-config.php ---
+# --- منع قراءة ملف wp-config.php ---
 <files wp-config.php>
     Order allow,deny
     Deny from all
 </files>
 
-# --- 9. حظر User-Agents المشبوهة (بوتات الاختراق الشائعة) ---
+# --- إخفاء معلومات الخادم ---
+ServerSignature Off
+
+# --- حظر بوتات الاختراق الشائعة ---
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteCond %{HTTP_USER_AGENT} (havij|acunetix|nikto|sqlmap|nessus|openvas|nmap) [NC]
 RewriteRule .* - [F,L]
 </IfModule>
 
-# --- 10. حظر محاولات SQL Injection من URL ---
+# --- حظر محاولات SQL Injection من URL ---
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteCond %{QUERY_STRING} (union.*select|insert.*into|drop.*table|select.*from|exec\(|eval\() [NC]
