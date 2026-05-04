@@ -758,3 +758,125 @@ function fikrtak_customizer_css() {
 	}
 }
 add_action( 'wp_head', 'fikrtak_customizer_css' );
+
+/**
+ * =============================================
+ * SECURITY HARDENING - حماية الموقع من الاختراق
+ * =============================================
+ */
+
+/**
+ * 1. إضافة Security Headers لكل الصفحات
+ */
+function fikrtak_security_headers() {
+	if ( ! headers_sent() ) {
+		// منع تحميل الموقع داخل iframe من مواقع خارجية
+		header( 'X-Frame-Options: SAMEORIGIN' );
+		// منع تخمين نوع الملف
+		header( 'X-Content-Type-Options: nosniff' );
+		// تفعيل حماية XSS في المتصفح
+		header( 'X-XSS-Protection: 1; mode=block' );
+		// إخفاء معلومات الإصدار
+		header( 'Referrer-Policy: strict-origin-when-cross-origin' );
+	}
+}
+add_action( 'send_headers', 'fikrtak_security_headers' );
+
+/**
+ * 2. إخفاء إصدار WordPress من الـ HTML
+ */
+remove_action( 'wp_head', 'wp_generator' );
+add_filter( 'the_generator', '__return_empty_string' );
+
+/**
+ * 3. إخفاء أرقام الإصدار من CSS و JS
+ */
+function fikrtak_remove_version_from_assets( $src ) {
+	if ( strpos( $src, '?ver=' ) ) {
+		$src = remove_query_arg( 'ver', $src );
+	}
+	return $src;
+}
+add_filter( 'style_loader_src',  'fikrtak_remove_version_from_assets' );
+add_filter( 'script_loader_src', 'fikrtak_remove_version_from_assets' );
+
+/**
+ * 4. منع تعداد المستخدمين (User Enumeration)
+ *    يمنع /?author=1 من الكشف عن أسماء المستخدمين
+ */
+function fikrtak_block_user_enumeration() {
+	if ( ! is_admin() && isset( $_GET['author'] ) ) {
+		wp_redirect( home_url( '/' ), 301 );
+		exit;
+	}
+}
+add_action( 'template_redirect', 'fikrtak_block_user_enumeration' );
+
+/**
+ * 5. حذف X-Pingback من الـ headers (يُستغل في الهجمات)
+ */
+add_filter( 'wp_headers', function( $headers ) {
+	unset( $headers['X-Pingback'] );
+	return $headers;
+} );
+
+/**
+ * 6. منع الوصول لـ REST API للزوار غير المسجلين (اختياري)
+ *    فعّل هذا فقط إذا لم تستخدم REST API عموماً
+ */
+// function fikrtak_restrict_rest_api( $result ) {
+// 	if ( ! empty( $result ) ) return $result;
+// 	if ( ! is_user_logged_in() ) {
+// 		return new WP_Error( 'rest_not_logged_in', 'API متاح للمستخدمين المسجلين فقط.', array( 'status' => 401 ) );
+// 	}
+// 	return $result;
+// }
+// add_filter( 'rest_authentication_errors', 'fikrtak_restrict_rest_api' );
+
+/**
+ * 7. إخفاء رسالة خطأ تسجيل الدخول (لا تعطي تلميحات للهاكر)
+ */
+add_filter( 'login_errors', function() {
+	return 'بيانات الدخول غير صحيحة.';
+} );
+
+/**
+ * 8. الحد من محاولات تسجيل الدخول الفاشلة (Login Throttle)
+ */
+function fikrtak_limit_login_attempts() {
+	$ip        = $_SERVER['REMOTE_ADDR'] ?? '';
+	$transient = 'login_attempts_' . md5( $ip );
+	$attempts  = (int) get_transient( $transient );
+
+	if ( $attempts >= 5 ) {
+		wp_die(
+			'<p style="font-family:sans-serif;text-align:center;padding:40px;">تم تجاوز الحد الأقصى لمحاولات تسجيل الدخول. حاول مرة أخرى بعد 15 دقيقة.</p>',
+			'محظور مؤقتاً',
+			array( 'response' => 429 )
+		);
+	}
+}
+add_action( 'login_init', 'fikrtak_limit_login_attempts' );
+
+function fikrtak_record_failed_login( $username ) {
+	$ip        = $_SERVER['REMOTE_ADDR'] ?? '';
+	$transient = 'login_attempts_' . md5( $ip );
+	$attempts  = (int) get_transient( $transient );
+	set_transient( $transient, $attempts + 1, 15 * MINUTE_IN_SECONDS );
+}
+add_action( 'wp_login_failed', 'fikrtak_record_failed_login' );
+
+function fikrtak_clear_login_attempts( $user_login, $user ) {
+	$ip        = $_SERVER['REMOTE_ADDR'] ?? '';
+	$transient = 'login_attempts_' . md5( $ip );
+	delete_transient( $transient );
+}
+add_action( 'wp_login', 'fikrtak_clear_login_attempts', 10, 2 );
+
+/**
+ * 9. منع تعديل الملفات من لوحة التحكم
+ *    (يمنع الهاكر من تعديل الثيم عبر الأدمن)
+ */
+if ( ! defined( 'DISALLOW_FILE_EDIT' ) ) {
+	define( 'DISALLOW_FILE_EDIT', true );
+}

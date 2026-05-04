@@ -1,0 +1,64 @@
+# ============================================================
+# ملف .htaccess للحماية الأمنية - ارفع هذا للـ public_html
+# ⚠️ دمج هذا مع ملف .htaccess الموجود، لا تستبدله كاملاً
+# ============================================================
+
+# --- 1. منع تشغيل PHP داخل مجلد uploads ---
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule ^wp-content/uploads/.*\.php$ - [F,L]
+</IfModule>
+
+# --- 2. منع الوصول المباشر لملفات حساسة ---
+<FilesMatch "^(wp-config\.php|php\.ini|\.htpasswd|readme\.html|license\.txt|wp-cron\.php|xmlrpc\.php)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# --- 3. منع تصفح مجلدات الموقع (Directory Listing) ---
+Options -Indexes
+
+# --- 4. منع تنفيذ PHP في مجلد uploads ---
+<Directory "/home/u389194565/domains/drkhalidalharthi.com/public_html/wp-content/uploads">
+    <FilesMatch "\.php$">
+        Order Deny,Allow
+        Deny from All
+    </FilesMatch>
+</Directory>
+
+# --- 5. حظر الـ xmlrpc.php (يُستغل في هجمات DDoS وBrute Force) ---
+<Files xmlrpc.php>
+    Order Deny,Allow
+    Deny from all
+</Files>
+
+# --- 6. إخفاء معلومات الخادم ---
+ServerSignature Off
+
+# --- 7. منع تحميل الموقع داخل iframe ---
+<IfModule mod_headers.c>
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# --- 8. منع قراءة ملف wp-config.php ---
+<files wp-config.php>
+    Order allow,deny
+    Deny from all
+</files>
+
+# --- 9. حظر User-Agents المشبوهة (بوتات الاختراق الشائعة) ---
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{HTTP_USER_AGENT} (havij|acunetix|nikto|sqlmap|nessus|openvas|nmap) [NC]
+RewriteRule .* - [F,L]
+</IfModule>
+
+# --- 10. حظر محاولات SQL Injection من URL ---
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{QUERY_STRING} (union.*select|insert.*into|drop.*table|select.*from|exec\(|eval\() [NC]
+RewriteRule .* - [F,L]
+</IfModule>
