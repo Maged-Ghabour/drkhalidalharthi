@@ -81,7 +81,7 @@
           ?>
         </div>
         <div class="footer-col">
-          <h4>سوشيل ميديا</h4>
+          <h4>حسابات التواصل الاجتماعي</h4>
           <ul class="footer-links-with-icon">
             <?php 
             $fb = get_theme_mod('fikrtak_social_facebook');
