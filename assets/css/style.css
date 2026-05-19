@@ -3984,3 +3984,366 @@ button {
     text-align: center;
   }
 }
+
+
+/* ============================================================
+   BONE TUMOR SURGERY PAGE — bt-*
+   ============================================================ */
+
+/* ----- HERO ----- */
+.bt-hero-title {
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.bt-hero-sub {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.9;
+  max-width: 600px;
+  margin: 0 auto 32px;
+}
+
+
+/* ----- ABOUT SECTION ----- */
+.bt-about {
+  padding: 100px 0;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  color: var(--white);
+}
+
+.bt-about-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(22, 52, 48, 0.72);
+  z-index: 1;
+}
+
+.bt-about-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  align-items: start;
+}
+
+/* Stats row at top of text column */
+.bt-about-stats {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.bt-about-stat {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bt-stat-num {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--white);
+  font-family: 'Geist', sans-serif;
+  line-height: 1;
+}
+
+.bt-stat-lbl {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+}
+
+.bt-about-tag {
+  display: block;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+}
+
+.bt-about-title {
+  font-size: clamp(26px, 4vw, 36px);
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+
+.bt-about-desc {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.9;
+  margin-bottom: 12px;
+}
+
+/* Right: Feature icon boxes column */
+.bt-about-features-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.bt-feature-box {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.bt-feature-box:last-child {
+  border-bottom: none;
+}
+
+.bt-feature-icon {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.bt-feature-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.bt-feature-text h4 {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+
+.bt-feature-text p {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.7;
+}
+
+
+/* ----- INDICATIONS (reuses ms-* classes) ----- */
+.bt-indications {
+  padding: 100px 0;
+  background: var(--off-white);
+}
+
+
+/* ----- TREATMENT STAGES — 2x2 Grid ----- */
+.bt-stages {
+  padding: 100px 0;
+  background: var(--teal-light);
+}
+
+.bt-stages-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 70px;
+  align-items: start;
+}
+
+.bt-stages-text {
+  position: sticky;
+  top: 120px;
+}
+
+/* 2x2 grid */
+.bt-stages-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.bt-stage-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px 20px;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.bt-stage-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(97, 160, 149, 0.4);
+}
+
+.bt-stage-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.bt-stage-num {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--teal-dark);
+  color: var(--white);
+  font-size: 18px;
+  font-weight: 800;
+  font-family: 'Geist', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.bt-stage-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.bt-stage-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.bt-stage-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--teal-dark);
+  margin-bottom: 8px;
+}
+
+.bt-stage-desc {
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.7;
+}
+
+
+/* ----- CTA WITH DOCTOR IMAGE ----- */
+.bt-cta {
+  padding: 100px 0;
+  background: var(--white);
+}
+
+.bt-cta-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.bt-cta-img-col {
+  /* inherits hero-img-col styles */
+}
+
+.bt-cta-tag {
+  display: block;
+  font-size: 13px;
+  color: var(--teal);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin-bottom: 14px;
+}
+
+.bt-cta-title {
+  font-size: clamp(26px, 4vw, 40px);
+  font-weight: 800;
+  color: var(--teal-dark);
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+
+.bt-cta-desc {
+  font-size: 15px;
+  color: var(--text2);
+  line-height: 1.9;
+  margin-bottom: 32px;
+}
+
+.bt-cta-btns {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.bt-cta-btn-wa {
+  border-radius: 50px;
+  padding: 14px 32px;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.bt-cta-btn-phone {
+  border-radius: 50px;
+  padding: 14px 32px;
+  font-size: 15px;
+  font-weight: 800;
+  background: var(--teal-light);
+  color: var(--teal-dark);
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.bt-cta-btn-phone:hover {
+  background: var(--teal);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+
+/* ============================================================
+   BONE TUMOR SURGERY — RESPONSIVE
+   ============================================================ */
+@media (max-width: 992px) {
+  .bt-about-inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .bt-stages-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .bt-stages-text {
+    position: static;
+  }
+
+  .bt-cta-inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  .bt-stages-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bt-cta-btns {
+    flex-direction: column;
+  }
+
+  .bt-cta-btn-wa,
+  .bt-cta-btn-phone {
+    width: 100%;
+    text-align: center;
+  }
+}
