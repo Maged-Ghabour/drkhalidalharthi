@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ---------- Scroll Fade-In ---------- */
   const fadeEls = document.querySelectorAll(
     '.hero-content, .hero-img-col, .stats-inner, .service-card, ' +
-    '.article-card, .review-card, .faq-item, .faq-header'
+    '.article-card, .review-card, .faq-item, .faq-header, .fade-in'
   );
   fadeEls.forEach(el => el.classList.add('fade-in'));
 
