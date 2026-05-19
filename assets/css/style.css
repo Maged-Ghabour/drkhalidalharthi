@@ -2327,17 +2327,9 @@ button {
    INNER PAGE — المتابعة بعد جراحة العظام
    ============================================================ */
 
-/* ----- HERO BANNER ----- */
+/* ----- HERO ----- */
 .ip-hero {
-  padding: 40px 0 0;
-  background: var(--white);
-}
-
-.ip-hero-banner {
   position: relative;
-  border-radius: 24px;
-  background-size: cover;
-  background-position: center;
   padding: 80px 24px;
   display: flex;
   flex-direction: column;
@@ -2382,59 +2374,115 @@ button {
 /* ----- WHY SECTION ----- */
 .ip-why {
   padding: 100px 0;
-  background: var(--white);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  color: var(--white);
+}
+
+.ip-why-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(58, 128, 114, 0.85); /* Dark teal overlay */
+  z-index: 1;
 }
 
 .ip-why-inner {
   display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: 80px;
-  align-items: start;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.ip-why-text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  order: 2; /* Move to the left in LTR, which makes it Right in RTL */
+}
+
+.ip-why-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  order: 1;
+}
+
+.ip-why-small-title {
+  font-size: 14px;
+  color: rgba(255,255,255,0.8);
+  font-weight: 600;
 }
 
 .ip-why-title {
-  font-size: clamp(26px, 3.5vw, 40px);
-  font-weight: 700;
-  color: var(--text-header);
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 800;
+  color: var(--white);
   line-height: 1.4;
-  margin-bottom: 20px;
+  margin-bottom: 8px;
 }
 
 .ip-why-desc {
-  font-size: 15px;
-  color: var(--text2);
+  font-size: 16px;
+  color: rgba(255,255,255,0.9);
   line-height: 1.9;
+  margin-bottom: 20px;
 }
 
-.ip-why-cards {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+.ip-why-extra-box {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 24px;
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--white);
 }
 
 .ip-why-card {
-  background: var(--off-white);
-  border-radius: var(--radius);
-  padding: 28px 28px 28px 24px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 28px 24px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  border: 1px solid var(--border);
+  gap: 16px;
   transition: var(--transition);
+  color: var(--white);
+}
+
+.ip-why-card.full-width {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.ip-why-card.full-width .ip-why-card-icon {
+  order: 2; /* Keep icon on the right end for Arabic RTL context */
+}
+
+.ip-why-card.half-width {
+  grid-column: span 1;
 }
 
 .ip-why-card:hover {
-  border-color: var(--teal);
-  box-shadow: var(--shadow-md);
-  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-4px);
 }
 
 .ip-why-card-icon {
   width: 52px;
   height: 52px;
   border-radius: 14px;
-  background: var(--teal-light);
-  color: var(--teal-dark);
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--white);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2442,15 +2490,16 @@ button {
 }
 
 .ip-why-card-title {
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 800;
-  color: var(--text-header);
+  color: var(--white);
+  margin-bottom: 6px;
 }
 
 .ip-why-card-desc {
   font-size: 14px;
-  color: var(--text2);
-  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.7;
 }
 
 
@@ -2700,6 +2749,14 @@ button {
     gap: 40px;
   }
 
+  .ip-why-text {
+    order: 1; /* Move text above cards */
+  }
+
+  .ip-why-cards-grid {
+    order: 2;
+  }
+
   .ip-steps-inner {
     grid-template-columns: 1fr;
     gap: 60px;
@@ -2722,12 +2779,7 @@ button {
 
 @media (max-width: 768px) {
   .ip-hero {
-    padding: 30px 0 0;
-  }
-
-  .ip-hero-banner {
     padding: 60px 20px;
-    border-radius: 16px;
   }
 
   .ip-hero-title {
@@ -2740,6 +2792,23 @@ button {
 
   .ip-why {
     padding: 60px 0;
+  }
+
+  .ip-why-cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ip-why-card.half-width {
+    grid-column: 1 / -1;
+  }
+
+  .ip-why-card.full-width {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .ip-why-card.full-width .ip-why-card-icon {
+    order: -1; /* Move icon back to top on mobile */
   }
 
   .ip-services {

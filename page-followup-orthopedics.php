@@ -10,23 +10,21 @@ get_header();
 ?>
 
 <!-- ===== INNER PAGE HERO ===== -->
-<section class="ip-hero" id="ip-hero-followup">
+<section class="ip-hero" id="ip-hero-followup" style="background-image: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/followupBG.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
   <div class="container">
-    <div class="ip-hero-banner" style="background-image: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/followupBG.png');">
-      <!-- Content -->
-      <div class="ip-hero-content fade-in">
-        <h1 class="ip-hero-title">المتابعة بعد جراحة العظام</h1>
-        <p class="ip-hero-sub">
-          رعاية دقيقة بعد العملية لضمان التعافي الآمن واستعادة الحركة<br>بأفضل شكل ممكن، بخطوات مدروسة وتحت إشراف استشاري خبير.
-        </p>
-        <div class="ip-hero-btns">
-          <?php $wa = get_theme_mod('fikrtak_contact_whatsapp', '966500000000'); ?>
-          <a href="https://wa.me/<?php echo esc_attr($wa); ?>" class="btn btn-primary btn-lg" id="ipHeroCtaBtn">
-            احجز موعد المتابعة الآن
-          </a>
-        </div>
+    <!-- Content -->
+    <div class="ip-hero-content fade-in">
+      <h1 class="ip-hero-title">المتابعة بعد جراحة العظام</h1>
+      <p class="ip-hero-sub">
+        رعاية دقيقة بعد العملية لضمان التعافي الآمن واستعادة الحركة<br>بأفضل شكل ممكن، بخطوات مدروسة وتحت إشراف استشاري خبير.
+      </p>
+      <div class="ip-hero-btns">
+        <?php $wa = get_theme_mod('fikrtak_contact_whatsapp', '966500000000'); ?>
+        <a href="https://wa.me/<?php echo esc_attr($wa); ?>" class="btn btn-primary btn-lg" id="ipHeroCtaBtn">
+          احجز موعد المتابعة الآن
+        </a>
       </div>
-    </div><!-- .ip-hero-banner -->
+    </div>
   </div><!-- .container -->
 </section>
 <!-- ===== END INNER PAGE HERO ===== -->
@@ -81,61 +79,57 @@ get_header();
 
 
 <!-- ===== WHY SECTION ===== -->
-<section class="ip-why" id="ip-why">
-  <div class="container">
+<section class="ip-why fade-in" id="ip-why" style="background-image: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/Frame%202147239726.png');">
+  <div class="ip-why-overlay"></div>
+  <div class="container" style="position: relative; z-index: 2;">
 
     <div class="ip-why-inner">
-      <!-- Text Column -->
-      <div class="ip-why-text fade-in">
-        <span class="section-tag">
-          <span class="dot-teal"></span>
-          أبرز ما نقدمه
-        </span>
-        <h2 class="ip-why-title">لماذا تعد المتابعة بعد<br>الجراحة خطوة مهمة</h2>
+      <!-- Right: Text Column -->
+      <div class="ip-why-text">
+        <span class="ip-why-small-title">أهمية المتابعة</span>
+        <h2 class="ip-why-title">لماذا تُعد المتابعة بعد<br>الجراحة خطوة مهمة</h2>
         <p class="ip-why-desc">
-          يُعدّ الالتزام بالمتابعة الطبية بعد الجراحة جزءاً لا يتجزأ من مسيرة الشفاء.
-          فهي تُمكّن الطبيب من رصد التحسن ومعالجة أي مشكلة في وقتها قبل أن تتفاقم،
-          مما يضمن لك عودة آمنة إلى حياتك الطبيعية.
+          تُعد متابعة ما بعد العملية جزءًا جوهريًا من نجاح جراحات العظام، حيث تساعد على مراقبة التعافي والتأكد من التئام الحالة بشكل سليم.
         </p>
+        <div class="ip-why-extra-box">
+          تشمل المتابعة الطبية إجراءات مهمة مثل تغيير الضماد بعد العملية وتقييم استجابة المريض للعلاج — لضمان أفضل نتائج ممكنة.
+        </div>
       </div>
 
-      <!-- Cards Column -->
-      <div class="ip-why-cards">
-        <div class="ip-why-card fade-in">
+      <!-- Left: Cards Column -->
+      <div class="ip-why-cards-grid">
+        <div class="ip-why-card full-width">
           <div class="ip-why-card-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
             </svg>
           </div>
-          <h3 class="ip-why-card-title">الوقاية من المضاعفات</h3>
-          <p class="ip-why-card-desc">الكشف المبكر عن أي مؤشرات للتعفن أو الجلطات أو ضعف التئام الجرح وتداركها فوراً.
-          </p>
+          <div class="ip-why-card-content">
+            <h3 class="ip-why-card-title">الوقاية من المضاعفات</h3>
+            <p class="ip-why-card-desc">الكشف المبكر عن أي مشكلات تمنع تطورها قبل أن تؤثر على التعافي.</p>
+          </div>
         </div>
 
-        <div class="ip-why-card fade-in">
+        <div class="ip-why-card half-width">
           <div class="ip-why-card-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
             </svg>
           </div>
-          <h3 class="ip-why-card-title">مراقبة التقدم</h3>
-          <p class="ip-why-card-desc">متابعة مستمرة لمعدل الشفاء وتعديل خطة العلاج بحسب استجابة جسمك وتطور حالتك.</p>
+          <h3 class="ip-why-card-title">متابعة التقدم</h3>
+          <p class="ip-why-card-desc">قياس مستمر لمراحل الشفاء وتعديل الخطة حسب التطور.</p>
         </div>
 
-        <div class="ip-why-card fade-in">
+        <div class="ip-why-card half-width">
           <div class="ip-why-card-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path
-                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
             </svg>
           </div>
           <h3 class="ip-why-card-title">إدارة الألم</h3>
-          <p class="ip-why-card-desc">ضبط جرعات المسكنات وتقديم توصيات طبية دقيقة لتخفيف الألم والتعامل معه بفاعلية.</p>
+          <p class="ip-why-card-desc">تقييم دقيق للألم وضبط الأدوية لراحة المريض طوال الفترة.</p>
         </div>
-      </div><!-- .ip-why-cards -->
+      </div>
     </div><!-- .ip-why-inner -->
 
   </div><!-- .container -->
