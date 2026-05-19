@@ -10,21 +10,23 @@ get_header();
 ?>
 
 <!-- ===== INNER PAGE HERO ===== -->
-<section class="ip-hero" id="ip-hero-followup" style="background-image: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/followupBG.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+<section class="ip-hero" id="ip-hero-followup">
   <div class="container">
-    <!-- Content -->
-    <div class="ip-hero-content fade-in">
-      <h1 class="ip-hero-title">المتابعة بعد جراحة العظام</h1>
-      <p class="ip-hero-sub">
-        رعاية دقيقة بعد العملية لضمان التعافي الآمن واستعادة الحركة<br>بأفضل شكل ممكن، بخطوات مدروسة وتحت إشراف استشاري خبير.
-      </p>
-      <div class="ip-hero-btns">
-        <?php $wa = get_theme_mod('fikrtak_contact_whatsapp', '966500000000'); ?>
-        <a href="https://wa.me/<?php echo esc_attr($wa); ?>" class="btn btn-primary btn-lg" id="ipHeroCtaBtn">
-          احجز موعد المتابعة الآن
-        </a>
+    <div class="ip-hero-banner" style="background-image: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/followupBG.png');">
+      <!-- Content -->
+      <div class="ip-hero-content fade-in">
+        <h1 class="ip-hero-title">المتابعة بعد جراحة العظام</h1>
+        <p class="ip-hero-sub">
+          رعاية دقيقة بعد العملية لضمان التعافي الآمن واستعادة الحركة<br>بأفضل شكل ممكن، بخطوات مدروسة وتحت إشراف استشاري خبير.
+        </p>
+        <div class="ip-hero-btns">
+          <?php $wa = get_theme_mod('fikrtak_contact_whatsapp', '966500000000'); ?>
+          <a href="https://wa.me/<?php echo esc_attr($wa); ?>" class="btn btn-primary btn-lg" id="ipHeroCtaBtn">
+            احجز موعد المتابعة الآن
+          </a>
+        </div>
       </div>
-    </div>
+    </div><!-- .ip-hero-banner -->
   </div><!-- .container -->
 </section>
 <!-- ===== END INNER PAGE HERO ===== -->
@@ -138,59 +140,67 @@ get_header();
 
 
 <!-- ===== SERVICES SECTION ===== -->
-<section class="ip-services" id="ip-services">
+<section class="ip-services fade-in" id="ip-services">
   <div class="container">
-
-    <div class="ip-services-header fade-in">
-      <span class="section-tag">
-        <span class="dot-teal"></span>
-        ما نقدمه لك
-      </span>
-      <h2 class="section-title">ما تشمل المتابعة<br>بعد الجراحة؟</h2>
-    </div>
-
-    <div class="ip-services-grid">
-      <div class="ip-service-card fade-in">
-        <span class="ip-service-num">01</span>
-        <h3 class="ip-service-title">تقييم الشق الجراحي والعظام</h3>
-        <p class="ip-service-desc">فحص دقيق للجرح وحالة العظم المجبور للتحقق من سير الالتئام بشكل سليم وخالٍ من العوارض.
-        </p>
+    <div class="ip-services-wrapper">
+      
+      <!-- Top Header Area -->
+      <div class="ip-services-top">
+        <div class="ip-services-top-right">
+          <span class="ip-services-small-title">ماذا نقدم؟</span>
+          <h2 class="ip-services-title">ماذا تشمل المتابعة<br>بعد الجراحة؟</h2>
+        </div>
+        <div class="ip-services-top-left">
+          <p class="ip-services-desc">
+            برنامج متابعة شامل ومنظّم يغطي كل مراحل التعافي من اليوم الأول بعد العملية حتى العودة الكاملة للحياة الطبيعية.
+          </p>
+        </div>
       </div>
 
-      <div class="ip-service-card fade-in">
-        <span class="ip-service-num">02</span>
-        <h3 class="ip-service-title">متابعة الألم والتورم</h3>
-        <p class="ip-service-desc">تقييم مستوى الألم والتورم بعد الجراحة وضبط العلاج الدوائي لضمان راحة المريض وتعافيه.
-        </p>
-      </div>
+      <!-- Grid Area -->
+      <div class="ip-services-table">
+        <!-- Item 1 -->
+        <div class="ip-services-cell">
+          <span class="ip-services-num">1</span>
+          <h3 class="ip-services-cell-title">تقييم التئام الجرح والعظام</h3>
+          <p class="ip-services-cell-desc">متابعة التئام موضع الجراحة والتأكد من استقرار العظام بالشكل الصحيح.</p>
+        </div>
+        <!-- Item 2 -->
+        <div class="ip-services-cell">
+          <span class="ip-services-num">2</span>
+          <h3 class="ip-services-cell-title">متابعة الألم والتورم</h3>
+          <p class="ip-services-cell-desc">مراقبة مستوى الألم والتورم بعد الجراحة وتحديد ما إذا كانت الحالة تسير بشكل طبيعي.</p>
+        </div>
+        <!-- Item 3 -->
+        <div class="ip-services-cell">
+          <span class="ip-services-num">3</span>
+          <h3 class="ip-services-cell-title">مراجعة الأشعة والتقارير</h3>
+          <p class="ip-services-cell-desc">الاطلاع على نتائج الأشعة والفحوصات لمتابعة تقدم الشفاء بدقة.</p>
+        </div>
+        <!-- Item 4 -->
+        <div class="ip-services-cell">
+          <span class="ip-services-num">4</span>
+          <h3 class="ip-services-cell-title">تعديل خطة العلاج الطبيعي</h3>
+          <p class="ip-services-cell-desc">تحديث البرنامج العلاجي حسب تطور الحالة واحتياج المريض خلال التعافي.</p>
+        </div>
+        <!-- Item 5 -->
+        <div class="ip-services-cell">
+          <span class="ip-services-num">5</span>
+          <h3 class="ip-services-cell-title">استعادة الحركة والوظيفة</h3>
+          <p class="ip-services-cell-desc">متابعة قدرة المريض على الحركة التدريجية والعودة لممارسة الأنشطة اليومية.</p>
+        </div>
+        <!-- Item 6 CTA -->
+        <div class="ip-services-cell cta-cell">
+          <h3 class="ip-services-cell-title">هل أنت مستعد للبدء؟</h3>
+          <p class="ip-services-cell-desc">احجز موعد المتابعة الآن وابدأ رحلة تعافيك بثقة.</p>
+          <?php $wa = get_theme_mod('fikrtak_contact_whatsapp', '966500000000'); ?>
+          <a href="https://wa.me/<?php echo esc_attr($wa); ?>" class="btn btn-primary ip-services-btn">
+            احجز الآن
+          </a>
+        </div>
+      </div><!-- .ip-services-table -->
 
-      <div class="ip-service-card fade-in">
-        <span class="ip-service-num">03</span>
-        <h3 class="ip-service-title">مراجعة الأشعة والتقارير</h3>
-        <p class="ip-service-desc">تحليل نتائج الأشعة والفحوصات الدورية لمقارنة التطور ورصد أي تغييرات تستوجب التدخل.
-        </p>
-      </div>
-
-      <div class="ip-service-card fade-in">
-        <span class="ip-service-num">04</span>
-        <h3 class="ip-service-title">تحديد خطة التأهيل والوظيفة</h3>
-        <p class="ip-service-desc">وضع برنامج إعادة تأهيل متكامل يضمن عودة الوظيفة الكاملة للمنطقة المُجراة والعضلات
-          المحيطة.</p>
-      </div>
-    </div><!-- .ip-services-grid -->
-
-    <div class="ip-services-cta fade-in">
-      <?php $wa2 = get_theme_mod('fikrtak_contact_whatsapp', '966500000000'); ?>
-      <a href="https://wa.me/<?php echo esc_attr($wa2); ?>" class="btn btn-primary btn-lg" id="ipServiceCtaBtn">
-        احجز الآن
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <line x1="5" y1="12" x2="19" y2="12" />
-          <polyline points="12 5 19 12 12 19" />
-        </svg>
-      </a>
-    </div>
-
+    </div><!-- .ip-services-wrapper -->
   </div><!-- .container -->
 </section>
 <!-- ===== END SERVICES SECTION ===== -->
