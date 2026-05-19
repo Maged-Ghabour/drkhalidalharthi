@@ -1253,7 +1253,7 @@ button {
 .faq-item {
   border-radius: 12px;
   overflow: hidden;
-  background: var(--teal);
+  background: var(--teal-dark);
   transition: background 0.3s ease;
 }
 
@@ -1292,7 +1292,7 @@ button {
 }
 
 .faq-q[aria-expanded="true"] {
-  color: var(--text);
+  color: var(--teal-dark);
   padding-bottom: 8px;
 }
 
@@ -2645,71 +2645,9 @@ button {
   grid-template-columns: 1fr 1.2fr;
   gap: 80px;
   align-items: center;
-}
-
-/* Doctor image column */
-.ip-steps-img-wrapper {
-  position: relative;
+  background: #e6f1ec;
   border-radius: 24px;
-  overflow: visible;
-}
-
-.ip-steps-img {
-  width: 100%;
-  border-radius: 24px;
-  object-fit: cover;
-  aspect-ratio: 3/4;
-  display: block;
-  box-shadow: var(--shadow-md);
-}
-
-/* Floating stats badge on the image */
-.ip-steps-badge {
-  position: absolute;
-  bottom: -20px;
-  left: -20px;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 16px 20px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.10);
-  animation: floatBadge 3s ease-in-out infinite alternate;
-}
-
-.ip-steps-badge-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: var(--teal-light);
-  color: var(--teal-dark);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.ip-steps-badge-text {
-  display: flex;
-  flex-direction: column;
-}
-
-.ip-steps-badge-num {
-  font-size: 20px;
-  font-weight: 800;
-  color: var(--text-header);
-  font-family: 'Geist', sans-serif;
-  line-height: 1.1;
-}
-
-.ip-steps-badge-lbl {
-  font-size: 13px;
-  color: var(--text2);
-  font-weight: 600;
+  padding: 48px;
 }
 
 /* Steps content */
@@ -2787,6 +2725,50 @@ button {
   background: var(--off-white);
 }
 
+.ip-faq-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.ip-faq-text-col {
+  text-align: right;
+}
+
+.ip-faq-text-col .faq-sub-centered {
+  text-align: right;
+  color: var(--text);
+  font-weight: 500;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.ip-faq-text-col .faq-title-centered {
+  text-align: right;
+  color: var(--teal);
+  font-weight: 800;
+  margin-bottom: 24px;
+  font-size: clamp(28px, 4vw, 36px);
+}
+
+.ip-faq-desc {
+  color: var(--teal-dark);
+  opacity: 0.7;
+  line-height: 1.8;
+  margin-bottom: 32px;
+  font-size: 15px;
+  max-width: 400px;
+}
+
+.ip-faq-btn {
+  padding: 12px 40px;
+  border-radius: 24px;
+  font-size: 15px;
+  background-color: #61a095;
+  border: none;
+}
+
 
 /* ============================================================
    INNER PAGE RESPONSIVE
@@ -2840,6 +2822,11 @@ button {
   .ip-steps-badge {
     bottom: -16px;
     left: 16px;
+  }
+
+  .ip-faq-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
   }
 }
 
@@ -2907,5 +2894,10 @@ button {
 
   .ip-steps {
     padding: 60px 0;
+  }
+
+  .ip-steps-inner {
+    padding: 32px 20px;
+    border-radius: 16px;
   }
 }

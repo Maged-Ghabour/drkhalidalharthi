@@ -12,12 +12,14 @@ get_header();
 <!-- ===== INNER PAGE HERO ===== -->
 <section class="ip-hero" id="ip-hero-followup">
   <div class="container">
-    <div class="ip-hero-banner" style="background-image: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/followupBG.png');">
+    <div class="ip-hero-banner"
+      style="background-image: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/followupBG.png');">
       <!-- Content -->
       <div class="ip-hero-content fade-in">
         <h1 class="ip-hero-title">المتابعة بعد جراحة العظام</h1>
         <p class="ip-hero-sub">
-          رعاية دقيقة بعد العملية لضمان التعافي الآمن واستعادة الحركة<br>بأفضل شكل ممكن، بخطوات مدروسة وتحت إشراف استشاري خبير.
+          رعاية دقيقة بعد العملية لضمان التعافي الآمن واستعادة الحركة<br>بأفضل شكل ممكن، بخطوات مدروسة وتحت إشراف
+          استشاري خبير.
         </p>
         <div class="ip-hero-btns">
           <?php $wa = get_theme_mod('fikrtak_contact_whatsapp', '966500000000'); ?>
@@ -51,7 +53,8 @@ get_header();
       <!-- Center: CTA Button -->
       <div class="stats-center" style="flex: 0.8; text-align: center;">
         <?php $wa = get_theme_mod('fikrtak_contact_whatsapp', '966500000000'); ?>
-        <a href="https://wa.me/<?php echo esc_attr($wa); ?>" class="btn btn-primary btn-lg" style="white-space: nowrap; font-size: 14px;">
+        <a href="https://wa.me/<?php echo esc_attr($wa); ?>" class="btn btn-primary btn-lg"
+          style="white-space: nowrap; font-size: 14px;">
           احجز موعد متابعة الآن
         </a>
       </div>
@@ -81,57 +84,70 @@ get_header();
 
 
 <!-- ===== WHY SECTION ===== -->
-<section class="ip-why fade-in" id="ip-why" style="background-image: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/Frame%202147239726.png');">
+<section class="ip-why fade-in" id="ip-why"
+  style="background-image: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/Frame%202147239726.png');">
   <div class="ip-why-overlay"></div>
   <div class="container" style="position: relative; z-index: 2;">
 
+
+    <!-- Right: Cards Column -->
+    <div class="ip-why-cards-grid">
+      <div class="ip-why-card full-width">
+        <div class="ip-why-card-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          </svg>
+        </div>
+        <div class="ip-why-card-content">
+          <h3 class="ip-why-card-title">الوقاية من المضاعفات</h3>
+          <p class="ip-why-card-desc">الكشف المبكر عن أي مشكلات تمنع تطورها قبل أن تؤثر على التعافي.</p>
+        </div>
+      </div>
+
+      <div class="ip-why-card half-width">
+        <div class="ip-why-card-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+          </svg>
+        </div>
+        <h3 class="ip-why-card-title">متابعة التقدم</h3>
+        <p class="ip-why-card-desc">قياس مستمر لمراحل الشفاء وتعديل الخطة حسب التطور.</p>
+      </div>
+
+      <div class="ip-why-card half-width">
+        <div class="ip-why-card-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path
+              d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+          </svg>
+        </div>
+        <h3 class="ip-why-card-title">إدارة الألم</h3>
+        <p class="ip-why-card-desc">تقييم دقيق للألم وضبط الأدوية لراحة المريض طوال الفترة.</p>
+      </div>
+    </div>
+
+
+
     <div class="ip-why-inner">
-      <!-- Right: Text Column -->
+      <!-- Left: Text Column -->
       <div class="ip-why-text">
         <span class="ip-why-small-title">أهمية المتابعة</span>
         <h2 class="ip-why-title">لماذا تُعد المتابعة بعد<br>الجراحة خطوة مهمة</h2>
         <p class="ip-why-desc">
-          تُعد متابعة ما بعد العملية جزءًا جوهريًا من نجاح جراحات العظام، حيث تساعد على مراقبة التعافي والتأكد من التئام الحالة بشكل سليم.
+          تُعد متابعة ما بعد العملية جزءًا جوهريًا من نجاح جراحات العظام، حيث تساعد على مراقبة التعافي والتأكد من التئام
+          الحالة بشكل سليم.
         </p>
         <div class="ip-why-extra-box">
-          تشمل المتابعة الطبية إجراءات مهمة مثل تغيير الضماد بعد العملية وتقييم استجابة المريض للعلاج — لضمان أفضل نتائج ممكنة.
+          تشمل المتابعة الطبية إجراءات مهمة مثل تغيير الضماد بعد العملية وتقييم استجابة المريض للعلاج — لضمان أفضل نتائج
+          ممكنة.
         </div>
       </div>
 
-      <!-- Left: Cards Column -->
-      <div class="ip-why-cards-grid">
-        <div class="ip-why-card full-width">
-          <div class="ip-why-card-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-            </svg>
-          </div>
-          <div class="ip-why-card-content">
-            <h3 class="ip-why-card-title">الوقاية من المضاعفات</h3>
-            <p class="ip-why-card-desc">الكشف المبكر عن أي مشكلات تمنع تطورها قبل أن تؤثر على التعافي.</p>
-          </div>
-        </div>
 
-        <div class="ip-why-card half-width">
-          <div class="ip-why-card-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
-            </svg>
-          </div>
-          <h3 class="ip-why-card-title">متابعة التقدم</h3>
-          <p class="ip-why-card-desc">قياس مستمر لمراحل الشفاء وتعديل الخطة حسب التطور.</p>
-        </div>
 
-        <div class="ip-why-card half-width">
-          <div class="ip-why-card-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-            </svg>
-          </div>
-          <h3 class="ip-why-card-title">إدارة الألم</h3>
-          <p class="ip-why-card-desc">تقييم دقيق للألم وضبط الأدوية لراحة المريض طوال الفترة.</p>
-        </div>
-      </div>
     </div><!-- .ip-why-inner -->
 
   </div><!-- .container -->
@@ -143,7 +159,7 @@ get_header();
 <section class="ip-services fade-in" id="ip-services">
   <div class="container">
     <div class="ip-services-wrapper">
-      
+
       <!-- Top Header Area -->
       <div class="ip-services-top">
         <div class="ip-services-top-right">
@@ -152,7 +168,8 @@ get_header();
         </div>
         <div class="ip-services-top-left">
           <p class="ip-services-desc">
-            برنامج متابعة شامل ومنظّم يغطي كل مراحل التعافي من اليوم الأول بعد العملية حتى العودة الكاملة للحياة الطبيعية.
+            برنامج متابعة شامل ومنظّم يغطي كل مراحل التعافي من اليوم الأول بعد العملية حتى العودة الكاملة للحياة
+            الطبيعية.
           </p>
         </div>
       </div>
@@ -169,7 +186,8 @@ get_header();
         <div class="ip-services-cell">
           <span class="ip-services-num">2</span>
           <h3 class="ip-services-cell-title">متابعة الألم والتورم</h3>
-          <p class="ip-services-cell-desc">مراقبة مستوى الألم والتورم بعد الجراحة وتحديد ما إذا كانت الحالة تسير بشكل طبيعي.</p>
+          <p class="ip-services-cell-desc">مراقبة مستوى الألم والتورم بعد الجراحة وتحديد ما إذا كانت الحالة تسير بشكل
+            طبيعي.</p>
         </div>
         <!-- Item 3 -->
         <div class="ip-services-cell">
@@ -212,67 +230,69 @@ get_header();
 
     <div class="ip-steps-inner">
 
-      <!-- Doctor Image -->
-      <div class="ip-steps-img-col fade-in">
-        <div class="ip-steps-img-wrapper">
-          <?php
-          $steps_img = get_theme_mod('fikrtak_followup_doctor_img');
-          if ($steps_img) {
-            echo '<img src="' . esc_url($steps_img) . '" alt="د. خالد الحارثي" class="ip-steps-img" loading="lazy" />';
-          } else {
-            echo '<img src="' . esc_url(get_template_directory_uri()) . '/assets/images/doctor.png" alt="د. خالد الحارثي" class="ip-steps-img" loading="lazy" />';
-          }
-          ?>
-          <!-- Floating badge -->
-          <div class="ip-steps-badge">
-            <div class="ip-steps-badge-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                <polyline points="22 4 12 14.01 9 11.01" />
-              </svg>
-            </div>
-            <div class="ip-steps-badge-text">
-              <span class="ip-steps-badge-num">+1,200</span>
-              <span class="ip-steps-badge-lbl">عملية ناجحة</span>
+      <!-- Doctor Image (Copied from front-page hero-img-col) -->
+      <div class="hero-img-col fade-in">
+        <div class="hero-img-wrapper">
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/hero pic.png" alt="د. خالد الحارثي"
+            class="hero-img" />
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/hero1vector.png" alt="vector"
+            class="hero-floating-badge badge-1" />
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/hero2vector.png" alt="vector"
+            class="hero-floating-badge badge-2" />
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/hero3vector.png" alt="vector"
+            class="hero-floating-badge badge-3" />
+          <div class="hero-floating-badge badge-4">
+            <div class="info-card">
+              <div class="info-row">
+                <div class="info-icon-wrapper"><img
+                    src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/Icon Container.png" alt="icon">
+                </div>
+                <div class="info-text">
+                  <span class="info-title">مستشفي السعودي الالماني</span>
+                </div>
+              </div>
+              <div class="info-row bg-white">
+                <div class="info-icon-wrapper"><img
+                    src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/icon2.png" alt="icon"></div>
+                <div class="info-text">
+                  <span class="info-title">د - خالد سليم الحارثي </span>
+                  <span class="info-sub">طب جامعه ام القري البورد <br>السعودي بجراحه العظام</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div><!-- .ip-steps-img-col -->
+      </div><!-- .hero-img-col -->
 
       <!-- Steps Content -->
       <div class="ip-steps-content fade-in">
-        <span class="section-tag" style="justify-content: flex-start;">
-          <span class="dot-teal"></span>
-          كيف نساعدك
-        </span>
-        <h2 class="ip-steps-title">خطوات المتابعة مع<br>د. خالد الحارثي</h2>
+        <span class="ip-services-small-title" style="margin-bottom: 12px; display: block;">كيف تتم المتابعة؟</span>
+        <h2 class="ip-steps-title" style="font-size: clamp(28px, 4vw, 36px); font-weight: 800; color: var(--teal-dark); line-height: 1.3; margin-bottom: 40px;">
+          خطوات المتابعة مع<br>د. خالد الحارثي
+        </h2>
 
         <div class="ip-steps-list">
           <div class="ip-step-item">
             <div class="ip-step-num">1</div>
             <div class="ip-step-body">
-              <h3 class="ip-step-title">التسجيل في المنصة المناسبة</h3>
-              <p class="ip-step-desc">تواصل معنا عبر واتساب أو منصة حجز المواعيد لتحديد موعد المتابعة المناسب لك سواء
-                حضورياً أو عن بُعد.</p>
+              <h3 class="ip-step-title">التقييم بعد العملية مباشرة</h3>
+              <p class="ip-step-desc">تبدأ المتابعة بفحص الحالة بعد الجراحة مباشرة للتأكد من استقرار موضع التدخل الجراحي وسلامة التعافي الأولي.</p>
             </div>
           </div>
 
           <div class="ip-step-item">
             <div class="ip-step-num">2</div>
             <div class="ip-step-body">
-              <h3 class="ip-step-title">فحوصات دورية منتظمة</h3>
-              <p class="ip-step-desc">يحدد الدكتور خالد جدول المتابعة المثالي بحسب نوع الجراحة وحالتك الصحية لضمان أفضل
-                نتائج.</p>
+              <h3 class="ip-step-title">مراجعات دورية منتظمة</h3>
+              <p class="ip-step-desc">يتم تحديد زيارات متابعة منتظمة لمراقبة التقدم الصحي، وتقييم الحالة بشكل مستمر خلال فترة الشفاء.</p>
             </div>
           </div>
 
           <div class="ip-step-item">
             <div class="ip-step-num">3</div>
             <div class="ip-step-body">
-              <h3 class="ip-step-title">التقرير الإلكتروني والتواصل</h3>
-              <p class="ip-step-desc">بعد كل جلسة متابعة ستحصل على تقرير طبي واضح وتوصيات مفصلة مع إمكانية التواصل
-                المستمر عند الحاجة.</p>
+              <h3 class="ip-step-title">التقرير النهائي والتوصيات</h3>
+              <p class="ip-step-desc">في نهاية فترة المتابعة يُقدم تقرير شامل عن نتائج التعافي مع توصيات للحفاظ على الصحة على المدى البعيد.</p>
             </div>
           </div>
         </div><!-- .ip-steps-list -->
@@ -290,17 +310,27 @@ get_header();
 <section class="ip-faq faq" id="ip-faq">
   <div class="container">
 
-    <div class="faq-inner">
-      <div class="faq-header-centered fade-in">
-        <p class="faq-sub-centered">أسئلة شائعة</p>
-        <h2 class="faq-title-centered">إجابات لأكثر الأسئلة شيوعاً</h2>
+    <div class="ip-faq-inner">
+      
+      <!-- Right: Title & CTA -->
+      <div class="ip-faq-text-col">
+        <p class="faq-sub-centered">الأسئلة الشائعة</p>
+        <h2 class="faq-title-centered">إجابات لأكثر الأسئلة<br>شيوعاً</h2>
+        <p class="ip-faq-desc">
+          نجيب على أبرز استفساراتك حول فترة التعافي وما يمكن توقعه خلال جلسات المتابعة.
+        </p>
+        <?php $wa = get_theme_mod('fikrtak_contact_whatsapp', '966500000000'); ?>
+        <a href="https://wa.me/<?php echo esc_attr($wa); ?>" class="btn btn-primary ip-faq-btn">
+          احجز الآن
+        </a>
       </div>
 
+      <!-- Left: FAQ Accordion -->
       <div class="faq-list" id="ipFaqList">
 
         <div class="faq-item" id="ipFaqItem1">
           <button class="faq-q" aria-expanded="false" aria-controls="ipFaqA1" id="ipFaqQ1">
-            كم تستغرق فترة المتابعة بعد العملية؟
+            <span class="faq-q-text">كم تستغرق فترة المتابعة بعد العملية؟</span>
             <span class="faq-icon">
               <svg class="icon-down" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                 stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -313,14 +343,13 @@ get_header();
             </span>
           </button>
           <div class="faq-a" id="ipFaqA1" role="region" aria-labelledby="ipFaqQ1">
-            <p>تتفاوت فترة المتابعة بحسب نوع العملية وحالة المريض، وعادةً تمتد من 3 أشهر إلى سنة كاملة. يحدد الدكتور
-              خالد الجدول الزمني المناسب لك بناءً على تقييم حالتك بشكل فردي.</p>
+            <p>تعتمد المدة على نوع العملية وحالة المريض، وتتراوح عادة بين أسابيع إلى بضعة أشهر لضمان التئام العظام واستعادة الوظائف الحركية بالكامل.</p>
           </div>
         </div>
 
         <div class="faq-item" id="ipFaqItem2">
           <button class="faq-q" aria-expanded="false" aria-controls="ipFaqA2" id="ipFaqQ2">
-            هل يمكنني المتابعة عن بُعد دون الحضور الشخصي؟
+            <span class="faq-q-text">متى يمكنني البدء في العلاج الطبيعي؟</span>
             <span class="faq-icon">
               <svg class="icon-down" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                 stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -333,14 +362,13 @@ get_header();
             </span>
           </button>
           <div class="faq-a" id="ipFaqA2" role="region" aria-labelledby="ipFaqQ2">
-            <p>نعم، يتيح الدكتور خالد إمكانية الاستشارة الطبية عن بُعد لبعض حالات المتابعة، مع التأكيد على أهمية الحضور
-              الشخصي في المواعيد الرئيسية لإجراء الفحص السريري والأشعة.</p>
+            <p>يتم تحديد وقت البدء بناءً على نوع العملية وتوجيهات الطبيب المعالج، وغالباً ما يبدأ العلاج الطبيعي بشكل مبدئي بعد أيام من الجراحة.</p>
           </div>
         </div>
 
         <div class="faq-item" id="ipFaqItem3">
           <button class="faq-q" aria-expanded="false" aria-controls="ipFaqA3" id="ipFaqQ3">
-            كيف يمكنني تحديد موعد المتابعة؟
+            <span class="faq-q-text">كيف يمكنني التحكم في الألم خلال فترة التعافي؟</span>
             <span class="faq-icon">
               <svg class="icon-down" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                 stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
