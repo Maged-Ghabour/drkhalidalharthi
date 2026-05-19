@@ -2404,7 +2404,7 @@ button {
 
 .ip-why-inner {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
+  grid-template-columns: 1fr 1.2fr;
   gap: 60px;
   align-items: center;
 }
@@ -2413,15 +2413,12 @@ button {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  order: 2;
-  /* Move to the left in LTR, which makes it Right in RTL */
 }
 
 .ip-why-cards-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
-  order: 1;
 }
 
 .ip-why-small-title {
@@ -2495,15 +2492,20 @@ button {
 }
 
 .ip-why-card-icon {
-  width: 52px;
-  height: 52px;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.2);
-  color: var(--white);
+  width: 56px;
+  height: 56px;
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  align-self: flex-end; /* Align icon to the left in RTL */
+}
+
+.ip-why-card-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .ip-why-card-title {
@@ -2899,5 +2901,667 @@ button {
   .ip-steps-inner {
     padding: 32px 20px;
     border-radius: 16px;
+  }
+}
+
+
+/* ============================================================
+   MICRO SURGERIES PAGE — ms-*
+   ============================================================ */
+
+/* ----- HERO ----- */
+.ms-hero-banner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 24px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  padding: 80px 40px 0;
+  min-height: 420px;
+}
+
+.ms-hero-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(26, 60, 55, 0.62);
+  z-index: 0;
+}
+
+.ms-hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.ms-hero-title {
+  font-size: clamp(30px, 5vw, 52px);
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.ms-hero-sub {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.9;
+  max-width: 600px;
+  margin: 0 auto 32px;
+}
+
+/* Stats row inside hero */
+.ms-hero-stats {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  width: 100%;
+  margin-top: 48px;
+  padding: 24px 40px;
+  border-radius: 0 0 24px 24px;
+}
+
+.ms-hero-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+
+.ms-hero-stat-divider {
+  width: 1px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.3);
+  flex-shrink: 0;
+}
+
+.ms-stat-num {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--white);
+  font-family: 'Geist', sans-serif;
+  line-height: 1.1;
+}
+
+.ms-stat-lbl {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+}
+
+
+/* ----- ABOUT / WHAT IS MICRO SURGERY ----- */
+.ms-about {
+  padding: 100px 0;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  color: var(--white);
+}
+
+.ms-about-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(22, 52, 48, 0.70);
+  z-index: 1;
+}
+
+.ms-about-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 70px;
+  align-items: start;
+}
+
+.ms-about-tag {
+  display: inline-block;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
+}
+
+.ms-about-title {
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.4;
+  margin-bottom: 24px;
+}
+
+.ms-about-desc {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.9;
+  margin-bottom: 16px;
+}
+
+/* Benefits ordered list */
+.ms-about-list-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.ms-about-benefit {
+  display: flex;
+  gap: 20px;
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.ms-about-benefit:last-child {
+  border-bottom: none;
+}
+
+.ms-benefit-num {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--white);
+  font-family: 'Geist', sans-serif;
+  flex-shrink: 0;
+}
+
+.ms-benefit-title {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.ms-benefit-desc {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.8;
+}
+
+
+/* ----- INDICATIONS SECTION ----- */
+.ms-indications {
+  padding: 100px 0;
+  background: var(--off-white);
+}
+
+/* 2-column: right = title, left = cards stacked */
+.ms-indications-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 70px;
+  align-items: start;
+}
+
+.ms-indications-text {
+  position: sticky;
+  top: 120px;
+}
+
+.ms-indications-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ms-section-tag {
+  display: block;
+  font-size: 13px;
+  color: var(--teal);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+}
+
+.ms-section-title {
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 800;
+  color: var(--teal-dark);
+  line-height: 1.4;
+  margin-bottom: 16px;
+}
+
+.ms-section-desc {
+  font-size: 15px;
+  color: var(--text2);
+  line-height: 1.8;
+}
+
+/* Indication cards: horizontal row with icon + text */
+.ms-indication-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px 20px;
+  transition: var(--transition);
+  box-shadow: var(--shadow);
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.ms-indication-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(97, 160, 149, 0.4);
+}
+
+.ms-indication-icon {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+}
+
+.ms-indication-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.ms-indication-body {
+  flex: 1;
+}
+
+.ms-indication-title {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--teal-dark);
+  margin-bottom: 12px;
+}
+
+.ms-indication-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ms-indication-list li {
+  font-size: 14px;
+  color: var(--text2);
+  line-height: 1.7;
+  padding-right: 18px;
+  position: relative;
+}
+
+.ms-indication-list li::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 8px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--teal);
+}
+
+
+/* ----- RECOVERY STAGES SECTION ----- */
+.ms-stages {
+  padding: 100px 0;
+  background: var(--teal-light);
+}
+
+/* 2-column: right = title, left = stacked stage cards */
+.ms-stages-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 70px;
+  align-items: start;
+}
+
+.ms-stages-text {
+  position: sticky;
+  top: 120px;
+}
+
+.ms-stages-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Stage card: number on right + icon + text in a row */
+.ms-stage-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px 24px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.ms-stage-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.ms-stage-num {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--teal-dark);
+  color: var(--white);
+  font-size: 22px;
+  font-weight: 800;
+  font-family: 'Geist', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(74, 128, 118, 0.3);
+}
+
+.ms-stage-body {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+}
+
+.ms-stage-icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+}
+
+.ms-stage-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.ms-stage-content {
+  flex: 1;
+}
+
+.ms-stage-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--teal-dark);
+  margin-bottom: 6px;
+}
+
+.ms-stage-desc {
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.7;
+}
+
+
+/* ----- WHY DR. KHALID SECTION ----- */
+.ms-why {
+  padding: 100px 0;
+  background: var(--white);
+}
+
+.ms-why-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 80px;
+  align-items: start;
+}
+
+/* Left side: stats + booking */
+.ms-why-stats-col {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  position: sticky;
+  top: 120px;
+}
+
+.ms-why-stats-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.ms-why-stat-big {
+  background: var(--teal-light);
+  border-radius: 20px;
+  padding: 28px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ms-why-stat-num {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--teal-dark);
+  font-family: 'Geist', sans-serif;
+  line-height: 1;
+}
+
+.ms-why-stat-lbl {
+  font-size: 13px;
+  color: var(--teal-dark);
+  opacity: 0.75;
+  font-weight: 600;
+}
+
+.ms-why-booking-box {
+  background: var(--teal-dark);
+  border-radius: 20px;
+  padding: 32px 28px;
+  text-align: right;
+}
+
+.ms-why-booking-label {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+
+.ms-why-booking-sub {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+.ms-why-cta-btn {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  background: var(--white);
+  color: var(--teal-dark);
+  font-weight: 800;
+  border-radius: 24px;
+  padding: 14px 24px;
+  font-size: 15px;
+  transition: var(--transition);
+}
+
+.ms-why-cta-btn:hover {
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px);
+}
+
+/* Right side: why list */
+.ms-why-title {
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 800;
+  color: var(--teal-dark);
+  line-height: 1.4;
+  margin-bottom: 16px;
+  margin-top: 8px;
+}
+
+.ms-why-desc {
+  font-size: 15px;
+  color: var(--text2);
+  line-height: 1.9;
+  margin-bottom: 32px;
+}
+
+.ms-why-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.ms-why-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.ms-why-item:last-child {
+  border-bottom: none;
+}
+
+.ms-why-item-icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  background: var(--teal-light);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+
+.ms-why-item-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.ms-why-item-text h4 {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--teal-dark);
+  margin-bottom: 6px;
+}
+
+.ms-why-item-text p {
+  font-size: 14px;
+  color: var(--text2);
+  line-height: 1.7;
+}
+
+
+/* ============================================================
+   MICRO SURGERIES — RESPONSIVE
+   ============================================================ */
+@media (max-width: 992px) {
+  .ms-about-inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .ms-indications-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .ms-indications-text {
+    position: static;
+  }
+
+  .ms-stages-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .ms-stages-text {
+    position: static;
+  }
+
+  .ms-why-inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .ms-why-stats-col {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .ms-hero-banner {
+    padding: 60px 20px 0;
+    border-radius: 16px;
+  }
+
+  .ms-hero-stats {
+    padding: 20px 16px;
+    gap: 0;
+  }
+
+  .ms-stat-num {
+    font-size: 22px;
+  }
+
+  .ms-why-stats-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ms-stage-body {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .ms-hero-banner {
+    padding: 60px 20px 0;
+    border-radius: 16px;
+  }
+
+  .ms-hero-stats {
+    padding: 20px 16px;
+    gap: 0;
+  }
+
+  .ms-stat-num {
+    font-size: 22px;
+  }
+
+  .ms-why-stats-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ms-stage-body {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
   }
 }

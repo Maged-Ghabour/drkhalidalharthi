@@ -90,49 +90,8 @@ get_header();
   <div class="container" style="position: relative; z-index: 2;">
 
 
-    <!-- Right: Cards Column -->
-    <div class="ip-why-cards-grid">
-      <div class="ip-why-card full-width">
-        <div class="ip-why-card-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-          </svg>
-        </div>
-        <div class="ip-why-card-content">
-          <h3 class="ip-why-card-title">الوقاية من المضاعفات</h3>
-          <p class="ip-why-card-desc">الكشف المبكر عن أي مشكلات تمنع تطورها قبل أن تؤثر على التعافي.</p>
-        </div>
-      </div>
-
-      <div class="ip-why-card half-width">
-        <div class="ip-why-card-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
-          </svg>
-        </div>
-        <h3 class="ip-why-card-title">متابعة التقدم</h3>
-        <p class="ip-why-card-desc">قياس مستمر لمراحل الشفاء وتعديل الخطة حسب التطور.</p>
-      </div>
-
-      <div class="ip-why-card half-width">
-        <div class="ip-why-card-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path
-              d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-          </svg>
-        </div>
-        <h3 class="ip-why-card-title">إدارة الألم</h3>
-        <p class="ip-why-card-desc">تقييم دقيق للألم وضبط الأدوية لراحة المريض طوال الفترة.</p>
-      </div>
-    </div>
-
-
-
     <div class="ip-why-inner">
-      <!-- Left: Text Column -->
+      <!-- Right: Text Column -->
       <div class="ip-why-text">
         <span class="ip-why-small-title">أهمية المتابعة</span>
         <h2 class="ip-why-title">لماذا تُعد المتابعة بعد<br>الجراحة خطوة مهمة</h2>
@@ -146,8 +105,34 @@ get_header();
         </div>
       </div>
 
+      <!-- Left: Cards Column -->
+      <div class="ip-why-cards-grid">
+        <div class="ip-why-card full-width">
+          <div class="ip-why-card-icon">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/icon_page1.png" alt="الوقاية من المضاعفات">
+          </div>
+          <div class="ip-why-card-content">
+            <h3 class="ip-why-card-title">الوقاية من المضاعفات</h3>
+            <p class="ip-why-card-desc">الكشف المبكر عن أي مشكلات تمنع تطورها قبل أن تؤثر على التعافي.</p>
+          </div>
+        </div>
 
+        <div class="ip-why-card half-width">
+          <div class="ip-why-card-icon">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/icon_page2.png" alt="متابعة التقدم">
+          </div>
+          <h3 class="ip-why-card-title">متابعة التقدم</h3>
+          <p class="ip-why-card-desc">قياس مستمر لمراحل الشفاء وتعديل الخطة حسب التطور.</p>
+        </div>
 
+        <div class="ip-why-card half-width">
+          <div class="ip-why-card-icon">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/icon_page3.png" alt="إدارة الألم">
+          </div>
+          <h3 class="ip-why-card-title">إدارة الألم</h3>
+          <p class="ip-why-card-desc">تقييم دقيق للألم وضبط الأدوية لراحة المريض طوال الفترة.</p>
+        </div>
+      </div>
     </div><!-- .ip-why-inner -->
 
   </div><!-- .container -->
