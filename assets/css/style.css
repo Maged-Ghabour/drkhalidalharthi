@@ -2650,6 +2650,19 @@ button {
   background: #e6f1ec;
   border-radius: 24px;
   padding: 48px;
+  position: relative;
+}
+
+.ip-steps-inner::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  bottom: -10px;
+  left: -10px;
+  right: -10px;
+  border: 1px solid var(--teal);
+  border-radius: 30px;
+  pointer-events: none;
 }
 
 /* Steps content */
@@ -2679,11 +2692,11 @@ button {
 .ip-step-item:not(:last-child)::after {
   content: '';
   position: absolute;
-  right: 19px;
-  top: 46px;
+  right: 19.5px;
+  top: 40px;
   bottom: 0;
-  width: 2px;
-  background: linear-gradient(to bottom, var(--teal), transparent);
+  width: 1px;
+  background: var(--teal);
 }
 
 .ip-step-num {
