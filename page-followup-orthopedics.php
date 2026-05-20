@@ -258,7 +258,7 @@ get_header();
 
         <div class="ip-steps-list">
           <div class="ip-step-item">
-            <div class="ip-step-num">1</div>
+            <div class="ip-step-num">١</div>
             <div class="ip-step-body">
               <h3 class="ip-step-title">التقييم بعد العملية مباشرة</h3>
               <p class="ip-step-desc">تبدأ المتابعة بفحص الحالة بعد الجراحة مباشرة للتأكد من استقرار موضع التدخل الجراحي وسلامة التعافي الأولي.</p>
@@ -266,7 +266,7 @@ get_header();
           </div>
 
           <div class="ip-step-item">
-            <div class="ip-step-num">2</div>
+            <div class="ip-step-num">٢</div>
             <div class="ip-step-body">
               <h3 class="ip-step-title">مراجعات دورية منتظمة</h3>
               <p class="ip-step-desc">يتم تحديد زيارات متابعة منتظمة لمراقبة التقدم الصحي، وتقييم الحالة بشكل مستمر خلال فترة الشفاء.</p>
@@ -274,7 +274,7 @@ get_header();
           </div>
 
           <div class="ip-step-item">
-            <div class="ip-step-num">3</div>
+            <div class="ip-step-num">٣</div>
             <div class="ip-step-body">
               <h3 class="ip-step-title">التقرير النهائي والتوصيات</h3>
               <p class="ip-step-desc">في نهاية فترة المتابعة يُقدم تقرير شامل عن نتائج التعافي مع توصيات للحفاظ على الصحة على المدى البعيد.</p>
