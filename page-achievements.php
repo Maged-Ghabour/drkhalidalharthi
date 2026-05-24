@@ -29,6 +29,11 @@ get_header();
         </div>
       </div>
 
+
+      
+
+
+
     </div>
   </div>
 </section>
@@ -266,7 +271,7 @@ get_header();
 
         <!-- Banner 1: PMC -->
         <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10037116/" target="_blank" rel="noopener noreferrer" class="research-banner-link" id="achResearch1Link">
-          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/bannerDr1.png" alt="بحث Glomus Tumor">
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/bannerDr1.jpeg" alt="بحث Glomus Tumor">
           <div class="research-banner-overlay">
             <span class="research-banner-label">
               <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -282,7 +287,7 @@ get_header();
 
         <!-- Banner 2: ScienceDirect -->
         <a href="https://www.sciencedirect.com/science/article/pii/S2773157X2300173X" target="_blank" rel="noopener noreferrer" class="research-banner-link" id="achResearch2Link">
-          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/bannerDr2.png" alt="بحث ScienceDirect">
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/bannerDr2.jpeg" alt="بحث ScienceDirect">
           <div class="research-banner-overlay">
             <span class="research-banner-label">
               <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>

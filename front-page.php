@@ -178,24 +178,48 @@ get_header(); ?>
     <h2 class="section-title">تقديم استشارات متخصصة لتقييم الحالة<br />ووضع خطة علاج مناسبة</h2>
     <div class="services-grid">
       <?php
-      $services_query = new WP_Query(array(
-        'post_type' => 'service',
-        'posts_per_page' => -1
-      ));
-      if ($services_query->have_posts()):
-        while ($services_query->have_posts()):
-          $services_query->the_post(); ?>
-          <a href="<?php the_permalink(); ?>" style="text-decoration: none;">
-            <div class="service-card"><?php the_title(); ?></div>
-          </a>
-        <?php endwhile;
-        wp_reset_postdata();
-      else: ?>
-        <a href="<?php echo site_url('/جراحة-اورام-العظام/'); ?>" style="text-decoration: none;"><div class="service-card">جراحة أورام العظام</div></a>
-        <a href="<?php echo site_url('/اعادة-بناء-المفاصل/'); ?>" style="text-decoration: none;"><div class="service-card">إعادة بناء المفاصل</div></a>
-        <a href="<?php echo site_url('/الجراحات-الدقيقة-للعظام/'); ?>" style="text-decoration: none;"><div class="service-card">الجراحات الدقيقة للعظام</div></a>
-        <div class="service-card">المتابعة بعد الجراحة</div>
-      <?php endif; ?>
+      $services_templates = array(
+        array(
+          'template'      => 'page-bone-tumor-surgery.php',
+          'fallback_slug' => '/جراحة-اورام-العظام/',
+          'default_title' => 'جراحة أورام العظام'
+        ),
+        array(
+          'template'      => 'page-joint-reconstruction.php',
+          'fallback_slug' => '/اعادة-بناء-المفاصل/',
+          'default_title' => 'إعادة بناء المفاصل'
+        ),
+        array(
+          'template'      => 'page-micro-surgeries.php',
+          'fallback_slug' => '/الجراحات-الدقيقة-للعظام/',
+          'default_title' => 'الجراحات الدقيقة للعظام'
+        ),
+        array(
+          'template'      => 'page-followup-orthopedics.php',
+          'fallback_slug' => '/المتابعة-بعد-جراحة-العظام/',
+          'default_title' => 'المتابعة بعد جراحة العظام'
+        )
+      );
+
+      foreach ($services_templates as $service_info):
+        $pages = get_pages(array(
+          'meta_key'   => '_wp_page_template',
+          'meta_value' => $service_info['template'],
+          'number'     => 1
+        ));
+        
+        if (!empty($pages)) {
+          $url   = get_permalink($pages[0]->ID);
+          $title = get_the_title($pages[0]->ID);
+        } else {
+          $url   = site_url($service_info['fallback_slug']);
+          $title = $service_info['default_title'];
+        }
+        ?>
+        <a href="<?php echo esc_url($url); ?>" style="text-decoration: none;">
+          <div class="service-card"><?php echo esc_html($title); ?></div>
+        </a>
+      <?php endforeach; ?>
     </div>
   </div>
 </section>
