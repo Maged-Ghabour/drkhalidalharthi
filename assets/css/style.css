@@ -2390,8 +2390,7 @@ button {
 /* ----- WHY SECTION ----- */
 .ip-why {
   padding: 100px 0;
-  background-size: cover;
-  background-position: center;
+  background: none;
   position: relative;
   color: var(--white);
 }
@@ -2399,6 +2398,7 @@ button {
 .ip-why-overlay {
   position: absolute;
   inset: 0;
+  border-radius: 24px;
   z-index: 1;
 }
 
@@ -2407,6 +2407,12 @@ button {
   grid-template-columns: 1fr 1.2fr;
   gap: 60px;
   align-items: center;
+  background-size: cover;
+  background-position: center;
+  border-radius: 24px;
+  padding: 60px;
+  position: relative;
+  overflow: hidden;
 }
 
 .ip-why-text {
@@ -2545,7 +2551,7 @@ button {
 .ip-services-small-title {
   display: block;
   font-size: 16px;
-  color: var(--teal-dark);
+  color: rgba(0, 0, 0, 1);
   font-weight: 600;
   margin-bottom: 8px;
 }
@@ -2606,7 +2612,7 @@ button {
 
 .ip-services-cell-desc {
   font-size: 14px;
-  color: var(--teal-dark);
+  color: rgba(0, 0, 0, 1);
   opacity: 0.85;
   line-height: 1.7;
 }
@@ -2692,7 +2698,7 @@ button {
 .ip-step-title {
   font-size: 17px;
   font-weight: 800;
-  color: var(--text-header);
+  color: rgba(97, 160, 149, 1);
   margin-bottom: 8px;
 }
 
@@ -3068,9 +3074,10 @@ button {
 }
 
 .ms-benefit-desc {
-  font-size: 14px;
+  font-size: 16px;
   color: rgba(255, 255, 255, 0.82);
   line-height: 1.8;
+  max-width: 80%;
 }
 
 
@@ -3081,7 +3088,7 @@ button {
 }
 
 .ms-indications-inner {
-  background: #eaf3f0;
+  background: rgba(220, 243, 239, 1);
   border-radius: 24px;
   padding: 60px 48px;
   display: flex;
@@ -3182,7 +3189,7 @@ button {
 .ms-indication-icon {
   width: 60px;
   height: 60px;
-  align-self: center;
+  align-self: flex-start;
   position: relative;
   z-index: 1;
   margin-bottom: 8px;
@@ -3242,7 +3249,7 @@ button {
 }
 
 .ms-stages-inner {
-  background: #eaf3f0;
+  background: rgba(220, 243, 239, 1);
   border-radius: 24px;
   padding: 60px 48px;
   display: flex;
@@ -3334,8 +3341,8 @@ button {
   padding: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
+  text-align: right;
   gap: 12px;
   transition: var(--transition);
 }

@@ -50,12 +50,10 @@ get_header();
 
 
 <!-- ===== WHAT IS MICRO SURGERY (ABOUT) SECTION ===== -->
-<section class="ms-about fade-in" id="ms-about"
-  style="background-image: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/Frame%202147239726.png');">
-  <div class="ms-about-overlay"></div>
-  <div class="container" style="position: relative; z-index: 2;">
+<section class="ms-about fade-in" id="ms-about">
+  <div class="container">
 
-    <div class="ms-about-inner">
+    <div class="ms-about-inner" style="background-image: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/Frame%202147239726.png'); background-size: cover; background-position: center; border-radius: 24px; padding: 60px 48px; overflow: hidden; position: relative;">
 
       <!-- Right: Text Column -->
       <div class="ms-about-text">
@@ -140,7 +138,7 @@ get_header();
             <span class="ms-indication-bg-num">١</span>
           </div>
           <div class="ms-indication-icon">
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/icon_page1.png" alt="الكسور">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/fav1.png" alt="الكسور">
           </div>
           <div class="ms-indication-body">
             <h3 class="ms-indication-title">كسور الأطراف العلوية والسفلية</h3>
@@ -158,7 +156,7 @@ get_header();
             <span class="ms-indication-bg-num">٢</span>
           </div>
           <div class="ms-indication-icon">
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/icon_page2.png" alt="الحالات الدقيقة">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/fav2.png" alt="الحالات الدقيقة">
           </div>
           <div class="ms-indication-body">
             <h3 class="ms-indication-title">الحالات التي تتطلب تدخلاً دقيقاً</h3>
@@ -176,7 +174,7 @@ get_header();
             <span class="ms-indication-bg-num">٣</span>
           </div>
           <div class="ms-indication-icon">
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/icon_page3.png" alt="الأعصاب والأوتار">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/fav3.png" alt="الأعصاب والأوتار">
           </div>
           <div class="ms-indication-body">
             <h3 class="ms-indication-title">إصابات السقوط والحوادث</h3>
@@ -236,7 +234,7 @@ get_header();
 
         <div class="ms-stage-card">
           <div class="ms-stage-icon">
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/icon_page1.png" alt="التشخيص والفحص">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/ta3afi.png" alt="التشخيص والفحص">
           </div>
           <h3 class="ms-stage-title">التشخيص والفحص</h3>
           <p class="ms-stage-desc">تقييم حالة الكسر باستخدام الأشعة والفحوصات اللازمة بدقة تامة لوضع خطة العلاج المثلى.</p>
@@ -244,7 +242,7 @@ get_header();
 
         <div class="ms-stage-card">
           <div class="ms-stage-icon">
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/icon_page2.png" alt="الجراحة الدقيقة">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/ta3afi1.png" alt="الجراحة الدقيقة">
           </div>
           <h3 class="ms-stage-title">الجراحة الدقيقة</h3>
           <p class="ms-stage-desc">تثبيت العظام وإعادة ضبطها باستخدام أحدث التقنيات ضمن أعلى معايير جراحة العظام الحديثة.</p>
@@ -252,7 +250,7 @@ get_header();
 
         <div class="ms-stage-card">
           <div class="ms-stage-icon">
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/icon_page3.png" alt="المتابعة والتأهيل">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/ta3afi2.png" alt="المتابعة والتأهيل">
           </div>
           <h3 class="ms-stage-title">المتابعة والتأهيل</h3>
           <p class="ms-stage-desc">مراقبة التعافي والبدء في خطة تأهيل لاستعادة الحركة الكاملة وإعادة المريض لحياته الطبيعية.</p>
