@@ -185,13 +185,15 @@ get_header(); ?>
       if ($services_query->have_posts()):
         while ($services_query->have_posts()):
           $services_query->the_post(); ?>
-          <div class="service-card"><?php the_title(); ?></div>
+          <a href="<?php the_permalink(); ?>" style="text-decoration: none;">
+            <div class="service-card"><?php the_title(); ?></div>
+          </a>
         <?php endwhile;
         wp_reset_postdata();
       else: ?>
-        <div class="service-card">جراحة أورام العظام</div>
-        <div class="service-card">إعادة بناء المفاصل</div>
-        <div class="service-card">الجراحات الدقيقة للعظام</div>
+        <a href="<?php echo site_url('/جراحة-اورام-العظام/'); ?>" style="text-decoration: none;"><div class="service-card">جراحة أورام العظام</div></a>
+        <a href="<?php echo site_url('/اعادة-بناء-المفاصل/'); ?>" style="text-decoration: none;"><div class="service-card">إعادة بناء المفاصل</div></a>
+        <a href="<?php echo site_url('/الجراحات-الدقيقة-للعظام/'); ?>" style="text-decoration: none;"><div class="service-card">الجراحات الدقيقة للعظام</div></a>
         <div class="service-card">المتابعة بعد الجراحة</div>
       <?php endif; ?>
     </div>
