@@ -7,7 +7,7 @@ get_header(); ?>
 <div class="hero-content">
   <div class="social-proof">
     <div class="avatars">
-      <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/avatars.png" alt="زوار"
+      <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/avatars.webp" alt="زوار"
         class="avatars-img" />
     </div>
     <div class="social-text">
@@ -19,7 +19,7 @@ get_header(); ?>
     <h1 class="hero-title">
       <?php echo wp_kses_post(get_theme_mod('fikrtak_hero_title', 'استشاري جراحة أورام<br>العظام وإعادة بناء<br>المفاصل')); ?>
     </h1>
-    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/Vector.png" alt="vector"
+    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/Vector.webp" alt="vector"
       class="hero-vector" />
   </div>
   <div class="hero-sub-wrap">
@@ -85,19 +85,19 @@ get_header(); ?>
 </div>
 <div class="hero-img-col">
   <div class="hero-img-wrapper">
-    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/hero pic.png" alt="د. خالد الحارثي"
+    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/hero pic.webp" alt="د. خالد الحارثي"
       class="hero-img" />
-    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/hero1vector.png" alt="vector"
+    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/hero1vector.webp" alt="vector"
       class="hero-floating-badge badge-1" />
-    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/hero2vector.png" alt="vector"
+    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/hero2vector.webp" alt="vector"
       class="hero-floating-badge badge-2" />
-    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/hero3vector.png" alt="vector"
+    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/hero3vector.webp" alt="vector"
       class="hero-floating-badge badge-3" />
     <div class="hero-floating-badge badge-4">
       <div class="info-card">
         <div class="info-row">
           <div class="info-icon-wrapper"><img
-              src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/Icon Container.png" alt="icon">
+              src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/Icon Container.webp" alt="icon">
           </div>
           <div class="info-text">
             <span class="info-title">مستشفي السعودي الالماني</span>
@@ -105,7 +105,7 @@ get_header(); ?>
         </div>
         <div class="info-row bg-white">
           <div class="info-icon-wrapper"><img
-              src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/icon2.png" alt="icon"></div>
+              src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/icon2.webp" alt="icon"></div>
           <div class="info-text">
             <span class="info-title">د - خالد سليم الحارثي </span>
             <span class="info-sub">طب جامعه ام القري البورد <br>السعودي بجراحه العظام
@@ -217,7 +217,7 @@ get_header(); ?>
               <?php if (has_post_thumbnail()): ?>
                 <?php the_post_thumbnail('medium'); ?>
               <?php else: ?>
-                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/blog.png"
+                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/blog.webp"
                   alt="<?php the_title_attribute(); ?>" />
               <?php endif; ?>
             </div>
@@ -227,22 +227,22 @@ get_header(); ?>
         wp_reset_postdata();
       else: ?>
         <article class="article-card">
-          <div class="article-img"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/blog.png"
+          <div class="article-img"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/blog.webp"
               alt="مقالة طبية" /></div>
           <p class="article-title">عنوان المقالة</p>
         </article>
         <article class="article-card">
-          <div class="article-img"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/blog.png"
+          <div class="article-img"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/blog.webp"
               alt="مقالة طبية" /></div>
           <p class="article-title">عنوان المقالة</p>
         </article>
         <article class="article-card">
-          <div class="article-img"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/blog.png"
+          <div class="article-img"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/blog.webp"
               alt="مقالة طبية" /></div>
           <p class="article-title">عنوان المقالة</p>
         </article>
         <article class="article-card">
-          <div class="article-img"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/blog.png"
+          <div class="article-img"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/blog.webp"
               alt="مقالة طبية" /></div>
           <p class="article-title">عنوان المقالة</p>
         </article>

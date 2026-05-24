@@ -2470,15 +2470,10 @@ button {
 
 .ip-why-card.full-width {
   grid-column: 1 / -1;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
   gap: 20px;
-}
-
-.ip-why-card.full-width .ip-why-card-icon {
-  order: 2;
-  /* Keep icon on the right end for Arabic RTL context */
 }
 
 .ip-why-card.half-width {
@@ -2499,7 +2494,7 @@ button {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  align-self: flex-end; /* Align icon to the left in RTL */
+  align-self: flex-start; /* Align icon to the right in RTL */
 }
 
 .ip-why-card-icon img {
@@ -2529,7 +2524,7 @@ button {
 }
 
 .ip-services-wrapper {
-  background: #e6f1ec;
+  background: rgba(220, 243, 239, 1);
   border-radius: 24px;
   padding: 48px;
 }
@@ -2647,7 +2642,7 @@ button {
   grid-template-columns: 1fr 1.2fr;
   gap: 80px;
   align-items: center;
-  background: #e6f1ec;
+  background: rgba(220, 243, 239, 1);
   border-radius: 24px;
   padding: 48px;
 }
@@ -2904,18 +2899,14 @@ button {
   justify-content: center;
   border-radius: 24px;
   overflow: hidden;
-  background-size: cover;
+  background-color: #f0f7f5;
+  background-image: 
+    linear-gradient(rgba(97, 160, 149, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(97, 160, 149, 0.1) 1px, transparent 1px);
+  background-size: 30px 30px;
   background-position: center;
-  padding: 80px 40px 0;
+  padding: 80px 40px 60px;
   min-height: 420px;
-}
-
-.ms-hero-banner::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(26, 60, 55, 0.62);
-  z-index: 0;
 }
 
 .ms-hero-content {
@@ -2927,14 +2918,14 @@ button {
 .ms-hero-title {
   font-size: clamp(30px, 5vw, 52px);
   font-weight: 800;
-  color: var(--white);
+  color: var(--teal-dark);
   margin-bottom: 20px;
   line-height: 1.2;
 }
 
 .ms-hero-sub {
   font-size: 16px;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--teal);
   line-height: 1.9;
   max-width: 600px;
   margin: 0 auto 32px;
@@ -2942,20 +2933,20 @@ button {
 
 /* Stats row inside hero */
 .ms-hero-stats {
-  position: relative;
+  position: absolute;
+  bottom: 0;
+  right: 0;
   z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0;
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(240, 247, 245, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  width: 100%;
-  margin-top: 48px;
+  border-top-left-radius: 24px;
   padding: 24px 40px;
-  border-radius: 0 0 24px 24px;
+  width: auto;
 }
 
 .ms-hero-stat {
@@ -2963,27 +2954,27 @@ button {
   flex-direction: column;
   align-items: center;
   gap: 4px;
-  flex: 1;
+  padding: 0 32px;
 }
 
 .ms-hero-stat-divider {
   width: 1px;
   height: 40px;
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(97, 160, 149, 0.3);
   flex-shrink: 0;
 }
 
 .ms-stat-num {
   font-size: 28px;
   font-weight: 800;
-  color: var(--white);
+  color: var(--teal);
   font-family: 'Geist', sans-serif;
   line-height: 1.1;
 }
 
 .ms-stat-lbl {
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text2);
   font-weight: 500;
 }
 
@@ -3086,26 +3077,39 @@ button {
 /* ----- INDICATIONS SECTION ----- */
 .ms-indications {
   padding: 100px 0;
-  background: var(--off-white);
+  background: var(--white);
 }
 
-/* 2-column: right = title, left = cards stacked */
 .ms-indications-inner {
-  display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: 70px;
-  align-items: start;
+  background: #eaf3f0;
+  border-radius: 24px;
+  padding: 60px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
 }
 
-.ms-indications-text {
-  position: sticky;
-  top: 120px;
+.ms-indications-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.ms-indications-header-right {
+  flex: 1;
+}
+
+.ms-indications-header-left {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .ms-indications-cards {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
 }
 
 .ms-section-tag {
@@ -3127,33 +3131,61 @@ button {
 
 .ms-section-desc {
   font-size: 15px;
-  color: var(--text2);
+  color: var(--teal);
   line-height: 1.8;
+  margin: 0;
+  text-align: right;
 }
 
-/* Indication cards: horizontal row with icon + text */
+/* Indication cards: transparent, vertical layout */
 .ms-indication-card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 24px 20px;
-  transition: var(--transition);
-  box-shadow: var(--shadow);
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
   display: flex;
+  flex-direction: column;
   gap: 16px;
-  align-items: flex-start;
+  transition: var(--transition);
 }
 
 .ms-indication-card:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-  border-color: rgba(97, 160, 149, 0.4);
+}
+
+.ms-indication-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: -20px;
+  position: relative;
+  z-index: 0;
+}
+
+.ms-indication-pill {
+  background: #9abfb7;
+  color: var(--white);
+  padding: 4px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.ms-indication-bg-num {
+  font-size: 70px;
+  font-weight: 800;
+  color: rgba(97, 160, 149, 0.15);
+  line-height: 1;
+  font-family: 'Geist', sans-serif;
 }
 
 .ms-indication-icon {
-  width: 48px;
-  height: 48px;
-  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  align-self: center;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 8px;
 }
 
 .ms-indication-icon img {
@@ -3163,14 +3195,17 @@ button {
 }
 
 .ms-indication-body {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .ms-indication-title {
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 800;
   color: var(--teal-dark);
-  margin-bottom: 12px;
+  margin-bottom: 8px;
+  text-align: right;
 }
 
 .ms-indication-list {
@@ -3184,94 +3219,135 @@ button {
 
 .ms-indication-list li {
   font-size: 14px;
-  color: var(--text2);
+  color: var(--teal);
   line-height: 1.7;
   padding-right: 18px;
   position: relative;
 }
 
 .ms-indication-list li::before {
-  content: '';
+  content: '•';
   position: absolute;
   right: 0;
-  top: 8px;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--teal);
+  top: 0;
+  color: var(--teal);
+  font-size: 18px;
 }
 
 
 /* ----- RECOVERY STAGES SECTION ----- */
 .ms-stages {
   padding: 100px 0;
-  background: var(--teal-light);
+  background: var(--white);
 }
 
-/* 2-column: right = title, left = stacked stage cards */
 .ms-stages-inner {
-  display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: 70px;
-  align-items: start;
+  background: #eaf3f0;
+  border-radius: 24px;
+  padding: 60px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
 }
 
-.ms-stages-text {
-  position: sticky;
-  top: 120px;
+.ms-stages-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.ms-stages-header-right {
+  flex: 1;
+}
+
+.ms-stages-header-left {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.ms-stages-timeline {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.ms-stages-timeline-line {
+  position: absolute;
+  top: 30px;
+  left: 12%;
+  right: 12%;
+  height: 2px;
+  background: rgba(97, 160, 149, 0.4);
+  z-index: 0;
+}
+
+.ms-stages-timeline-nodes {
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  z-index: 1;
+}
+
+.ms-stages-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  background: transparent;
+}
+
+.ms-stages-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid rgba(97, 160, 149, 0.4);
+  background: #eaf3f0;
+  color: var(--teal-dark);
+  font-size: 28px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ms-stages-pill {
+  background: #9abfb7;
+  color: var(--white);
+  padding: 6px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
 }
 
 .ms-stages-cards {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
 }
 
-/* Stage card: number on right + icon + text in a row */
 .ms-stage-card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 20px 24px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
   display: flex;
-  gap: 16px;
+  flex-direction: column;
   align-items: center;
-  box-shadow: var(--shadow);
+  text-align: center;
+  gap: 12px;
   transition: var(--transition);
 }
 
 .ms-stage-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-}
-
-.ms-stage-num {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: var(--teal-dark);
-  color: var(--white);
-  font-size: 22px;
-  font-weight: 800;
-  font-family: 'Geist', sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  box-shadow: 0 4px 16px rgba(74, 128, 118, 0.3);
-}
-
-.ms-stage-body {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  flex: 1;
+  transform: translateY(-4px);
 }
 
 .ms-stage-icon {
-  width: 44px;
-  height: 44px;
-  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 8px;
 }
 
 .ms-stage-icon img {

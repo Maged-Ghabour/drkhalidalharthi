@@ -12,18 +12,16 @@ get_header();
 <!-- ===== HERO SECTION ===== -->
 <section class="ip-hero ms-hero" id="ms-hero">
   <div class="container">
-    <div class="ip-hero-banner ms-hero-banner"
-      style="background-image: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/followupBG.png');">
+    <div class="ip-hero-banner ms-hero-banner">
       <div class="ip-hero-content ms-hero-content fade-in">
         <h1 class="ip-hero-title ms-hero-title">الجراحات الدقيقة للعظام</h1>
         <p class="ip-hero-sub ms-hero-sub">
-          تخصص متقدم في أدق العمليات الجراحية للجهاز العظمي بتقنيات حديثة<br>
-          لضمان أفضل نتيجة مع الحد الأدنى من التدخل الجراحي.
+          خبرة متقدمة في الجراحات الدقيقة للعظام وعلاج كسور الأطراف<br>العلوية والسفلية باستخدام أحدث التقنيات الجراحية.
         </p>
         <div class="ip-hero-btns">
           <?php $wa = get_theme_mod('fikrtak_contact_whatsapp', '966500000000'); ?>
           <a href="https://wa.me/<?php echo esc_attr($wa); ?>" class="btn btn-primary btn-lg" id="msHeroCtaBtn">
-            ابدأ الاستشارة
+            ابدأ رحلة التعافي
           </a>
         </div>
       </div>
@@ -31,17 +29,17 @@ get_header();
       <!-- Stats Row inside Hero -->
       <div class="ms-hero-stats">
         <div class="ms-hero-stat">
-          <span class="ms-stat-num">+<span class="counter" data-target="13">0</span></span>
+          <span class="ms-stat-num">+<span class="counter" data-target="13">١٣</span></span>
           <span class="ms-stat-lbl">سنة خبرة</span>
         </div>
         <div class="ms-hero-stat-divider"></div>
         <div class="ms-hero-stat">
-          <span class="ms-stat-num"><span class="counter" data-target="100">0</span>%</span>
-          <span class="ms-stat-lbl">الالتزام بالمعايير</span>
+          <span class="ms-stat-num"><span class="counter" data-target="100">١٠٠</span>%</span>
+          <span class="ms-stat-lbl">التزام بالمعايير</span>
         </div>
         <div class="ms-hero-stat-divider"></div>
         <div class="ms-hero-stat">
-          <span class="ms-stat-num">+<span class="counter" data-target="2000" data-format-k="true">0</span></span>
+          <span class="ms-stat-num">+<span class="counter" data-target="2000" data-format-k="true">٢K</span></span>
           <span class="ms-stat-lbl">عملية ناجحة</span>
         </div>
       </div>
@@ -121,56 +119,71 @@ get_header();
 
     <div class="ms-indications-inner">
 
-      <!-- Right: Title column -->
-      <div class="ms-indications-text">
-        <span class="ms-section-tag">متى تلجأ للعلاج؟</span>
-        <h2 class="ms-section-title">متى يحتاج المريض<br>للجراحات الدقيقة؟</h2>
-        <p class="ms-section-desc">
-          تُستخدم الجراحة الدقيقة في حالات بعينها تستدعي مستوى عالياً من التخصص والدقة.
-        </p>
+      <div class="ms-indications-header">
+        <div class="ms-indications-header-right">
+          <span class="ms-section-tag">الحالات المعالجة</span>
+          <h2 class="ms-section-title">متى يحتاج المريض<br>للجراحات الدقيقة؟</h2>
+        </div>
+        <div class="ms-indications-header-left">
+          <p class="ms-section-desc">
+            ليست كل الكسور تتطلب تدخلاً جراحياً دقيقاً —<br>لكن في الحالات التالية يصبح ضرورياً لضمان تعافٍ<br>سليم وعودة كاملة للحركة.
+          </p>
+        </div>
       </div>
 
-      <!-- Left: Cards column -->
+      <!-- Bottom: Cards Row -->
       <div class="ms-indications-cards">
 
         <div class="ms-indication-card">
+          <div class="ms-indication-card-top">
+            <span class="ms-indication-pill">كسور الأطراف</span>
+            <span class="ms-indication-bg-num">١</span>
+          </div>
           <div class="ms-indication-icon">
             <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/icon_page1.png" alt="الكسور">
           </div>
           <div class="ms-indication-body">
-            <h3 class="ms-indication-title">الكسور الصعبة والمعقدة</h3>
+            <h3 class="ms-indication-title">كسور الأطراف العلوية والسفلية</h3>
             <ul class="ms-indication-list">
-              <li>كسور العظام الصغيرة في اليد والقدم</li>
-              <li>الكسور المفصلية الدقيقة</li>
-              <li>الكسور المقترنة بتضرر الأوتار أو الأعصاب</li>
+              <li>كسور الأطراف العلوية والسفلية</li>
+              <li>الكسور المعقدة أو المتعددة</li>
+              <li>الكسور المصحوبة بتلف الأنسجة</li>
             </ul>
           </div>
         </div>
 
         <div class="ms-indication-card">
+          <div class="ms-indication-card-top">
+            <span class="ms-indication-pill">الكسور غير المستقرة</span>
+            <span class="ms-indication-bg-num">٢</span>
+          </div>
           <div class="ms-indication-icon">
             <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/icon_page2.png" alt="الحالات الدقيقة">
           </div>
           <div class="ms-indication-body">
-            <h3 class="ms-indication-title">الحالات التشخيصية والدقيقة</h3>
+            <h3 class="ms-indication-title">الحالات التي تتطلب تدخلاً دقيقاً</h3>
             <ul class="ms-indication-list">
-              <li>أورام العظام والأنسجة الرخوة</li>
-              <li>إعادة تركيب المفاصل المصابة</li>
-              <li>استئصال الأجسام الغريبة الدقيقة</li>
+              <li>تثبيت أو علاج الكسور جراحياً</li>
+              <li>كسور بالقرب من المفاصل الحساسة</li>
+              <li>الكسور ذات الشظايا المتعددة</li>
             </ul>
           </div>
         </div>
 
         <div class="ms-indication-card">
+          <div class="ms-indication-card-top">
+            <span class="ms-indication-pill">الإصابات والحوادث</span>
+            <span class="ms-indication-bg-num">٣</span>
+          </div>
           <div class="ms-indication-icon">
             <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/icon_page3.png" alt="الأعصاب والأوتار">
           </div>
           <div class="ms-indication-body">
-            <h3 class="ms-indication-title">إصابات الأعصاب والأوتار المستعصية</h3>
+            <h3 class="ms-indication-title">إصابات السقوط والحوادث</h3>
             <ul class="ms-indication-list">
-              <li>تمزق الأوتار الكلي أو الجزئي</li>
-              <li>إصابات الأعصاب الطرفية</li>
-              <li>الإصابات الرياضية المعقدة</li>
+              <li>الإصابات الناتجة عن السقوط أو الحوادث</li>
+              <li>حالات لا تستجيب للعلاج التحفظي</li>
+              <li>إصابات رياضية معقدة ومتكررة</li>
             </ul>
           </div>
         </div>
@@ -188,52 +201,61 @@ get_header();
 
     <div class="ms-stages-inner">
 
-      <!-- Right: Title column -->
-      <div class="ms-stages-text">
-        <span class="ms-section-tag">كيف تتم العملية؟</span>
-        <h2 class="ms-section-title">ثلاث مراحل نحو<br>التعافي الكامل</h2>
+      <div class="ms-stages-header">
+        <div class="ms-stages-header-right">
+          <span class="ms-section-tag">خطة العلاج المعتمدة</span>
+          <h2 class="ms-section-title">ثلاث مراحل نحو<br>التعافي الكامل</h2>
+        </div>
+        <div class="ms-stages-header-left">
+          <p class="ms-section-desc">
+            كل مرحلة مبنية على السابقة — من التشخيص<br>الدقيق إلى العودة الكاملة لممارسة الحياة<br>الطبيعية.
+          </p>
+        </div>
       </div>
 
-      <!-- Left: Stages column -->
+      <div class="ms-stages-timeline">
+        <div class="ms-stages-timeline-line"></div>
+        <div class="ms-stages-timeline-nodes">
+          <div class="ms-stages-node">
+            <div class="ms-stages-circle">١</div>
+            <div class="ms-stages-pill">المرحلة الأولى</div>
+          </div>
+          <div class="ms-stages-node">
+            <div class="ms-stages-circle">٢</div>
+            <div class="ms-stages-pill">المرحلة الثانية</div>
+          </div>
+          <div class="ms-stages-node">
+            <div class="ms-stages-circle">٣</div>
+            <div class="ms-stages-pill">المرحلة الثالثة</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom: Cards column -->
       <div class="ms-stages-cards">
 
         <div class="ms-stage-card">
-          <div class="ms-stage-num">1</div>
-          <div class="ms-stage-body">
-            <div class="ms-stage-icon">
-              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/icon_page1.png" alt="التشخيص والفحص">
-            </div>
-            <div class="ms-stage-content">
-              <h3 class="ms-stage-title">التشخيص والفحص</h3>
-              <p class="ms-stage-desc">يبدأ الدكتور خالد بتشخيص شامل وتحديد التدخل الجراحي الأنسب بناءً على الأشعة والتاريخ المرضي الكامل للمريض.</p>
-            </div>
+          <div class="ms-stage-icon">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/icon_page1.png" alt="التشخيص والفحص">
           </div>
+          <h3 class="ms-stage-title">التشخيص والفحص</h3>
+          <p class="ms-stage-desc">تقييم حالة الكسر باستخدام الأشعة والفحوصات اللازمة بدقة تامة لوضع خطة العلاج المثلى.</p>
         </div>
 
         <div class="ms-stage-card">
-          <div class="ms-stage-num">2</div>
-          <div class="ms-stage-body">
-            <div class="ms-stage-icon">
-              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/icon_page2.png" alt="الجراحة الدقيقة">
-            </div>
-            <div class="ms-stage-content">
-              <h3 class="ms-stage-title">الجراحة الدقيقة</h3>
-              <p class="ms-stage-desc">إجراء العملية بأحدث الأجهزة والمناظير الجراحية لضمان أعلى مستوى من الدقة وأدنى تدخل في الأنسجة السليمة.</p>
-            </div>
+          <div class="ms-stage-icon">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/icon_page2.png" alt="الجراحة الدقيقة">
           </div>
+          <h3 class="ms-stage-title">الجراحة الدقيقة</h3>
+          <p class="ms-stage-desc">تثبيت العظام وإعادة ضبطها باستخدام أحدث التقنيات ضمن أعلى معايير جراحة العظام الحديثة.</p>
         </div>
 
         <div class="ms-stage-card">
-          <div class="ms-stage-num">3</div>
-          <div class="ms-stage-body">
-            <div class="ms-stage-icon">
-              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/icon_page3.png" alt="المتابعة والتأهيل">
-            </div>
-            <div class="ms-stage-content">
-              <h3 class="ms-stage-title">المتابعة والتأهيل</h3>
-              <p class="ms-stage-desc">برنامج متكامل للمتابعة بعد الجراحة يشمل العلاج الطبيعي وتقييم دوري لضمان استعادة أفضل وظيفة حركية ممكنة.</p>
-            </div>
+          <div class="ms-stage-icon">
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/icon_page3.png" alt="المتابعة والتأهيل">
           </div>
+          <h3 class="ms-stage-title">المتابعة والتأهيل</h3>
+          <p class="ms-stage-desc">مراقبة التعافي والبدء في خطة تأهيل لاستعادة الحركة الكاملة وإعادة المريض لحياته الطبيعية.</p>
         </div>
 
       </div><!-- .ms-stages-cards -->

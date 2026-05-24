@@ -40,8 +40,12 @@ get_header();
     <div class="stats-inner">
       <!-- Right: Text & Bullets -->
       <div class="stats-text">
-        <div class="stats-text-header">
-          <h2 style="margin-bottom: 16px;">نتميز بخبرتنا</h2>
+        <div class="stats-text-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+          <h2 style="margin-bottom: 16px; margin-top: 0;">نتميز بخبرتنا</h2>
+          <?php $wa = get_theme_mod('fikrtak_contact_whatsapp', '966500000000'); ?>
+          <a href="https://wa.me/<?php echo esc_attr($wa); ?>" class="btn btn-primary btn-lg" style="white-space: nowrap; font-size: 14px; margin-bottom: 16px;">
+            احجز موعد متابعة الآن
+          </a>
         </div>
         <ul class="creds-list">
           <li>حاصل على البورد السعودي لجراحة العظام</li>
@@ -50,14 +54,6 @@ get_header();
         </ul>
       </div>
 
-      <!-- Center: CTA Button -->
-      <div class="stats-center" style="flex: 0.8; text-align: center;">
-        <?php $wa = get_theme_mod('fikrtak_contact_whatsapp', '966500000000'); ?>
-        <a href="https://wa.me/<?php echo esc_attr($wa); ?>" class="btn btn-primary btn-lg"
-          style="white-space: nowrap; font-size: 14px;">
-          احجز موعد متابعة الآن
-        </a>
-      </div>
 
       <!-- Left: Numbers -->
       <div class="stats-numbers">
@@ -210,6 +206,11 @@ get_header();
 
 
 <!-- ===== STEPS SECTION ===== -->
+<style>
+  #ip-steps .hero-img-wrapper::before {
+    display: none;
+  }
+</style>
 <section class="ip-steps" id="ip-steps">
   <div class="container">
 

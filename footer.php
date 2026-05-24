@@ -4,7 +4,7 @@
  */
 ?>
   <!-- ===== FOOTER ===== -->
-  <footer class="footer" id="contact" style="background-image: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/footer-bg.png'); background-size: cover; background-position: center;">
+  <footer class="footer" id="contact" style="background-image: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/footer-bg.webp'); background-size: cover; background-position: center;">
     <div class="container">
       <!-- CTA Content Inside Footer -->
       <div class="cta-inner-footer">
@@ -38,7 +38,7 @@
                   echo '<a href="' . esc_url( home_url( '/' ) ) . '" class="custom-logo-link"><img src="' . esc_url( $logo[0] ) . '" alt="' . esc_attr( get_bloginfo( 'name' ) ) . '" class="footer-logo" /></a>';
               }
           } else {
-              echo '<a href="' . esc_url( home_url( '/' ) ) . '"><img src="' . esc_url(get_template_directory_uri()) . '/assets/images/logoFooter.png" alt="' . esc_attr(get_bloginfo('name')) . '" class="footer-logo" /></a>';
+              echo '<a href="' . esc_url( home_url( '/' ) ) . '"><img src="' . esc_url(get_template_directory_uri()) . '/assets/images/logoFooter.webp" alt="' . esc_attr(get_bloginfo('name')) . '" class="footer-logo" /></a>';
           }
           ?>
 

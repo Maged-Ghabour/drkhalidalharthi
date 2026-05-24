@@ -39,11 +39,11 @@ function fikrtak_theme_scripts() {
 	wp_enqueue_style( 'fikrtak-theme-style', get_stylesheet_uri(), array(), $ver );
 	// Swiper CSS - loaded normally (needed before paint)
 	wp_enqueue_style( 'swiper-style', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', array(), '11.0.0' );
-	wp_enqueue_style( 'fikrtak-main-style', get_template_directory_uri() . '/assets/css/style.css', array(), $ver );
+	wp_enqueue_style( 'fikrtak-main-style', get_template_directory_uri() . '/assets/css/style.min.css', array(), $ver );
 
 	// ===== SCRIPTS (all in footer + deferred) =====
 	wp_enqueue_script( 'swiper-script', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), '11.0.0', true );
-	wp_enqueue_script( 'fikrtak-main-script', get_template_directory_uri() . '/assets/js/main.js', array( 'swiper-script' ), $ver, true );
+	wp_enqueue_script( 'fikrtak-main-script', get_template_directory_uri() . '/assets/js/main.min.js', array( 'swiper-script' ), $ver, true );
 }
 add_action( 'wp_enqueue_scripts', 'fikrtak_theme_scripts' );
 
@@ -91,7 +91,7 @@ function fikrtak_preload_hero_image() {
 	if ( ! is_front_page() ) return;
 	$theme_uri = get_template_directory_uri();
 	?>
-	<link rel="preload" as="image" href="<?php echo esc_url( $theme_uri ); ?>/assets/images/hero pic.png" fetchpriority="high">
+	<link rel="preload" as="image" href="<?php echo esc_url( $theme_uri ); ?>/assets/images/hero pic.webp" fetchpriority="high">
 	<?php
 }
 add_action( 'wp_head', 'fikrtak_preload_hero_image', 2 );
@@ -512,7 +512,7 @@ add_action( 'customize_register', 'fikrtak_customizer_settings' );
  * تخصيص صفحة تسجيل دخول الإدمن (wp-login.php)
  */
 function fikrtak_login_logo() {
-	$logo_url = get_template_directory_uri() . '/assets/images/logo.png';
+	$logo_url = get_template_directory_uri() . '/assets/images/logo.webp';
 	if ( has_custom_logo() ) {
 		$logo_id  = get_theme_mod( 'custom_logo' );
 		$logo_src = wp_get_attachment_image_src( $logo_id, 'full' );
@@ -693,7 +693,7 @@ function fikrtak_admin_styles() {
 		? 'https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap'
 		: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap';
 
-	$logo_url = get_template_directory_uri() . '/assets/images/logo.png';
+	$logo_url = get_template_directory_uri() . '/assets/images/logo.webp';
 	if ( has_custom_logo() ) {
 		$logo_id  = get_theme_mod( 'custom_logo' );
 		$logo_src = wp_get_attachment_image_src( $logo_id, 'full' );

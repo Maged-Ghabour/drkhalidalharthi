@@ -21,7 +21,7 @@
 
   <!-- Decorative Top Right Vector (non-critical, lazy) -->
   <div class="top-right-decoration">
-     <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/vector1.png" alt="" loading="lazy" decoding="async" aria-hidden="true">
+     <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/vector1.webp" alt="" loading="lazy" decoding="async" aria-hidden="true">
   </div>
 
 <?php if ( get_theme_mod( 'fikrtak_enable_preloader', true ) ) : ?>
@@ -35,11 +35,11 @@
         if ( $logo ) {
           echo '<img src="' . esc_url( $logo[0] ) . '" alt="' . esc_attr( get_bloginfo( 'name' ) ) . '" class="pulsing-logo" />';
         } else {
-          echo '<img src="' . esc_url(get_template_directory_uri()) . '/assets/images/logo.png" alt="' . esc_attr(get_bloginfo('name')) . '" class="pulsing-logo" />';
+          echo '<img src="' . esc_url(get_template_directory_uri()) . '/assets/images/logo.webp" alt="' . esc_attr(get_bloginfo('name')) . '" class="pulsing-logo" />';
         }
 
     } else {
-        echo '<img src="' . esc_url(get_template_directory_uri()) . '/assets/images/logo.png" alt="' . esc_attr(get_bloginfo('name')) . '" class="pulsing-logo" />';
+        echo '<img src="' . esc_url(get_template_directory_uri()) . '/assets/images/logo.webp" alt="' . esc_attr(get_bloginfo('name')) . '" class="pulsing-logo" />';
     }
     ?>
   </div>
@@ -68,7 +68,7 @@
                     echo '<a href="' . esc_url( home_url( '/' ) ) . '" class="custom-logo-link"><img src="' . esc_url( $logo[0] ) . '" alt="' . esc_attr( get_bloginfo( 'name' ) ) . '" class="logo-img" /></a>';
                   }
               } else {
-                  echo '<a href="' . esc_url( home_url( '/' ) ) . '"><img src="' . esc_url(get_template_directory_uri()) . '/assets/images/logo.png" alt="' . esc_attr(get_bloginfo('name')) . '" class="logo-img" /></a>';
+                  echo '<a href="' . esc_url( home_url( '/' ) ) . '"><img src="' . esc_url(get_template_directory_uri()) . '/assets/images/logo.webp" alt="' . esc_attr(get_bloginfo('name')) . '" class="logo-img" /></a>';
               }
               ?>
             </div>
