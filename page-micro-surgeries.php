@@ -269,76 +269,65 @@ get_header();
 
     <div class="ms-why-inner">
 
-      <!-- Right: Stats + Booking Box -->
-      <div class="ms-why-stats-col">
-        <div class="ms-why-stats-row">
-          <div class="ms-why-stat-big">
-            <span class="ms-why-stat-num">+<span class="counter" data-target="1">0</span>K</span>
-            <span class="ms-why-stat-lbl">جراحة دقيقة ناجحة</span>
-          </div>
-          <div class="ms-why-stat-big">
-            <span class="ms-why-stat-num"><span class="counter" data-target="13">0</span>+</span>
-            <span class="ms-why-stat-lbl">استشاري</span>
-          </div>
-        </div>
+      <!-- Right: Why List (Green Box) -->
+      <div class="ms-why-text-col">
+        <div class="ms-why-text-tag">لماذا د. خالد؟</div>
+        <h2 class="ms-why-title">لماذا تختار<br>د. خالد الحارثي؟</h2>
+        <p class="ms-why-desc">
+          استشاري جراحة العظام بخبرة تتجاوز ١٣ عاماً وأكثر من ٢٠٠٠ عملية ناجحة، متميز في علاج الكسور واستعادة الحركة بدقة عالية.
+        </p>
 
-        <div class="ms-why-booking-box">
-          <p class="ms-why-booking-label">د. خالد الحارثي</p>
-          <p class="ms-why-booking-sub">لا مراجعة — فقط دقة واحترافية</p>
-          <?php $wa = get_theme_mod('fikrtak_contact_whatsapp', '966500000000'); ?>
-          <a href="https://wa.me/<?php echo esc_attr($wa); ?>" class="btn btn-primary ms-why-cta-btn">
-            احجز الآن عبر واتساب
-          </a>
+        <div class="ms-why-features">
+          <div class="ms-why-feature-pill">
+            <div class="ms-why-feature-icon"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/icon_page1.png" alt=""></div>
+            <div class="ms-why-feature-text">دقة جراحية عالية في تثبيت الكسور</div>
+          </div>
+          <div class="ms-why-feature-pill">
+            <div class="ms-why-feature-icon"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/icon_page2.png" alt=""></div>
+            <div class="ms-why-feature-text">أحدث التقنيات الجراحية المتطورة</div>
+          </div>
+          <div class="ms-why-feature-pill">
+            <div class="ms-why-feature-icon"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/icon_page3.png" alt=""></div>
+            <div class="ms-why-feature-text">رعاية متكاملة من التشخيص للتأهيل</div>
+          </div>
+          <div class="ms-why-feature-pill">
+            <div class="ms-why-feature-icon"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/icon_page1.png" alt=""></div>
+            <div class="ms-why-feature-text">نتائج واقعية وموثقة</div>
+          </div>
         </div>
       </div>
 
-      <!-- Left: Why List -->
-      <div class="ms-why-text-col">
-        <span class="ms-section-tag">لماذا نتميز؟</span>
-        <h2 class="ms-why-title">لماذا تختار<br>د. خالد الحارثي؟</h2>
-        <p class="ms-why-desc">
-          يجمع الدكتور خالد بين الخبرة الأكاديمية والتدريب الدولي مع الاستخدام الأمثل
-          لأحدث تقنيات الجراحة الدقيقة لخدمة مرضاه بأعلى مستويات الجودة.
-        </p>
+      <!-- Left: Stats + Booking Box -->
+      <div class="ms-why-stats-col">
+        <div class="ms-why-stats-grid">
+          <div class="ms-why-stat-box">
+            <span class="ms-why-stat-num">+<span class="counter" data-target="13">13</span></span>
+            <span class="ms-why-stat-lbl">سنة خبرة</span>
+          </div>
+          <div class="ms-why-stat-box">
+            <span class="ms-why-stat-num"><span class="counter" data-target="100">100</span>%</span>
+            <span class="ms-why-stat-lbl">التزام بالمعايير</span>
+          </div>
+          <div class="ms-why-stat-box">
+            <span class="ms-why-stat-num">+<span class="counter" data-target="2">2</span>K</span>
+            <span class="ms-why-stat-lbl">عملية ناجحة</span>
+          </div>
+          <div class="ms-why-stat-box">
+            <span class="ms-why-stat-num">استشاري</span>
+            <span class="ms-why-stat-lbl">جراحة العظام</span>
+          </div>
+        </div>
 
-        <ul class="ms-why-list">
-          <li class="ms-why-item">
-            <div class="ms-why-item-icon">
-              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/icon_page1.png" alt="">
-            </div>
-            <div class="ms-why-item-text">
-              <h4>تدريب دولي متخصص</h4>
-              <p>حاصل على زمالات دولية من إيطاليا وأوروبا في جراحة أورام العظام والجراحة الدقيقة.</p>
-            </div>
-          </li>
-          <li class="ms-why-item">
-            <div class="ms-why-item-icon">
-              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/icon_page2.png" alt="">
-            </div>
-            <div class="ms-why-item-text">
-              <h4>تقنيات حديثة متطورة</h4>
-              <p>يستخدم أحدث الأجهزة والمناظير الجراحية المتوفرة في المستشفى السعودي الألماني.</p>
-            </div>
-          </li>
-          <li class="ms-why-item">
-            <div class="ms-why-item-icon">
-              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/icon_page3.png" alt="">
-            </div>
-            <div class="ms-why-item-text">
-              <h4>رعاية متواصلة بعد الجراحة</h4>
-              <p>يتابع الدكتور كل مريض بشكل شخصي لضمان التعافي الكامل والعودة للحياة الطبيعية.</p>
-            </div>
-          </li>
-          <li class="ms-why-item">
-            <div class="ms-why-item-icon">
-              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/icon_page1.png" alt="">
-            </div>
-            <div class="ms-why-item-text">
-              <h4>شاركنا عبر واتساب مباشرةً</h4>
-              <p>تواصل مباشر مع الدكتور للاستفسار والحجز والمتابعة دون وسيط.</p>
-            </div>
-          </li>
-        </ul>
+        <div class="ms-why-booking-wrap">
+          <div class="ms-why-booking-box">
+            <p class="ms-why-booking-label">دقة جراحية — نتائج واقعية</p>
+            <p class="ms-why-booking-sub">من التشخيص إلى استعادة الحركة الكاملة</p>
+          </div>
+          <?php $wa = get_theme_mod('fikrtak_contact_whatsapp', '966500000000'); ?>
+          <a href="https://wa.me/<?php echo esc_attr($wa); ?>" class="btn btn-primary ms-why-cta-btn">
+            احجز موعدك الآن
+          </a>
+        </div>
       </div>
 
     </div><!-- .ms-why-inner -->

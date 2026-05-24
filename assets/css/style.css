@@ -2339,6 +2339,7 @@ button {
 .ip-hero {
   padding: 40px 0 0;
   background: var(--white);
+  margin-bottom: 80px;
 }
 
 .ip-hero-banner {
@@ -3189,7 +3190,9 @@ button {
 .ms-indication-icon {
   width: 60px;
   height: 60px;
-  align-self: flex-start;
+  margin-right: 0;
+  margin-left: auto;
+  align-self: flex-end;
   position: relative;
   z-index: 1;
   margin-bottom: 8px;
@@ -3389,157 +3392,183 @@ button {
 
 .ms-why-inner {
   display: grid;
-  grid-template-columns: 1fr 1.3fr;
-  gap: 80px;
-  align-items: start;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 60px;
+  align-items: stretch;
+}
+
+/* Right text col (Green box) */
+.ms-why-text-col {
+  background: #61A095;
+  border-radius: 24px;
+  padding: 48px;
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+}
+
+.ms-why-text-tag {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 12px;
+  text-align: right;
+}
+
+.ms-why-title {
+  font-size: clamp(28px, 4vw, 36px);
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.4;
+  margin-bottom: 16px;
+  text-align: right;
+}
+
+.ms-why-desc {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.9;
+  margin-bottom: 32px;
+  text-align: right;
+}
+
+.ms-why-features {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ms-why-feature-pill {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+}
+
+.ms-why-feature-icon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.ms-why-feature-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.ms-why-feature-text {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--white);
+  text-align: right;
+  flex: 1;
+  padding-right: 16px;
 }
 
 /* Left side: stats + booking */
 .ms-why-stats-col {
   display: flex;
   flex-direction: column;
-  gap: 32px;
-  position: sticky;
-  top: 120px;
+  justify-content: center;
+  gap: 48px;
 }
 
-.ms-why-stats-row {
+.ms-why-stats-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  position: relative;
 }
 
-.ms-why-stat-big {
-  background: var(--teal-light);
-  border-radius: 20px;
-  padding: 28px 20px;
+.ms-why-stat-box {
+  padding: 32px 16px;
   text-align: center;
   display: flex;
   flex-direction: column;
   gap: 8px;
+  position: relative;
+}
+
+.ms-why-stats-grid::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--teal);
+}
+
+.ms-why-stats-grid::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: var(--teal);
 }
 
 .ms-why-stat-num {
-  font-size: 36px;
+  font-size: 32px;
   font-weight: 800;
-  color: var(--teal-dark);
+  color: var(--teal);
   font-family: 'Geist', sans-serif;
   line-height: 1;
 }
 
 .ms-why-stat-lbl {
-  font-size: 13px;
-  color: var(--teal-dark);
-  opacity: 0.75;
+  font-size: 14px;
+  color: var(--text2);
   font-weight: 600;
 }
 
+.ms-why-booking-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-end;
+}
+
 .ms-why-booking-box {
-  background: var(--teal-dark);
-  border-radius: 20px;
-  padding: 32px 28px;
+  background: rgba(220, 243, 239, 1);
+  padding: 24px;
   text-align: right;
+  width: 100%;
+  border-right: 4px solid var(--teal);
 }
 
 .ms-why-booking-label {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 800;
-  color: var(--white);
+  color: var(--teal-dark);
   margin-bottom: 6px;
 }
 
 .ms-why-booking-sub {
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.75);
-  margin-bottom: 24px;
-  line-height: 1.6;
+  color: var(--text2);
 }
 
 .ms-why-cta-btn {
   display: inline-block;
-  width: 100%;
-  text-align: center;
-  background: var(--white);
-  color: var(--teal-dark);
+  background: var(--teal);
+  color: var(--white);
   font-weight: 800;
   border-radius: 24px;
-  padding: 14px 24px;
+  padding: 14px 40px;
   font-size: 15px;
   transition: var(--transition);
+  text-align: center;
+  border: none;
 }
 
 .ms-why-cta-btn:hover {
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--teal-dark);
   transform: translateY(-2px);
-}
-
-/* Right side: why list */
-.ms-why-title {
-  font-size: clamp(26px, 4vw, 38px);
-  font-weight: 800;
-  color: var(--teal-dark);
-  line-height: 1.4;
-  margin-bottom: 16px;
-  margin-top: 8px;
-}
-
-.ms-why-desc {
-  font-size: 15px;
-  color: var(--text2);
-  line-height: 1.9;
-  margin-bottom: 32px;
-}
-
-.ms-why-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-.ms-why-item {
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-  padding: 20px 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.ms-why-item:last-child {
-  border-bottom: none;
-}
-
-.ms-why-item-icon {
-  width: 44px;
-  height: 44px;
-  flex-shrink: 0;
-  background: var(--teal-light);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px;
-}
-
-.ms-why-item-icon img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.ms-why-item-text h4 {
-  font-size: 16px;
-  font-weight: 800;
-  color: var(--teal-dark);
-  margin-bottom: 6px;
-}
-
-.ms-why-item-text p {
-  font-size: 14px;
-  color: var(--text2);
-  line-height: 1.7;
+  color: var(--white);
 }
 
 
@@ -3605,9 +3634,6 @@ button {
     gap: 8px;
   }
 }
-    position: static;
-  }
-}
 
 @media (max-width: 768px) {
   .ms-hero-banner {
@@ -3651,7 +3677,7 @@ button {
 
 .jr-hero-sub {
   font-size: 16px;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(67, 134, 123, 1);
   line-height: 1.9;
   max-width: 600px;
   margin: 0 auto 32px;

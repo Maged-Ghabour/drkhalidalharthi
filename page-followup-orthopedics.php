@@ -84,10 +84,9 @@ get_header();
   <div class="container">
 
     <div class="ip-why-inner"
-      style="background-image: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/Frame%202147239726.png');">
-      <div class="ip-why-overlay"></div>
+      style="background-image: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/Frame%202147239726.png'); padding: 60px 48px;">
       <!-- Right: Text Column -->
-      <div class="ip-why-text" style="position: relative; z-index: 2;">
+      <div class="ip-why-text">
         <span class="ip-why-small-title">أهمية المتابعة</span>
         <h2 class="ip-why-title">لماذا تُعد المتابعة بعد<br>الجراحة خطوة مهمة</h2>
         <p class="ip-why-desc">
@@ -101,7 +100,7 @@ get_header();
       </div>
 
       <!-- Left: Cards Column -->
-      <div class="ip-why-cards-grid" style="position: relative; z-index: 2;">
+      <div class="ip-why-cards-grid">
         <div class="ip-why-card full-width">
           <div class="ip-why-card-icon">
             <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/icon_page1.png" alt="الوقاية من المضاعفات">
