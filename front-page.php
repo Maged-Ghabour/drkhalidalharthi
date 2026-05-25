@@ -230,7 +230,7 @@ get_header(); ?>
     <div class="section-tag"><span class="dot-teal"></span> المقالات والاخبار</div>
     <h2 class="section-title">نوفر اكثر من +٢٠ مقال ونصائح طبيه</h2>
     <div class="swiper articles-swiper" style="width: 100%;">
-      <div class="swiper-wrapper articles-grid">
+      <div class="swiper-wrapper">
         <?php
         $articles_query = new WP_Query(array(
           'post_type' => 'post',
