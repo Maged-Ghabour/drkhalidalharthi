@@ -321,10 +321,6 @@ button {
   padding: 4px;
 }
 
-.mobile-close-btn {
-  display: none;
-}
-
 body.menu-open {
   overflow: hidden;
 }
@@ -1621,29 +1617,6 @@ body.menu-open {
 
   .nav-links.mobile-open a:hover {
     color: var(--teal);
-  }
-
-  .mobile-close-btn {
-    position: absolute;
-    top: 24px;
-    left: 24px;
-    background: none;
-    border: none;
-    font-size: 40px;
-    color: var(--text);
-    cursor: pointer;
-    line-height: 1;
-    z-index: 10001;
-    display: block;
-    padding: 0;
-  }
-
-  .mobile-close-btn:hover {
-    color: var(--teal);
-  }
-
-  body.menu-open .hamburger {
-    display: none;
   }
 
   .hamburger {

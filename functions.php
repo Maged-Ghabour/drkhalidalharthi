@@ -39,7 +39,7 @@ function fikrtak_theme_scripts() {
 	wp_enqueue_style( 'fikrtak-theme-style', get_stylesheet_uri(), array(), $ver );
 	// Swiper CSS - loaded normally (needed before paint)
 	wp_enqueue_style( 'swiper-style', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', array(), '11.0.0' );
-	wp_enqueue_style( 'fikrtak-main-style', get_template_directory_uri() . '/assets/css/style.min.css', array(), $ver );
+	wp_enqueue_style( 'fikrtak-main-style', get_template_directory_uri() . '/assets/css/style.css', array(), time() );
 
 	// ===== SCRIPTS (all in footer + deferred) =====
 	wp_enqueue_script( 'swiper-script', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), '11.0.0', true );

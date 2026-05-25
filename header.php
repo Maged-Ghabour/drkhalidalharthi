@@ -82,7 +82,6 @@
                 'menu_class'     => 'nav-links',
                 'menu_id'        => 'navLinks',
                 'fallback_cb'    => false,
-                'items_wrap'     => '<ul id="%1$s" class="%2$s"><button class="mobile-close-btn" id="mobileCloseBtn" aria-label="إغلاق">&times;</button>%3$s</ul>'
             ) );
             ?>
 
