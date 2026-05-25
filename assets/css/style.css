@@ -1657,9 +1657,9 @@ body.menu-open {
 
   /* Fix Floating Badges for Mobile */
   .badge-1 {
-    width: 90px;
-    right: 5%;
-    top: 5%;
+    width: 130px;
+    left: 5%;
+    top: 37%;
   }
 
   .badge-2 {
