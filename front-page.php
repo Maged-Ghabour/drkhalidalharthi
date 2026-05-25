@@ -229,50 +229,43 @@ get_header(); ?>
   <div class="container">
     <div class="section-tag"><span class="dot-teal"></span> المقالات والاخبار</div>
     <h2 class="section-title">نوفر اكثر من +٢٠ مقال ونصائح طبيه</h2>
-    <div class="articles-grid">
-      <?php
-      $articles_query = new WP_Query(array(
-        'post_type' => 'post',
-        'posts_per_page' => 4
-      ));
-      if ($articles_query->have_posts()):
-        while ($articles_query->have_posts()):
-          $articles_query->the_post(); ?>
-          <article class="article-card">
-            <div class="article-img">
-              <?php if (has_post_thumbnail()): ?>
-                <?php the_post_thumbnail('medium'); ?>
-              <?php else: ?>
-                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/blog.webp"
-                  alt="<?php the_title_attribute(); ?>" />
-              <?php endif; ?>
-            </div>
-            <p class="article-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p>
+    <div class="swiper articles-swiper" style="width: 100%;">
+      <div class="swiper-wrapper articles-grid">
+        <?php
+        $articles_query = new WP_Query(array(
+          'post_type' => 'post',
+          'posts_per_page' => 4
+        ));
+        if ($articles_query->have_posts()):
+          while ($articles_query->have_posts()):
+            $articles_query->the_post(); ?>
+            <article class="swiper-slide article-card">
+              <div class="article-img">
+                <?php if (has_post_thumbnail()): ?>
+                  <?php the_post_thumbnail('medium'); ?>
+                <?php else: ?>
+                  <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/blog.webp"
+                    alt="<?php the_title_attribute(); ?>" />
+                <?php endif; ?>
+              </div>
+              <p class="article-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p>
+            </article>
+          <?php endwhile;
+          wp_reset_postdata();
+        else: ?>
+          <article class="swiper-slide article-card">
+            <div class="article-img"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/blog.webp"
+                alt="مقالة طبية" /></div>
+            <p class="article-title">مقالة افتراضية</p>
           </article>
-        <?php endwhile;
-        wp_reset_postdata();
-      else: ?>
-        <article class="article-card">
-          <div class="article-img"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/blog.webp"
-              alt="مقالة طبية" /></div>
-          <p class="article-title">عنوان المقالة</p>
-        </article>
-        <article class="article-card">
-          <div class="article-img"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/blog.webp"
-              alt="مقالة طبية" /></div>
-          <p class="article-title">عنوان المقالة</p>
-        </article>
-        <article class="article-card">
-          <div class="article-img"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/blog.webp"
-              alt="مقالة طبية" /></div>
-          <p class="article-title">عنوان المقالة</p>
-        </article>
-        <article class="article-card">
-          <div class="article-img"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/blog.webp"
-              alt="مقالة طبية" /></div>
-          <p class="article-title">عنوان المقالة</p>
-        </article>
-      <?php endif; ?>
+          <article class="swiper-slide article-card">
+            <div class="article-img"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/blog.webp"
+                alt="مقالة طبية" /></div>
+            <p class="article-title">مقالة افتراضية</p>
+          </article>
+        <?php endif; ?>
+      </div>
+      <div class="swiper-pagination articles-pagination" style="position: static; margin-top: 20px;"></div>
     </div>
   </div>
 </section>

@@ -124,6 +124,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* ---------- Articles Swiper ---------- */
+  const articlesSwiperEl = document.querySelector('.articles-swiper');
+  if (articlesSwiperEl && typeof Swiper !== 'undefined') {
+    new Swiper('.articles-swiper', {
+      slidesPerView: 1.2,
+      spaceBetween: 16,
+      pagination: {
+        el: '.articles-pagination',
+        clickable: true,
+      },
+      breakpoints: {
+        576: {
+          slidesPerView: 2,
+          spaceBetween: 20
+        },
+        768: {
+          slidesPerView: 3,
+          spaceBetween: 24
+        },
+        1024: {
+          slidesPerView: 4,
+          spaceBetween: 24,
+          allowTouchMove: false
+        }
+      }
+    });
+  }
+
   /* ---------- Reviews Text Sync ---------- */
   function renderReview(idx) {
     const r = reviews[idx];

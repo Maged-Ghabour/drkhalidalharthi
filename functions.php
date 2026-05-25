@@ -43,7 +43,7 @@ function fikrtak_theme_scripts() {
 
 	// ===== SCRIPTS (all in footer + deferred) =====
 	wp_enqueue_script( 'swiper-script', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), '11.0.0', true );
-	wp_enqueue_script( 'fikrtak-main-script', get_template_directory_uri() . '/assets/js/main.min.js', array( 'swiper-script' ), $ver, true );
+	wp_enqueue_script( 'fikrtak-main-script', get_template_directory_uri() . '/assets/js/main.js', array( 'swiper-script' ), time(), true );
 }
 add_action( 'wp_enqueue_scripts', 'fikrtak_theme_scripts' );
 
