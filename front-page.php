@@ -8,7 +8,7 @@ get_header(); ?>
   <div class="social-proof">
     <div class="avatars">
       <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/avatars.webp" alt="زوار"
-        class="avatars-img" />
+        class="avatars-img" loading="lazy" decoding="async" width="80" height="32" />
     </div>
     <div class="social-text">
       <span class="social-num">+12K</span>
@@ -86,13 +86,13 @@ get_header(); ?>
 <div class="hero-img-col">
   <div class="hero-img-wrapper">
     <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/hero pic.webp" alt="د. خالد الحارثي"
-      class="hero-img" />
-    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/hero1vector.webp" alt="vector"
-      class="hero-floating-badge badge-1" />
-    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/hero2vector.webp" alt="vector"
-      class="hero-floating-badge badge-2" />
-    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/hero3vector.webp" alt="vector"
-      class="hero-floating-badge badge-3" />
+      class="hero-img" fetchpriority="high" loading="eager" decoding="async" />
+    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/hero1vector.webp" alt=""
+      class="hero-floating-badge badge-1" loading="lazy" decoding="async" aria-hidden="true" />
+    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/hero2vector.webp" alt=""
+      class="hero-floating-badge badge-2" loading="lazy" decoding="async" aria-hidden="true" />
+    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/hero3vector.webp" alt=""
+      class="hero-floating-badge badge-3" loading="lazy" decoding="async" aria-hidden="true" />
     <div class="hero-floating-badge badge-4">
       <div class="info-card">
         <div class="info-row">

@@ -21,7 +21,7 @@
 
   <!-- Decorative Top Right Vector (non-critical, lazy) -->
   <div class="top-right-decoration">
-     <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/vector1.webp" alt="" loading="lazy" decoding="async" aria-hidden="true">
+     <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/vector1.webp" alt="" loading="lazy" decoding="async" aria-hidden="true" width="300" height="300">
   </div>
 
 <?php if ( get_theme_mod( 'fikrtak_enable_preloader', true ) ) : ?>

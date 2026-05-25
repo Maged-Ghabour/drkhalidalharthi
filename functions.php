@@ -37,7 +37,7 @@ function fikrtak_theme_scripts() {
 
 	// ===== STYLES =====
 	wp_enqueue_style( 'fikrtak-theme-style', get_stylesheet_uri(), array(), $ver );
-	// Swiper CSS - loaded normally (needed before paint)
+	// Swiper CSS - loaded non-blocking
 	wp_enqueue_style( 'swiper-style', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', array(), '11.0.0' );
 	wp_enqueue_style( 'fikrtak-main-style', get_template_directory_uri() . '/assets/css/style.css', array(), time() );
 
@@ -48,16 +48,30 @@ function fikrtak_theme_scripts() {
 add_action( 'wp_enqueue_scripts', 'fikrtak_theme_scripts' );
 
 /**
- * Add defer attribute to non-critical scripts
+ * Add defer to scripts + async to Swiper (non-interactive on load)
  */
 function fikrtak_defer_scripts( $tag, $handle, $src ) {
-	$defer_scripts = array( 'swiper-script', 'fikrtak-main-script' );
-	if ( in_array( $handle, $defer_scripts ) ) {
+	if ( 'swiper-script' === $handle ) {
+		return '<script defer src="' . esc_url( $src ) . '"></script>' . "\n";
+	}
+	if ( 'fikrtak-main-script' === $handle ) {
 		return '<script defer src="' . esc_url( $src ) . '"></script>' . "\n";
 	}
 	return $tag;
 }
 add_filter( 'script_loader_tag', 'fikrtak_defer_scripts', 10, 3 );
+
+/**
+ * Load Swiper CSS non-blocking to avoid render-blocking
+ */
+function fikrtak_non_blocking_styles( $tag, $handle, $href, $media ) {
+	if ( 'swiper-style' === $handle ) {
+		return '<link rel="preload" as="style" href="' . esc_url($href) . '" onload="this.onload=null;this.rel=\'stylesheet\'">' .
+			'<noscript><link rel="stylesheet" href="' . esc_url($href) . '"></noscript>' . "\n";
+	}
+	return $tag;
+}
+add_filter( 'style_loader_tag', 'fikrtak_non_blocking_styles', 10, 4 );
 
 /**
  * Add resource hints: preconnect + dns-prefetch for external domains
@@ -80,6 +94,22 @@ function fikrtak_resource_hints() {
 	<!-- Load Geist font (numbers) via link instead of CSS @import -->
 	<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@700;800;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 	<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@700;800;900&display=swap"></noscript>
+
+	<!-- Mobile Performance: Inline critical CSS for above-the-fold content -->
+	<?php if ( wp_is_mobile() ) : ?>
+	<style id="mobile-critical-css">
+	/* Critical above-fold styles for mobile */
+	.hero{background:#f8fffe;overflow:hidden}
+	.hero-inner{display:flex;flex-direction:column;gap:30px}
+	.nav{display:flex;justify-content:space-between;align-items:center;padding:10px 0}
+	.nav-logo img{height:48px;width:auto}
+	.hamburger{display:flex;flex-direction:column;gap:5px;padding:4px;background:none;border:none;cursor:pointer}
+	.hamburger span{display:block;width:24px;height:2.5px;background:#0d2626;border-radius:2px;transition:transform .28s ease,opacity .2s}
+	.hero-content{order:3}
+	.hero-img-col{order:2}
+	.header{order:1}
+	</style>
+	<?php endif; ?>
 	<?php
 }
 add_action( 'wp_head', 'fikrtak_resource_hints', 1 );
