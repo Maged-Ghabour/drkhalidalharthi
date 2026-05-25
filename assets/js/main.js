@@ -14,17 +14,30 @@ document.addEventListener('DOMContentLoaded', () => {
       if (navLinks) {
         const open = navLinks.classList.toggle('mobile-open');
         hamburger.classList.toggle('open', open);
+        document.body.classList.toggle('menu-open', open);
         if (navCta) navCta.style.display = open ? 'none' : '';
       }
     });
   }
 
+  // Handle explicit close button injected via items_wrap
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('#mobileCloseBtn')) {
+      navLinks.classList.remove('mobile-open');
+      if (hamburger) hamburger.classList.remove('open');
+      document.body.classList.remove('menu-open');
+      if (navCta) navCta.style.display = '';
+    }
+  });
+
   if (navLinks) {
     // Close menu on link click
-    navLinks.querySelectorAll('a').forEach(a => {
+    navLinks.querySelectorAll('a:not(#mobileCloseBtn)').forEach(a => {
       a.addEventListener('click', () => {
         navLinks.classList.remove('mobile-open');
         if (hamburger) hamburger.classList.remove('open');
+        document.body.classList.remove('menu-open');
+        if (navCta) navCta.style.display = '';
       });
     });
   }

@@ -321,6 +321,14 @@ button {
   padding: 4px;
 }
 
+.mobile-close-btn {
+  display: none;
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
 .hamburger span {
   display: block;
   width: 24px;
@@ -1578,20 +1586,70 @@ button {
   .nav-links.mobile-open {
     display: flex;
     flex-direction: column;
-    position: absolute;
-    top: 76px;
-    right: 0;
-    left: 0;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100dvh;
     background: var(--white);
-    padding: 20px 24px;
-    border-bottom: 1px solid var(--border);
-    gap: 16px;
-    z-index: 999;
-    box-shadow: var(--shadow);
+    padding: 20px;
+    gap: 32px;
+    z-index: 9999;
+    animation: menuFadeIn 0.3s ease forwards;
+  }
+
+  @keyframes menuFadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .nav-links.mobile-open li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-links.mobile-open a {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text);
+  }
+
+  .nav-links.mobile-open a::after {
+    display: none;
+  }
+
+  .nav-links.mobile-open a:hover {
+    color: var(--teal);
+  }
+
+  .mobile-close-btn {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    background: none;
+    border: none;
+    font-size: 40px;
+    color: var(--text);
+    cursor: pointer;
+    line-height: 1;
+    z-index: 10001;
+    display: block;
+    padding: 0;
+  }
+
+  .mobile-close-btn:hover {
+    color: var(--teal);
+  }
+
+  body.menu-open .hamburger {
+    display: none;
   }
 
   .hamburger {
     display: flex;
+    position: relative;
+    z-index: 10000;
   }
 
   .hero-inner {
