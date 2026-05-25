@@ -147,7 +147,7 @@ get_header();
 <style>
 /* New Styles for Indications, Stages, CTA */
 .bt-indications-new, .bt-stages-new, .bt-cta-new {
-  padding: 80px 0;
+  padding: 20px 0;
 }
 .bt-card-new {
   background-color: #E5F2EE;

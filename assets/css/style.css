@@ -1817,7 +1817,22 @@ body.menu-open {
   }
 
   .hero-btns {
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 8px;
+  }
+
+  .hero-btns .btn {
+    flex: 1;
+    padding: 12px 8px;
+    font-size: 13px;
+    justify-content: center;
+    white-space: nowrap;
+  }
+
+  .hero-btns .btn svg {
+    width: 14px;
+    height: 14px;
   }
 
   .footer-grid {
