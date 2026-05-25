@@ -1693,6 +1693,12 @@ button {
     text-align: center;
   }
 
+  .stats-text-header {
+    flex-wrap: wrap;
+    justify-content: center !important;
+    gap: 16px;
+  }
+
   .stats-inner .stat-item {
     width: 100%;
   }
@@ -2652,7 +2658,51 @@ button {
   background: rgba(220, 243, 239, 1);
   border-radius: 24px;
   padding: 48px;
+  overflow: hidden;
 }
+
+/* Reset hero grid-placement rules that bleed into ip-steps */
+.ip-steps .hero-img-col {
+  grid-column: unset;
+  grid-row: unset;
+  align-self: auto;
+  margin-top: 0;
+  width: 100%;
+}
+
+.ip-steps .hero-img-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+}
+
+.ip-steps .hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+/* Hide floating decorative badges on the steps section to keep it clean */
+.ip-steps .badge-1,
+.ip-steps .badge-2,
+.ip-steps .badge-3 {
+  display: none;
+}
+
+/* Keep badge-4 (info card) but reposition it */
+.ip-steps .badge-4 {
+  bottom: 16px;
+  left: 16px;
+  right: auto;
+}
+
+/* Scale down the info card slightly */
+.ip-steps .info-card {
+  min-width: 200px;
+}
+
 
 /* Steps content */
 .ip-steps-title {
@@ -2767,6 +2817,7 @@ button {
   .ip-why-inner {
     grid-template-columns: 1fr;
     gap: 40px;
+    padding: 40px 24px !important;
   }
 
   .ip-why-text {
@@ -2796,22 +2847,41 @@ button {
   }
 
   .ip-steps-inner {
-    grid-template-columns: 1fr;
-    gap: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
   }
 
-  .ip-steps-img-col {
-    max-width: 400px;
-    margin: 0 auto;
+  .ip-steps .hero-img-col {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    order: 2;
   }
 
-  .ip-steps-img {
-    aspect-ratio: 4/3;
+  .ip-steps .ip-steps-content {
+    order: 1;
   }
 
-  .ip-steps-badge {
-    bottom: -16px;
-    left: 16px;
+  .ip-steps .hero-img-wrapper {
+    width: 100%;
+    height: auto;
+    min-height: unset;
+    overflow: hidden;
+  }
+
+  .ip-steps .hero-img {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    object-position: top center;
+  }
+
+  /* Hide all decorative floating badges on tablet & mobile */
+  .ip-steps .hero-floating-badge {
+    display: none;
   }
 
   .ip-faq-inner {
@@ -2887,8 +2957,14 @@ button {
   }
 
   .ip-steps-inner {
-    padding: 32px 20px;
+    padding: 28px 16px;
     border-radius: 16px;
+    gap: 24px;
+  }
+
+  .ip-steps .hero-img {
+    aspect-ratio: 4/3;
+    max-height: 280px;
   }
 }
 
