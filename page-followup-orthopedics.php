@@ -219,9 +219,9 @@ get_header();
         <div class="hero-img-wrapper">
           <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/hero pic.png" alt="د. خالد الحارثي"
             class="hero-img" />
-          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/hero1vector.png" alt="vector"
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/سنة خبرة.png" alt="vector"
             class="hero-floating-badge badge-1" />
-          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/hero2vector.png" alt="vector"
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/استشاري متخصص.png" alt="vector"
             class="hero-floating-badge badge-2" />
           <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/hero3vector.png" alt="vector"
             class="hero-floating-badge badge-3" />

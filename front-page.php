@@ -87,9 +87,9 @@ get_header(); ?>
   <div class="hero-img-wrapper">
     <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/hero pic.webp" alt="د. خالد الحارثي"
       class="hero-img" fetchpriority="high" loading="eager" decoding="async" />
-    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/hero1vector.webp" alt=""
+    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/سنة خبرة.png" alt=""
       class="hero-floating-badge badge-1" loading="lazy" decoding="async" aria-hidden="true" />
-    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/hero2vector.webp" alt=""
+    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/استشاري متخصص.png" alt=""
       class="hero-floating-badge badge-2" loading="lazy" decoding="async" aria-hidden="true" />
     <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/hero3vector.webp" alt=""
       class="hero-floating-badge badge-3" loading="lazy" decoding="async" aria-hidden="true" />

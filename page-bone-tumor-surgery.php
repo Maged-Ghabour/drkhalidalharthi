@@ -423,8 +423,8 @@ get_header();
         <div class="hero-img-wrapper" style="border: none !important; box-shadow: none !important; padding: 0 !important; background: transparent !important;">
           <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/hero pic.png" alt="د. خالد الحارثي" class="hero-img" style="border-radius: 24px;" />
           
-          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/hero1vector.png" alt="vector" class="hero-floating-badge badge-1" />
-          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/hero2vector.png" alt="vector" class="hero-floating-badge badge-2" />
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/سنة خبرة.png" alt="vector" class="hero-floating-badge badge-1" />
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/استشاري متخصص.png" alt="vector" class="hero-floating-badge badge-2" />
           <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/hero3vector.png" alt="vector" class="hero-floating-badge badge-3" />
           <div class="hero-floating-badge badge-4">
             <div class="info-card">
