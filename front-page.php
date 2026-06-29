@@ -239,7 +239,7 @@ get_header(); ?>
         if ($articles_query->have_posts()):
           while ($articles_query->have_posts()):
             $articles_query->the_post(); ?>
-            <article class="swiper-slide article-card">
+            <div class="swiper-slide article-card">
               <div class="article-img">
                 <?php if (has_post_thumbnail()): ?>
                   <?php the_post_thumbnail('medium'); ?>
@@ -249,20 +249,20 @@ get_header(); ?>
                 <?php endif; ?>
               </div>
               <p class="article-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p>
-            </article>
+            </div>
           <?php endwhile;
           wp_reset_postdata();
         else: ?>
-          <article class="swiper-slide article-card">
+          <div class="swiper-slide article-card">
             <div class="article-img"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/blog.webp"
                 alt="مقالة طبية" /></div>
             <p class="article-title">مقالة افتراضية</p>
-          </article>
-          <article class="swiper-slide article-card">
+          </div>
+          <div class="swiper-slide article-card">
             <div class="article-img"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/blog.webp"
                 alt="مقالة طبية" /></div>
             <p class="article-title">مقالة افتراضية</p>
-          </article>
+          </div>
         <?php endif; ?>
       </div>
       <div class="swiper-pagination articles-pagination" style="position: static; margin-top: 20px;"></div>
