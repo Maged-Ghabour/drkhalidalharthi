@@ -47,13 +47,13 @@ get_header(); ?>
     <div class="symptoms-top-row">
       <p class="symptoms-title">متى تحتاج زيارة دكتور<br>أورام العظام؟</p>
       <div class="symptoms-nav">
-        <button class="icon-btn dark">
+        <button class="icon-btn dark" aria-label="السابق">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"
               stroke-linejoin="round" />
           </svg>
         </button>
-        <button class="icon-btn light">
+        <button class="icon-btn light" aria-label="التالي">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
               stroke-linejoin="round" />
