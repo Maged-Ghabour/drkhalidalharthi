@@ -166,13 +166,22 @@ get_header();
 </style>
 
 <?php
-// Default Background (used in other pages too)
-$bg_image = get_template_directory_uri() . '/assets/images/followupBG.png';
-
-// Change background if a featured image is set on the page
-if (has_post_thumbnail()) {
-    $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full');
+// Dynamic ACF values for Hero Section
+$bg_image = get_field('fikrtak_about_hero_bg');
+if (empty($bg_image)) {
+    if (has_post_thumbnail()) {
+        $bg_image = get_the_post_thumbnail_url(get_the_ID(), 'full');
+    } else {
+        $bg_image = get_template_directory_uri() . '/assets/images/followupBG.png';
+    }
 }
+
+$hero_title = get_field('fikrtak_about_hero_title') ?: 'استشاري جراحة أورام العظام وإعادة بناء المفاصل';
+$hero_desc = get_field('fikrtak_about_hero_desc') ?: 'خبرة متقدمة في التعامل مع الحالات المعقدة والدقيقة في جراحات العظام،<br>باستخدام أحدث التقنيات الطبية لتحقيق أفضل النتائج العلاجية.';
+$hero_tag_1 = get_field('fikrtak_about_hero_tag_1') ?: 'جراحات أورام العظام';
+$hero_tag_2 = get_field('fikrtak_about_hero_tag_2') ?: 'إعادة بناء المفاصل';
+$hero_tag_3 = get_field('fikrtak_about_hero_tag_3') ?: 'الجراحات الدقيقة والمعقدة';
+$hero_note = get_field('fikrtak_about_hero_note') ?: 'استعادة الحركة، تحسين جودة الحياة، وتحقيق تعافٍ آمن ودقيق لكل مريض.';
 ?>
 
 <div class="container">
@@ -188,17 +197,16 @@ if (has_post_thumbnail()) {
 
       <div class="about-doc-name">د. خالد الحارثي</div>
       
-      <h1 class="about-hero-title">استشاري جراحة أورام العظام وإعادة بناء المفاصل</h1>
+      <h1 class="about-hero-title"><?php echo wp_kses_post($hero_title); ?></h1>
       
       <p class="about-hero-desc">
-        خبرة متقدمة في التعامل مع الحالات المعقدة والدقيقة في جراحات العظام،<br>
-        باستخدام أحدث التقنيات الطبية لتحقيق أفضل النتائج العلاجية.
+        <?php echo wp_kses_post($hero_desc); ?>
       </p>
 
       <div class="about-tags">
-        <span class="about-tag">جراحات أورام العظام</span>
-        <span class="about-tag">إعادة بناء المفاصل</span>
-        <span class="about-tag">الجراحات الدقيقة والمعقدة</span>
+        <span class="about-tag"><?php echo esc_html($hero_tag_1); ?></span>
+        <span class="about-tag"><?php echo esc_html($hero_tag_2); ?></span>
+        <span class="about-tag"><?php echo esc_html($hero_tag_3); ?></span>
       </div>
 
       <div class="about-note">
@@ -206,7 +214,7 @@ if (has_post_thumbnail()) {
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h2.5l1.5-3 2 6 1.5-3H16" />
         </svg>
-        استعادة الحركة، تحسين جودة الحياة، وتحقيق تعافٍ آمن ودقيق لكل مريض.
+        <?php echo esc_html($hero_note); ?>
       </div>
 
       <div class="about-hero-btns">
