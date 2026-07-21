@@ -47,8 +47,12 @@
 <?php endif; ?>
 
 <?php if ( is_front_page() ) : ?>
+  <?php 
+  $hero_section_bg = get_field('hero_section_background'); 
+  $hero_style = $hero_section_bg ? 'style="background-image: url(' . esc_url($hero_section_bg) . '); background-size: cover; background-position: center;"' : '';
+  ?>
   <!-- ===== HERO ===== -->
-  <section class="hero" id="home">
+  <section class="hero" id="home" <?php echo $hero_style; ?>>
     <div class="container">
       <div class="hero-inner">
 <?php else : ?>

@@ -629,17 +629,6 @@ if (has_post_thumbnail()) {
 <div class="container">
 <section class="about-features fade-in">
   
-  <div class="about-features-img-col">
-    <?php 
-    $img = get_theme_mod('fikrtak_features_img', '');
-    if (!empty($img)) {
-      echo '<img src="' . esc_url($img) . '" alt="د. خالد الحارثي" class="about-features-img">';
-    } else {
-      echo '<div class="about-features-img-placeholder">الرجاء رفع الصورة من تخصيص القالب</div>';
-    }
-    ?>
-  </div>
-
   <div class="about-features-text">
     <h2 class="about-features-title"><?php echo esc_html(get_theme_mod('fikrtak_features_title', 'ما يميز د. خالد الحارثي')); ?></h2>
     <p class="about-features-desc">
@@ -669,6 +658,17 @@ if (has_post_thumbnail()) {
       }
       ?>
     </ul>
+  </div>
+
+  <div class="about-features-img-col">
+    <?php 
+    $img = get_theme_mod('fikrtak_features_img', '');
+    if (!empty($img)) {
+      echo '<img src="' . esc_url($img) . '" alt="د. خالد الحارثي" class="about-features-img">';
+    } else {
+      echo '<div class="about-features-img-placeholder">الرجاء رفع الصورة من تخصيص القالب</div>';
+    }
+    ?>
   </div>
 
 </section>
@@ -716,7 +716,6 @@ if (has_post_thumbnail()) {
   display: flex;
   justify-content: space-between;
   position: relative;
-  max-width: 1000px;
   margin: 0 auto;
 }
 /* The line behind the circles */

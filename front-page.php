@@ -17,31 +17,49 @@ get_header(); ?>
   </div>
   <div class="hero-title-wrap">
     <h1 class="hero-title">
-      <?php echo wp_kses_post(get_theme_mod('fikrtak_hero_title', 'استشاري جراحة أورام<br>العظام وإعادة بناء<br>المفاصل')); ?>
+      <?php 
+      $hero_title = get_field('hero_title');
+      echo wp_kses_post($hero_title ? $hero_title : 'استشاري جراحة أورام<br>العظام وإعادة بناء<br>المفاصل'); 
+      ?>
     </h1>
     <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/Vector.webp" alt="vector"
       class="hero-vector" />
   </div>
   <div class="hero-sub-wrap">
-    <p class="hero-sub-title"><?php echo esc_html(get_theme_mod('fikrtak_hero_subtitle', 'متى يجب زيارة الطبيب؟')); ?>
+    <p class="hero-sub-title">
+      <?php 
+      $hero_subtitle = get_field('hero_subtitle');
+      echo esc_html($hero_subtitle ? $hero_subtitle : 'متى يجب زيارة الطبيب؟'); 
+      ?>
     </p>
     <p class="hero-sub">
-      <?php echo esc_html(get_theme_mod('fikrtak_hero_desc', 'عند الشعور بألم مستمر أو ظهور أعراض غير طبيعية في العظام.')); ?>
+      <?php 
+      $hero_desc = get_field('hero_desc');
+      echo esc_html($hero_desc ? $hero_desc : 'عند الشعور بألم مستمر أو ظهور أعراض غير طبيعية في العظام.'); 
+      ?>
     </p>
 
   </div>
 
   <div class="hero-btns">
-    <?php $wa = get_theme_mod('fikrtak_contact_whatsapp', '966500000000'); ?>
-    <a href="https://wa.me/<?php echo esc_attr($wa); ?>" class="btn btn-primary btn-lg">
-      استشارة عبر واتساب
-
+    <?php 
+    $wa_number = get_field('whatsapp_number');
+    if (!$wa_number) {
+        $wa_number = '966500000000';
+    }
+    ?>
+    <a href="https://wa.me/<?php echo esc_attr($wa_number); ?>" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
+      احجز موعدك الان
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-        <path
-          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
       </svg>
     </a>
-    <a href="#about" class="btn btn-dark btn-lg">معرفة المزيد ←</a>
+    <a href="https://wa.me/<?php echo esc_attr($wa_number); ?>" class="btn btn-dark btn-lg" target="_blank" rel="noopener noreferrer">
+      استشارة الان
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px;">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+      </svg>
+    </a>
   </div>
   <div class="symptoms-section">
     <div class="symptoms-top-row">
@@ -85,7 +103,11 @@ get_header(); ?>
 </div>
 <div class="hero-img-col">
   <div class="hero-img-wrapper">
-    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/hero pic.webp" alt="د. خالد الحارثي"
+    <?php 
+    $hero_image = get_field('hero_background');
+    $hero_image_url = $hero_image ? esc_url($hero_image) : esc_url(get_template_directory_uri()) . '/assets/images/hero pic.webp';
+    ?>
+    <img src="<?php echo $hero_image_url; ?>" alt="د. خالد الحارثي"
       class="hero-img" fetchpriority="high" loading="eager" decoding="async" />
     <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/سنة خبرة.png" alt=""
       class="hero-floating-badge badge-1" loading="lazy" decoding="async" aria-hidden="true" />
@@ -128,8 +150,13 @@ get_header(); ?>
       <div class="stats-text">
         <div class="stats-text-header">
           <h2>نتميز بخبرتنا</h2>
-          <?php $wa = get_theme_mod('fikrtak_contact_whatsapp', '966500000000'); ?>
-          <a href="https://wa.me/<?php echo esc_attr($wa); ?>" class="btn btn-primary whatsapp-stat-btn">
+          <?php 
+          $wa = get_field('whatsapp_number');
+          if (!$wa) {
+              $wa = '966500000000';
+          }
+          ?>
+          <a href="https://wa.me/<?php echo esc_attr($wa); ?>" class="btn btn-primary whatsapp-stat-btn" target="_blank" rel="noopener noreferrer">
             استشارة عبر واتساب
 
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -167,6 +194,101 @@ get_header(); ?>
         </div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT DOCTOR ===== -->
+<section class="about-doctor-section" id="about-doctor-section">
+  <div class="container">
+    <div class="about-doctor-inner">
+      <div class="about-doctor-text">
+        <h2 class="about-doctor-title">نبذة عن د. خالد الحارثي</h2>
+        <p class="about-doctor-desc">
+          د. خالد الحارثي هو استشاري متخصص في جراحة أورام العظام وإعادة بناء المفاصل، يمتلك خبرة واسعة في التعامل مع الحالات الطبية المعقدة والدقيقة. يكرس جهوده لتقديم رعاية طبية استثنائية تركز على المريض وتستند إلى أحدث الأبحاث والتقنيات.
+        </p>
+        <div class="about-doctor-cards">
+          
+          <div class="about-doctor-card">
+            <div class="about-doctor-card-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10" stroke="#61A095" stroke-width="1.5" fill="#E5F2EE"/>
+                <path d="M8 12L11 15L16 9" stroke="#61A095" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="about-doctor-card-text">
+              <h3 class="about-doctor-card-title">جراحة أورام العظام</h3>
+              <p class="about-doctor-card-desc">تشخيص وعلاج أورام العظام الحميدة والخبيثة بأحدث التقنيات.</p>
+            </div>
+          </div>
+          
+          <div class="about-doctor-card">
+            <div class="about-doctor-card-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10" stroke="#61A095" stroke-width="1.5" fill="#E5F2EE"/>
+                <path d="M8 12L11 15L16 9" stroke="#61A095" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="about-doctor-card-text">
+              <h3 class="about-doctor-card-title">إعادة بناء المفاصل</h3>
+              <p class="about-doctor-card-desc">عمليات استبدال المفاصل المعقدة وإعادة بنائها لاستعادة الحركة.</p>
+            </div>
+          </div>
+          
+          <div class="about-doctor-card">
+            <div class="about-doctor-card-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10" stroke="#61A095" stroke-width="1.5" fill="#E5F2EE"/>
+                <path d="M8 12L11 15L16 9" stroke="#61A095" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="about-doctor-card-text">
+              <h3 class="about-doctor-card-title">الحالات المعقدة</h3>
+              <p class="about-doctor-card-desc">التعامل مع الإصابات والكسور المعقدة وحالات فشل الجراحات السابقة.</p>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      <div class="about-doctor-image">
+        <div class="hero-img-col" style="margin-top: 0; align-self: center;">
+          <div class="hero-img-wrapper">
+            <?php 
+            $hero_image = get_field('hero_background');
+            $hero_image_url = $hero_image ? esc_url($hero_image) : esc_url(get_template_directory_uri()) . '/assets/images/hero pic.webp';
+            ?>
+            <img src="<?php echo $hero_image_url; ?>" alt="د. خالد الحارثي"
+              class="hero-img" fetchpriority="high" loading="eager" decoding="async" />
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/سنة خبرة.png" alt=""
+              class="hero-floating-badge badge-1" loading="lazy" decoding="async" aria-hidden="true" />
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/استشاري متخصص.png" alt=""
+              class="hero-floating-badge badge-2" loading="lazy" decoding="async" aria-hidden="true" />
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/hero3vector.webp" alt=""
+              class="hero-floating-badge badge-3" loading="lazy" decoding="async" aria-hidden="true" />
+            <div class="hero-floating-badge badge-4">
+              <div class="info-card">
+                <div class="info-row">
+                  <div class="info-icon-wrapper"><img
+                      src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/Icon Container.webp" alt="icon">
+                  </div>
+                  <div class="info-text">
+                    <span class="info-title">مستشفي السعودي الالماني</span>
+                  </div>
+                </div>
+                <div class="info-row bg-white">
+                  <div class="info-icon-wrapper"><img
+                      src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/icon2.webp" alt="icon"></div>
+                  <div class="info-text">
+                    <span class="info-title">د - خالد سليم الحارثي </span>
+                    <span class="info-sub">طب جامعه ام القري البورد <br>السعودي بجراحه العظام
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
