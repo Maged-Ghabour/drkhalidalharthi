@@ -1404,3 +1404,6 @@ add_action( 'wp_login', 'fikrtak_clear_login_attempts', 10, 2 );
 if ( ! defined( 'DISALLOW_FILE_EDIT' ) ) {
 	define( 'DISALLOW_FILE_EDIT', true );
 }
+
+// Include ACF programmatic fields
+require_once get_template_directory() . '/inc/acf-about.php';
