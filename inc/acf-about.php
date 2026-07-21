@@ -220,7 +220,7 @@ for($i=1; $i<=5; $i++) {
 }
 
 acf_add_local_field_group(array(
-    'key' => 'group_about_page_fields',
+    'key' => 'group_about_page_v2',
     'title' => 'إعدادات محتوى صفحة من نحن',
     'fields' => $fields,
     'location' => array(
@@ -241,5 +241,13 @@ acf_add_local_field_group(array(
     'active' => true,
     'description' => '',
 ));
+
+// Force default values to appear on existing pages if the field is empty
+add_filter('acf/load_value', function($value, $post_id, $field) {
+    if (empty($value) && isset($field['default_value']) && $field['default_value'] !== '') {
+        return $field['default_value'];
+    }
+    return $value;
+}, 10, 3);
 
 endif;
