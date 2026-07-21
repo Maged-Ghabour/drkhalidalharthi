@@ -21,6 +21,9 @@ get_header();
   background-position: center;
   background-repeat: no-repeat;
   background-color: #f8fffe;
+  border-radius: 24px;
+  margin-top: 40px;
+  overflow: hidden;
 }
 .about-hero-overlay {
   position: absolute;
@@ -172,10 +175,10 @@ if (has_post_thumbnail()) {
 }
 ?>
 
+<div class="container">
 <section class="about-hero" style="background-image: url('<?php echo esc_url($bg_image); ?>');">
-  <div class="about-hero-overlay"></div>
   
-  <div class="container fade-in">
+  <div class="fade-in">
     <div class="about-hero-content">
       
       <div class="about-top-badge">
@@ -207,7 +210,7 @@ if (has_post_thumbnail()) {
       </div>
 
       <div class="about-hero-btns">
-        <?php $wa = get_theme_mod('fikrtak_contact_whatsapp', '966500000000'); ?>
+        <?php $wa = get_field('whatsapp_number') ?: '966500000000'; ?>
         <a href="https://wa.me/<?php echo esc_attr($wa); ?>" class="btn-about-primary">
           احجز موعدك الآن
         </a>
@@ -220,6 +223,7 @@ if (has_post_thumbnail()) {
     </div>
   </div>
 </section>
+</div>
 
 <!-- ===== STATS ===== -->
 <section class="stats" style="margin-top: -40px; position: relative; z-index: 10;">
@@ -228,7 +232,7 @@ if (has_post_thumbnail()) {
       <div class="stats-text">
         <div class="stats-text-header">
           <h2>نتميز بخبرتنا</h2>
-          <?php $wa = get_theme_mod('fikrtak_contact_whatsapp', '966500000000'); ?>
+          <?php $wa = get_field('whatsapp_number') ?: '966500000000'; ?>
           <a href="https://wa.me/<?php echo esc_attr($wa); ?>" class="btn btn-primary whatsapp-stat-btn" style="background-color: #61a095; border-color: #61a095;">
             احجز موعد متابعة الآن
           </a>
@@ -474,9 +478,9 @@ if (has_post_thumbnail()) {
     );
 
     for ($i = 1; $i <= 4; $i++) {
-      $title = get_theme_mod('fikrtak_edu_'.$i.'_title', $edu_defaults[$i]['title']);
-      $sub   = get_theme_mod('fikrtak_edu_'.$i.'_sub', $edu_defaults[$i]['sub']);
-      $icon  = get_theme_mod('fikrtak_edu_'.$i.'_icon', '');
+      $title = get_field('fikrtak_edu_'.$i.'_title') ?: $edu_defaults[$i]['title'];
+      $sub   = get_field('fikrtak_edu_'.$i.'_sub') ?: $edu_defaults[$i]['sub'];
+      $icon  = get_field('fikrtak_edu_'.$i.'_icon') ?: '';
       
       echo '<div class="edu-card">';
       echo '  <div class="edu-card-icon">';
@@ -591,7 +595,7 @@ if (has_post_thumbnail()) {
 <div class="container">
 <section class="about-exp fade-in">
   <div class="about-exp-header">
-    <h2 class="about-exp-title"><?php echo esc_html(get_theme_mod('fikrtak_exp_main_title', 'الخبرة الجراحية')); ?></h2>
+    <h2 class="about-exp-title"><?php echo esc_html(get_field('fikrtak_exp_main_title') ?: 'الخبرة الجراحية'); ?></h2>
   </div>
   
   <div class="about-exp-cards">
@@ -613,8 +617,8 @@ if (has_post_thumbnail()) {
     );
     
     for ($i = 1; $i <= 5; $i++) {
-      $title = get_theme_mod('fikrtak_exp_'.$i.'_title', $exp_defaults[$i]);
-      $icon  = get_theme_mod('fikrtak_exp_'.$i.'_icon', '');
+      $title = get_field('fikrtak_exp_'.$i.'_title') ?: $exp_defaults[$i];
+      $icon  = get_field('fikrtak_exp_'.$i.'_icon') ?: '';
       
       echo '<div class="exp-card">';
       echo '  <div class="exp-card-icon">';
@@ -725,9 +729,9 @@ if (has_post_thumbnail()) {
 <section class="about-features fade-in">
   
   <div class="about-features-text">
-    <h2 class="about-features-title"><?php echo esc_html(get_theme_mod('fikrtak_features_title', 'ما يميز د. خالد الحارثي')); ?></h2>
+    <h2 class="about-features-title"><?php echo esc_html(get_field('fikrtak_features_title') ?: 'ما يميز د. خالد الحارثي'); ?></h2>
     <p class="about-features-desc">
-      <?php echo esc_html(get_theme_mod('fikrtak_features_desc', 'اختيار د. خالد الحارثي يعني الاعتماد على خبرة علمية وجراحية متقدمة في التعامل مع أدق حالات العظام، مع التركيز على تحقيق أفضل نتيجة علاجية ممكنة لكل مريض.')); ?>
+      <?php echo esc_html(get_field('fikrtak_features_desc') ?: 'اختيار د. خالد الحارثي يعني الاعتماد على خبرة علمية وجراحية متقدمة في التعامل مع أدق حالات العظام، مع التركيز على تحقيق أفضل نتيجة علاجية ممكنة لكل مريض.'); ?>
     </p>
     
     <ul class="about-features-list">
@@ -739,9 +743,8 @@ if (has_post_thumbnail()) {
         4 => 'أفضل النتائج الوظيفية',
         5 => 'متابعة دقيقة بعد الجراحة',
       );
-      
       for ($i = 1; $i <= 5; $i++) {
-        $feature = get_theme_mod('fikrtak_feature_' . $i, $features_defaults[$i]);
+        $feature = get_field('fikrtak_feature_' . $i) ?: $features_defaults[$i];
         if (!empty($feature)) {
           echo '<li>';
           echo '  <div class="about-features-icon">';
@@ -757,7 +760,7 @@ if (has_post_thumbnail()) {
 
   <div class="about-features-img-col">
     <?php 
-    $img = get_theme_mod('fikrtak_features_img', '');
+    $img = get_field('fikrtak_features_img') ?: '';
     if (!empty($img)) {
       echo '<img src="' . esc_url($img) . '" alt="د. خالد الحارثي" class="about-features-img">';
     } else {
@@ -878,9 +881,9 @@ if (has_post_thumbnail()) {
 <div class="container">
 <section class="about-methodology fade-in">
   <div class="about-method-header">
-    <h2 class="about-method-title"><?php echo esc_html(get_theme_mod('fikrtak_method_title', 'منهجية العلاج')); ?></h2>
+    <h2 class="about-method-title"><?php echo esc_html(get_field('fikrtak_method_title') ?: 'منهجية العلاج'); ?></h2>
     <p class="about-method-desc">
-      <?php echo esc_html(get_theme_mod('fikrtak_method_desc', 'يتبع د. خالد الحارثي نهجاً طبياً دقيقاً في التعامل مع حالات العظام، يعتمد على التشخيص الشامل والتخطيط الجراحي المتخصص لضمان أفضل نتيجة علاجية ممكنة.')); ?>
+      <?php echo esc_html(get_field('fikrtak_method_desc') ?: 'يتبع د. خالد الحارثي نهجاً طبياً دقيقاً في التعامل مع حالات العظام، يعتمد على التشخيص الشامل والتخطيط الجراحي المتخصص لضمان أفضل نتيجة علاجية ممكنة.'); ?>
     </p>
   </div>
   
@@ -894,8 +897,8 @@ if (has_post_thumbnail()) {
     );
     
     for ($i = 1; $i <= 4; $i++) {
-      $title = get_theme_mod('fikrtak_method_'.$i.'_title', $method_defaults[$i]['title']);
-      $desc  = get_theme_mod('fikrtak_method_'.$i.'_desc', $method_defaults[$i]['desc']);
+      $title = get_field('fikrtak_method_'.$i.'_title') ?: $method_defaults[$i]['title'];
+      $desc  = get_field('fikrtak_method_'.$i.'_desc') ?: $method_defaults[$i]['desc'];
       
       echo '<div class="method-step">';
       echo '  <div class="method-step-circle">' . $i . '</div>';
@@ -1011,14 +1014,14 @@ if (has_post_thumbnail()) {
 
 <div class="container">
 <?php 
-$bg_img = get_theme_mod('fikrtak_about_cta_bg', '');
+$bg_img = get_field('fikrtak_about_cta_bg') ?: '';
 $bg_style = !empty($bg_img) ? 'background-image: url(' . esc_url($bg_img) . ');' : '';
 ?>
 <section class="about-final-cta fade-in" style="<?php echo $bg_style; ?>">
   <div class="about-final-cta-content">
-    <h2 class="about-final-cta-title"><?php echo esc_html(get_theme_mod('fikrtak_about_cta_title', 'احجز موعدك الآن')); ?></h2>
+    <h2 class="about-final-cta-title"><?php echo esc_html(get_field('fikrtak_about_cta_title') ?: 'احجز موعدك الآن'); ?></h2>
     <p class="about-final-cta-desc">
-      <?php echo esc_html(get_theme_mod('fikrtak_about_cta_desc', 'ابدأ رحلتك العلاجية مع د. خالد الحارثي للحصول على تقييم دقيق لحالتك وخطة علاج مناسبة تعتمد على أحدث الأساليب في جراحة العظام.')); ?>
+      <?php echo esc_html(get_field('fikrtak_about_cta_desc') ?: 'ابدأ رحلتك العلاجية مع د. خالد الحارثي للحصول على تقييم دقيق لحالتك وخطة علاج مناسبة تعتمد على أحدث الأساليب في جراحة العظام.'); ?>
     </p>
     
     <ul class="about-final-cta-features">
@@ -1029,7 +1032,7 @@ $bg_style = !empty($bg_img) ? 'background-image: url(' . esc_url($bg_img) . ');'
         3 => 'خطة علاج متخصصة',
       );
       for ($i = 1; $i <= 3; $i++) {
-        $feat = get_theme_mod('fikrtak_about_cta_feat_'.$i, $cta_features[$i]);
+        $feat = get_field('fikrtak_about_cta_feat_'.$i) ?: $cta_features[$i];
         if (!empty($feat)) {
           echo '<li>';
           echo '  <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>';
@@ -1042,9 +1045,9 @@ $bg_style = !empty($bg_img) ? 'background-image: url(' . esc_url($bg_img) . ');'
     
     <div class="about-final-cta-btns">
       <?php 
-      $wa_number = get_theme_mod('fikrtak_contact_whatsapp', '966500000000'); 
-      $btn1_text = get_theme_mod('fikrtak_about_cta_btn1_text', 'احجز موعدك');
-      $btn2_text = get_theme_mod('fikrtak_about_cta_btn2_text', 'استشارة الآن');
+      $wa_number = get_field('whatsapp_number') ?: '966500000000'; 
+      $btn1_text = get_field('fikrtak_about_cta_btn1_text') ?: 'احجز موعدك';
+      $btn2_text = get_field('fikrtak_about_cta_btn2_text') ?: 'استشارة الآن';
       ?>
       <a href="https://wa.me/<?php echo esc_attr($wa_number); ?>" class="btn btn-primary"><?php echo esc_html($btn1_text); ?></a>
       <a href="https://wa.me/<?php echo esc_attr($wa_number); ?>" class="btn btn-outline"><?php echo esc_html($btn2_text); ?></a>
@@ -1123,14 +1126,14 @@ $bg_style = !empty($bg_img) ? 'background-image: url(' . esc_url($bg_img) . ');'
       <div class="about-faq-text-col">
         <p class="faq-sub-centered">الأسئلة الشائعة</p>
         <h2 class="faq-title-centered">
-          <?php echo wp_kses_post(get_theme_mod('fikrtak_about_faq_title', 'إجابات لأكثر الأسئلة<br>شيوعاً')); ?>
+          <?php echo wp_kses_post(get_field('fikrtak_about_faq_title') ?: 'إجابات لأكثر الأسئلة<br>شيوعاً'); ?>
         </h2>
         <p class="about-faq-desc">
-          <?php echo esc_html(get_theme_mod('fikrtak_about_faq_desc', 'نجيب على أبرز استفساراتك حول فترة التعافي وما يمكن توقعه خلال جلسات المتابعة.')); ?>
+          <?php echo esc_html(get_field('fikrtak_about_faq_desc') ?: 'نجيب على أبرز استفساراتك حول فترة التعافي وما يمكن توقعه خلال جلسات المتابعة.'); ?>
         </p>
         <?php 
-        $wa = get_theme_mod('fikrtak_contact_whatsapp', '966500000000'); 
-        $btn_text = get_theme_mod('fikrtak_about_faq_btn_text', 'احجز الآن');
+        $wa = get_field('whatsapp_number') ?: '966500000000'; 
+        $btn_text = get_field('fikrtak_about_faq_btn_text') ?: 'احجز الآن';
         ?>
         <a href="https://wa.me/<?php echo esc_attr($wa); ?>" class="about-faq-btn">
           <?php echo esc_html($btn_text); ?>
@@ -1149,8 +1152,8 @@ $bg_style = !empty($bg_img) ? 'background-image: url(' . esc_url($bg_img) . ');'
         );
         
         for ($i = 1; $i <= 5; $i++) {
-          $q = get_theme_mod('fikrtak_about_faq_q_' . $i, $faq_defaults[$i]['q']);
-          $a = get_theme_mod('fikrtak_about_faq_a_' . $i, $faq_defaults[$i]['a']);
+          $q = get_field('fikrtak_about_faq_q_' . $i) ?: $faq_defaults[$i]['q'];
+          $a = get_field('fikrtak_about_faq_a_' . $i) ?: $faq_defaults[$i]['a'];
           
           if (!empty($q) && !empty($a)) {
             echo '<div class="faq-item" id="aboutFaqItem' . $i . '">';
