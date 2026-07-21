@@ -13,7 +13,7 @@ $fields = array(
         'label' => 'رقم الواتساب',
         'name' => 'whatsapp_number',
         'type' => 'text',
-        'default_value' => '966500000000',
+        'default_value' => '',
     ),
     array(
         'key' => 'field_tab_hero',

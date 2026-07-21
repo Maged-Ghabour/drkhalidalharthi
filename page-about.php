@@ -40,6 +40,10 @@ get_header();
   max-width: 950px;
   margin: 0 auto;
   direction: rtl;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .about-top-badge {
   display: inline-flex;
@@ -219,7 +223,7 @@ $hero_note = get_field('fikrtak_about_hero_note') ?: 'استعادة الحرك�
       </div>
 
       <div class="about-hero-btns">
-        <?php $wa = get_field('whatsapp_number') ?: '966500000000'; ?>
+        <?php $wa = get_field('whatsapp_number') ?: get_theme_mod('fikrtak_contact_whatsapp', ''); ?>
         <a href="https://wa.me/<?php echo esc_attr($wa); ?>" class="btn-about-primary">
           احجز موعدك الآن
         </a>
@@ -241,7 +245,7 @@ $hero_note = get_field('fikrtak_about_hero_note') ?: 'استعادة الحرك�
       <div class="stats-text">
         <div class="stats-text-header">
           <h2>نتميز بخبرتنا</h2>
-          <?php $wa = get_field('whatsapp_number') ?: '966500000000'; ?>
+          <?php $wa = get_field('whatsapp_number') ?: get_theme_mod('fikrtak_contact_whatsapp', ''); ?>
           <a href="https://wa.me/<?php echo esc_attr($wa); ?>" class="btn btn-primary whatsapp-stat-btn" style="background-color: #61a095; border-color: #61a095;">
             احجز موعد متابعة الآن
           </a>
@@ -934,13 +938,7 @@ $hero_note = get_field('fikrtak_about_hero_note') ?: 'استعادة الحرك�
   position: relative;
   overflow: hidden;
 }
-.about-final-cta::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(to bottom, rgba(83,87,86,0.9), rgba(83,87,86,0.95));
-  z-index: 1;
-}
+
 .about-final-cta-content {
   position: relative;
   z-index: 2;
@@ -1054,7 +1052,7 @@ $bg_style = !empty($bg_img) ? 'background-image: url(' . esc_url($bg_img) . ');'
     
     <div class="about-final-cta-btns">
       <?php 
-      $wa_number = get_field('whatsapp_number') ?: '966500000000'; 
+      $wa_number = get_field('whatsapp_number') ?: get_theme_mod('fikrtak_contact_whatsapp', ''); 
       $btn1_text = get_field('fikrtak_about_cta_btn1_text') ?: 'احجز موعدك';
       $btn2_text = get_field('fikrtak_about_cta_btn2_text') ?: 'استشارة الآن';
       ?>
@@ -1141,7 +1139,7 @@ $bg_style = !empty($bg_img) ? 'background-image: url(' . esc_url($bg_img) . ');'
           <?php echo esc_html(get_field('fikrtak_about_faq_desc') ?: 'نجيب على أبرز استفساراتك حول فترة التعافي وما يمكن توقعه خلال جلسات المتابعة.'); ?>
         </p>
         <?php 
-        $wa = get_field('whatsapp_number') ?: '966500000000'; 
+        $wa = get_field('whatsapp_number') ?: get_theme_mod('fikrtak_contact_whatsapp', ''); 
         $btn_text = get_field('fikrtak_about_faq_btn_text') ?: 'احجز الآن';
         ?>
         <a href="https://wa.me/<?php echo esc_attr($wa); ?>" class="about-faq-btn">

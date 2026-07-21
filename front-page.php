@@ -43,10 +43,7 @@ get_header(); ?>
 
   <div class="hero-btns">
     <?php 
-    $wa_number = get_field('whatsapp_number');
-    if (!$wa_number) {
-        $wa_number = '966500000000';
-    }
+    $wa_number = get_field('whatsapp_number') ?: get_theme_mod('fikrtak_contact_whatsapp', '');
     ?>
     <a href="https://wa.me/<?php echo esc_attr($wa_number); ?>" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">
       احجز موعدك الان
@@ -151,10 +148,7 @@ get_header(); ?>
         <div class="stats-text-header">
           <h2>نتميز بخبرتنا</h2>
           <?php 
-          $wa = get_field('whatsapp_number');
-          if (!$wa) {
-              $wa = '966500000000';
-          }
+          $wa = get_field('whatsapp_number') ?: get_theme_mod('fikrtak_contact_whatsapp', '');
           ?>
           <a href="https://wa.me/<?php echo esc_attr($wa); ?>" class="btn btn-primary whatsapp-stat-btn" target="_blank" rel="noopener noreferrer">
             استشارة عبر واتساب
