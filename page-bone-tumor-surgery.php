@@ -279,6 +279,39 @@ get_header();
   .bt-stg-cell:nth-child(3) { border-bottom: 1px solid rgba(106, 113, 111, 0.3); }
   .bt-cta-card-new { grid-template-columns: 1fr; }
 }
+
+.bt-feature-card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+}
+.bt-feature-card:last-child {
+  margin-bottom: 0;
+}
+.bt-feature-icon {
+  width: 24px;
+  height: 24px;
+  color: #61A095;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.bt-feature-content h4 {
+  font-size: 18px;
+  font-weight: 800;
+  color: #6a716f;
+  margin: 0 0 6px 0;
+}
+.bt-feature-content p {
+  font-size: 14px;
+  color: rgba(106, 113, 111, 0.8);
+  margin: 0;
+  line-height: 1.6;
+}
 </style>
 
 <section class="bt-indications-new fade-in" id="bt-indications">
@@ -405,16 +438,50 @@ get_header();
       
       <!-- Right: Booking Content -->
       <div class="bt-cta-text-new">
-        <span style="font-size: 15px; color: #6a716f; margin-bottom: 12px; display: block; font-weight: 600;">ابدأ تقييم حالتك بدقة</span>
-        <h2 class="bt-cta-title-new">احجز استشارة مع<br>د. خالد الحارثي</h2>
-        <p style="font-size: 17px; color: rgba(106, 113, 111, 0.9); line-height: 1.8; margin-bottom: 40px;">
-          استشاري جراحة العظام بخبرة تتجاوز ١٣ عاماً في الجراحات الدقيقة والمعقدة. يتميز بخبرة متقدمة في جراحة أورام العظام وإعادة بناء المفاصل، مع الاعتماد على أحدث التقنيات الجراحية لتحقيق أفضل النتائج.
+        <h2 class="bt-cta-title-new" style="font-size: 32px; color: #4a5e5d;">نبذة عن د. خالد الحارثي</h2>
+        <p style="font-size: 16px; color: rgba(106, 113, 111, 0.9); line-height: 1.8; margin-bottom: 30px;">
+          د. خالد الحارثي هو استشاري متخصص في جراحة أورام العظام وإعادة بناء المفاصل، يمتلك خبرة واسعة في التعامل مع الحالات الطبية المعقدة والدقيقة. يكرس جهوده لتقديم رعاية طبية استثنائية تركز على المريض وتستند إلى أحدث الأبحاث والتقنيات.
         </p>
-        <div class="bt-cta-btns">
-          <?php $wa = get_theme_mod('fikrtak_contact_whatsapp', '966500000000'); ?>
-          <a href="https://wa.me/<?php echo esc_attr($wa); ?>" class="btn btn-primary" id="btCtaWhatsapp" style="border-radius: 50px; padding: 12px 30px;">
-            احجز استشارة
-          </a>
+        
+        <div class="bt-features-list">
+          <!-- Card 1 -->
+          <div class="bt-feature-card">
+            <div class="bt-feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div class="bt-feature-content">
+              <h4>جراحة أورام العظام</h4>
+              <p>تشخيص وعلاج أورام العظام الحميدة والخبيثة بأحدث التقنيات.</p>
+            </div>
+          </div>
+          
+          <!-- Card 2 -->
+          <div class="bt-feature-card">
+            <div class="bt-feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div class="bt-feature-content">
+              <h4>إعادة بناء المفاصل</h4>
+              <p>عمليات استبدال المفاصل المعقدة وإعادة بنائها لاستعادة الحركة.</p>
+            </div>
+          </div>
+          
+          <!-- Card 3 -->
+          <div class="bt-feature-card">
+            <div class="bt-feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div class="bt-feature-content">
+              <h4>الحالات المعقدة</h4>
+              <p>التعامل مع الإصابات والكسور المعقدة وحالات فشل الجراحات السابقة.</p>
+            </div>
+          </div>
         </div>
       </div>
 

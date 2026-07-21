@@ -534,6 +534,390 @@ function fikrtak_customizer_settings( $wp_customize ) {
 		'section' => 'fikrtak_footer_options',
 		'type'    => 'textarea',
 	) );
+
+	// About Us: Qualifications Section Options
+	$wp_customize->add_section( 'fikrtak_about_edu_options', array(
+		'title'    => 'المؤهلات العلمية (صفحة من نحن)',
+		'priority' => 37,
+	) );
+
+	// Define 4 cards defaults based on Figma image
+	$edu_defaults = array(
+		1 => array(
+			'title' => 'الزمالة الإيطالية جامعة بادوفا',
+			'sub'   => 'في تخصص جراحة أورام العظام وإعادة بناء المفاصل'
+		),
+		2 => array(
+			'title' => 'استشاري جراحة أورام العظام وإعادة بناء المفاصل',
+			'sub'   => 'تصنيف الهيئة السعودية للتخصصات الصحية'
+		),
+		3 => array(
+			'title' => 'الزمالة الإيطالية في مستشفى ريزولي في جامعة بولونيا',
+			'sub'   => 'في تخصص جراحة أورام العظام وإعادة بناء المفاصل'
+		),
+		4 => array(
+			'title' => 'البورد السعودي في جراحة العظام',
+			'sub'   => 'شهادة الاختصاص السعودية'
+		),
+	);
+
+	for ( $i = 1; $i <= 4; $i++ ) {
+		// Title
+		$wp_customize->add_setting( 'fikrtak_edu_' . $i . '_title', array(
+			'default'           => $edu_defaults[$i]['title'],
+			'sanitize_callback' => 'sanitize_text_field',
+			'transport'         => 'refresh',
+		) );
+		$wp_customize->add_control( 'fikrtak_edu_' . $i . '_title', array(
+			'label'   => 'عنوان المؤهل ' . $i,
+			'section' => 'fikrtak_about_edu_options',
+			'type'    => 'text',
+		) );
+
+		// Subtitle
+		$wp_customize->add_setting( 'fikrtak_edu_' . $i . '_sub', array(
+			'default'           => $edu_defaults[$i]['sub'],
+			'sanitize_callback' => 'sanitize_text_field',
+			'transport'         => 'refresh',
+		) );
+		$wp_customize->add_control( 'fikrtak_edu_' . $i . '_sub', array(
+			'label'   => 'وصف المؤهل ' . $i,
+			'section' => 'fikrtak_about_edu_options',
+			'type'    => 'text',
+		) );
+
+		// Icon
+		$wp_customize->add_setting( 'fikrtak_edu_' . $i . '_icon', array(
+			'default'           => '',
+			'sanitize_callback' => 'esc_url_raw',
+			'transport'         => 'refresh',
+		) );
+		$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'fikrtak_edu_' . $i . '_icon', array(
+			'label'       => 'أيقونة المؤهل ' . $i . ' (اختياري)',
+			'description' => 'ارفع صورة أو أيقونة (PNG/SVG). إذا تُركت فارغة سيتم استخدام الأيقونة الافتراضية.',
+			'section'     => 'fikrtak_about_edu_options',
+		) ) );
+	}
+
+	// About Us: Experience Section Options
+	$wp_customize->add_section( 'fikrtak_about_exp_options', array(
+		'title'    => 'الخبرة الجراحية (صفحة من نحن)',
+		'priority' => 38,
+	) );
+
+	$wp_customize->add_setting( 'fikrtak_exp_main_title', array(
+		'default'           => 'الخبرة الجراحية',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( 'fikrtak_exp_main_title', array(
+		'label'   => 'عنوان القسم الرئيسي',
+		'section' => 'fikrtak_about_exp_options',
+		'type'    => 'text',
+	) );
+
+	// Define 5 cards defaults
+	$exp_defaults = array(
+		1 => 'جراحات أورام العظام',
+		2 => 'إعادة بناء المفاصل',
+		3 => 'الجراحات الدقيقة والمعقدة',
+		4 => 'الحالات المتقدمة',
+		5 => 'استعادة وظيفة العظام والمفاصل',
+	);
+
+	for ( $i = 1; $i <= 5; $i++ ) {
+		$wp_customize->add_setting( 'fikrtak_exp_' . $i . '_title', array(
+			'default'           => $exp_defaults[$i],
+			'sanitize_callback' => 'sanitize_text_field',
+			'transport'         => 'refresh',
+		) );
+		$wp_customize->add_control( 'fikrtak_exp_' . $i . '_title', array(
+			'label'   => 'عنوان البطاقة ' . $i,
+			'section' => 'fikrtak_about_exp_options',
+			'type'    => 'text',
+		) );
+
+		$wp_customize->add_setting( 'fikrtak_exp_' . $i . '_icon', array(
+			'default'           => '',
+			'sanitize_callback' => 'esc_url_raw',
+			'transport'         => 'refresh',
+		) );
+		$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'fikrtak_exp_' . $i . '_icon', array(
+			'label'       => 'أيقونة البطاقة ' . $i . ' (اختياري)',
+			'description' => 'ارفع صورة أو أيقونة (PNG/SVG). إذا تُركت فارغة سيتم استخدام الأيقونة الافتراضية.',
+			'section'     => 'fikrtak_about_exp_options',
+		) ) );
+	}
+
+	// About Us: Features Section Options
+	$wp_customize->add_section( 'fikrtak_about_features_options', array(
+		'title'    => 'مميزات الطبيب (صفحة من نحن)',
+		'priority' => 39,
+	) );
+
+	$wp_customize->add_setting( 'fikrtak_features_img', array(
+		'default'           => '',
+		'sanitize_callback' => 'esc_url_raw',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'fikrtak_features_img', array(
+		'label'       => 'صورة القسم الأيسر',
+		'description' => 'ارفع صورة الطبيب لعرضها في قسم المميزات.',
+		'section'     => 'fikrtak_about_features_options',
+	) ) );
+
+	$wp_customize->add_setting( 'fikrtak_features_title', array(
+		'default'           => 'ما يميز د. خالد الحارثي',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( 'fikrtak_features_title', array(
+		'label'   => 'عنوان القسم الرئيسي',
+		'section' => 'fikrtak_about_features_options',
+		'type'    => 'text',
+	) );
+
+	$wp_customize->add_setting( 'fikrtak_features_desc', array(
+		'default'           => 'اختيار د. خالد الحارثي يعني الاعتماد على خبرة علمية وجراحية متقدمة في التعامل مع أدق حالات العظام، مع التركيز على تحقيق أفضل نتيجة علاجية ممكنة لكل مريض.',
+		'sanitize_callback' => 'sanitize_textarea_field',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( 'fikrtak_features_desc', array(
+		'label'   => 'النص الوصفي',
+		'section' => 'fikrtak_about_features_options',
+		'type'    => 'textarea',
+	) );
+
+	$features_defaults = array(
+		1 => 'خبرة واسعة',
+		2 => 'تدريب دولي في إيطاليا',
+		3 => 'التعامل مع الحالات المعقدة',
+		4 => 'أفضل النتائج الوظيفية',
+		5 => 'متابعة دقيقة بعد الجراحة',
+	);
+
+	for ( $i = 1; $i <= 5; $i++ ) {
+		$wp_customize->add_setting( 'fikrtak_feature_' . $i, array(
+			'default'           => $features_defaults[$i],
+			'sanitize_callback' => 'sanitize_text_field',
+			'transport'         => 'refresh',
+		) );
+		$wp_customize->add_control( 'fikrtak_feature_' . $i, array(
+			'label'   => 'الميزة رقم ' . $i,
+			'section' => 'fikrtak_about_features_options',
+			'type'    => 'text',
+		) );
+	}
+
+	// About Us: Methodology Section Options
+	$wp_customize->add_section( 'fikrtak_about_methodology_options', array(
+		'title'    => 'منهجية العلاج (صفحة من نحن)',
+		'priority' => 40,
+	) );
+
+	$wp_customize->add_setting( 'fikrtak_method_title', array(
+		'default'           => 'منهجية العلاج',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( 'fikrtak_method_title', array(
+		'label'   => 'عنوان القسم الرئيسي',
+		'section' => 'fikrtak_about_methodology_options',
+		'type'    => 'text',
+	) );
+
+	$wp_customize->add_setting( 'fikrtak_method_desc', array(
+		'default'           => 'يتبع د. خالد الحارثي نهجاً طبياً دقيقاً في التعامل مع حالات العظام، يعتمد على التشخيص الشامل والتخطيط الجراحي المتخصص لضمان أفضل نتيجة علاجية ممكنة.',
+		'sanitize_callback' => 'sanitize_textarea_field',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( 'fikrtak_method_desc', array(
+		'label'   => 'النص الوصفي',
+		'section' => 'fikrtak_about_methodology_options',
+		'type'    => 'textarea',
+	) );
+
+	$method_defaults = array(
+		1 => array('title' => 'تقييم دقيق للحالة', 'desc' => 'فحص شامل وتحاليل دقيقة لفهم كامل للحالة.'),
+		2 => array('title' => 'وضع خطة علاج مناسبة', 'desc' => 'خطة علاجية مخصصة وفق طبيعة الحالة.'),
+		3 => array('title' => 'التدخل الجراحي عند الحاجة', 'desc' => 'تنفيذ الجراحة بأعلى مستويات الدقة والأمان.'),
+		4 => array('title' => 'المتابعة بعد العلاج', 'desc' => 'متابعة منتظمة لضمان أفضل النتائج.'),
+	);
+
+	for ( $i = 1; $i <= 4; $i++ ) {
+		$wp_customize->add_setting( 'fikrtak_method_' . $i . '_title', array(
+			'default'           => $method_defaults[$i]['title'],
+			'sanitize_callback' => 'sanitize_text_field',
+			'transport'         => 'refresh',
+		) );
+		$wp_customize->add_control( 'fikrtak_method_' . $i . '_title', array(
+			'label'   => 'عنوان الخطوة ' . $i,
+			'section' => 'fikrtak_about_methodology_options',
+			'type'    => 'text',
+		) );
+
+		$wp_customize->add_setting( 'fikrtak_method_' . $i . '_desc', array(
+			'default'           => $method_defaults[$i]['desc'],
+			'sanitize_callback' => 'sanitize_textarea_field',
+			'transport'         => 'refresh',
+		) );
+		$wp_customize->add_control( 'fikrtak_method_' . $i . '_desc', array(
+			'label'   => 'وصف الخطوة ' . $i,
+			'section' => 'fikrtak_about_methodology_options',
+			'type'    => 'textarea',
+		) );
+	}
+
+	// About Us: CTA Section Options
+	$wp_customize->add_section( 'fikrtak_about_cta_options', array(
+		'title'    => 'قسم الحجز (صفحة من نحن)',
+		'priority' => 41,
+	) );
+
+	$wp_customize->add_setting( 'fikrtak_about_cta_bg', array(
+		'default'           => '',
+		'sanitize_callback' => 'esc_url_raw',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'fikrtak_about_cta_bg', array(
+		'label'       => 'صورة الخلفية',
+		'description' => 'ارفع صورة لخلفية القسم (اختياري). إذا تركت فارغة سيتم استخدام اللون الرمادي الغامق.',
+		'section'     => 'fikrtak_about_cta_options',
+	) ) );
+
+	$wp_customize->add_setting( 'fikrtak_about_cta_title', array(
+		'default'           => 'احجز موعدك الآن',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( 'fikrtak_about_cta_title', array(
+		'label'   => 'عنوان القسم',
+		'section' => 'fikrtak_about_cta_options',
+		'type'    => 'text',
+	) );
+
+	$wp_customize->add_setting( 'fikrtak_about_cta_desc', array(
+		'default'           => 'ابدأ رحلتك العلاجية مع د. خالد الحارثي للحصول على تقييم دقيق لحالتك وخطة علاج مناسبة تعتمد على أحدث الأساليب في جراحة العظام.',
+		'sanitize_callback' => 'sanitize_textarea_field',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( 'fikrtak_about_cta_desc', array(
+		'label'   => 'النص الوصفي',
+		'section' => 'fikrtak_about_cta_options',
+		'type'    => 'textarea',
+	) );
+
+	$cta_features = array(
+		1 => 'استشارة طبية',
+		2 => 'تقييم شامل للحالة',
+		3 => 'خطة علاج متخصصة',
+	);
+
+	for ( $i = 1; $i <= 3; $i++ ) {
+		$wp_customize->add_setting( 'fikrtak_about_cta_feat_' . $i, array(
+			'default'           => $cta_features[$i],
+			'sanitize_callback' => 'sanitize_text_field',
+			'transport'         => 'refresh',
+		) );
+		$wp_customize->add_control( 'fikrtak_about_cta_feat_' . $i, array(
+			'label'   => 'الميزة رقم ' . $i,
+			'section' => 'fikrtak_about_cta_options',
+			'type'    => 'text',
+		) );
+	}
+
+	$wp_customize->add_setting( 'fikrtak_about_cta_btn1_text', array(
+		'default'           => 'احجز موعدك',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( 'fikrtak_about_cta_btn1_text', array(
+		'label'   => 'نص الزر الأساسي',
+		'section' => 'fikrtak_about_cta_options',
+		'type'    => 'text',
+	) );
+
+	$wp_customize->add_setting( 'fikrtak_about_cta_btn2_text', array(
+		'default'           => 'استشارة الآن',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( 'fikrtak_about_cta_btn2_text', array(
+		'label'   => 'نص الزر الثانوي',
+		'section' => 'fikrtak_about_cta_options',
+		'type'    => 'text',
+	) );
+
+	// About Us: FAQ Section Options
+	$wp_customize->add_section( 'fikrtak_about_faq_options', array(
+		'title'    => 'الأسئلة الشائعة (صفحة من نحن)',
+		'priority' => 41,
+	) );
+
+	$wp_customize->add_setting( 'fikrtak_about_faq_title', array(
+		'default'           => 'إجابات لأكثر الأسئلة<br>شيوعاً',
+		'sanitize_callback' => 'wp_kses_post',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( 'fikrtak_about_faq_title', array(
+		'label'   => 'العنوان الرئيسي',
+		'section' => 'fikrtak_about_faq_options',
+		'type'    => 'textarea',
+	) );
+
+	$wp_customize->add_setting( 'fikrtak_about_faq_desc', array(
+		'default'           => 'نجيب على أبرز استفساراتك حول فترة التعافي وما يمكن توقعه خلال جلسات المتابعة.',
+		'sanitize_callback' => 'sanitize_textarea_field',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( 'fikrtak_about_faq_desc', array(
+		'label'   => 'النص الوصفي',
+		'section' => 'fikrtak_about_faq_options',
+		'type'    => 'textarea',
+	) );
+
+	$wp_customize->add_setting( 'fikrtak_about_faq_btn_text', array(
+		'default'           => 'احجز الآن',
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport'         => 'refresh',
+	) );
+	$wp_customize->add_control( 'fikrtak_about_faq_btn_text', array(
+		'label'   => 'نص الزر',
+		'section' => 'fikrtak_about_faq_options',
+		'type'    => 'text',
+	) );
+
+	$faq_defaults = array(
+		1 => array('q' => 'كم تستغرق فترة المتابعة بعد العملية؟', 'a' => 'تعتمد المدة على نوع العملية وحالة المريض، وتتراوح عادة بين أسابيع إلى بضعة أشهر لضمان التئام العظام واستعادة الوظائف الحركية بالكامل.'),
+		2 => array('q' => 'متى يمكنني البدء في العلاج الطبيعي؟', 'a' => 'يتم تحديد وقت البدء بناءً على نوع العملية وتوجيهات الطبيب المعالج، وغالباً ما يبدأ العلاج الطبيعي بشكل مبدئي بعد أيام من الجراحة.'),
+		3 => array('q' => 'كيف يمكنني التحكم في الألم خلال فترة التعافي؟', 'a' => 'يوصف الطبيب مجموعة من المسكنات وتوجيهات للراحة تسهم في السيطرة على الألم بطريقة فعالة وآمنة.'),
+		4 => array('q' => 'هل المتابعة تشمل تغيير الضمادات فقط؟', 'a' => 'تشمل المتابعة تقييم الجرح، إزالة الغرز، إجراء أشعة للاطمئنان على التئام العظام وتوجيه المريض لخطوات العلاج الطبيعي.'),
+		5 => array('q' => 'ما هي العلامات التي تستوجب التواصل الفوري مع الدكتور؟', 'a' => 'تواصل فوراً في حال ظهور ارتفاع حاد في الحرارة، إفرازات أو احمرار شديد حول الجرح، ألم متصاعد لا يُحتمل، أو تورم مفاجئ.'),
+	);
+
+	for ( $i = 1; $i <= 5; $i++ ) {
+		$wp_customize->add_setting( 'fikrtak_about_faq_q_' . $i, array(
+			'default'           => $faq_defaults[$i]['q'],
+			'sanitize_callback' => 'sanitize_text_field',
+			'transport'         => 'refresh',
+		) );
+		$wp_customize->add_control( 'fikrtak_about_faq_q_' . $i, array(
+			'label'   => 'السؤال ' . $i,
+			'section' => 'fikrtak_about_faq_options',
+			'type'    => 'text',
+		) );
+
+		$wp_customize->add_setting( 'fikrtak_about_faq_a_' . $i, array(
+			'default'           => $faq_defaults[$i]['a'],
+			'sanitize_callback' => 'sanitize_textarea_field',
+			'transport'         => 'refresh',
+		) );
+		$wp_customize->add_control( 'fikrtak_about_faq_a_' . $i, array(
+			'label'   => 'الجواب ' . $i,
+			'section' => 'fikrtak_about_faq_options',
+			'type'    => 'textarea',
+		) );
+	}
 }
 
 add_action( 'customize_register', 'fikrtak_customizer_settings' );
