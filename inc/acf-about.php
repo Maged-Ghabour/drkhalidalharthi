@@ -3,7 +3,7 @@ if( function_exists('acf_add_local_field_group') ):
 
 $fields = array(
     array(
-        'key' => 'tab_general',
+        'key' => 'field_tab_general',
         'label' => 'عام',
         'type' => 'tab',
         'placement' => 'top',
@@ -16,7 +16,7 @@ $fields = array(
         'default_value' => '966500000000',
     ),
     array(
-        'key' => 'tab_edu',
+        'key' => 'field_tab_edu',
         'label' => 'التعليم والشهادات',
         'type' => 'tab',
         'placement' => 'top',
@@ -37,7 +37,7 @@ for($i=1; $i<=4; $i++) {
 }
 
 $fields[] = array(
-    'key' => 'tab_exp',
+    'key' => 'field_tab_exp',
     'label' => 'الخبرة الجراحية',
     'type' => 'tab',
     'placement' => 'top',
@@ -62,7 +62,7 @@ for($i=1; $i<=5; $i++) {
 }
 
 $fields[] = array(
-    'key' => 'tab_features',
+    'key' => 'field_tab_features',
     'label' => 'المميزات',
     'type' => 'tab',
     'placement' => 'top',
@@ -100,7 +100,7 @@ for($i=1; $i<=5; $i++) {
 }
 
 $fields[] = array(
-    'key' => 'tab_method',
+    'key' => 'field_tab_method',
     'label' => 'منهجية العلاج',
     'type' => 'tab',
     'placement' => 'top',
@@ -131,7 +131,7 @@ for($i=1; $i<=4; $i++) {
 }
 
 $fields[] = array(
-    'key' => 'tab_cta',
+    'key' => 'field_tab_cta',
     'label' => 'دعوة الإجراء (CTA)',
     'type' => 'tab',
     'placement' => 'top',
@@ -181,7 +181,7 @@ for($i=1; $i<=3; $i++) {
 }
 
 $fields[] = array(
-    'key' => 'tab_faq',
+    'key' => 'field_tab_faq',
     'label' => 'الأسئلة الشائعة',
     'type' => 'tab',
     'placement' => 'top',
