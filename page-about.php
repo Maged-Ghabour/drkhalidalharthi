@@ -16,6 +16,7 @@ get_header();
   min-height: 80vh;
   display: flex;
   align-items: center;
+  justify-content: center;
   position: relative;
   background-size: cover;
   background-position: center;
